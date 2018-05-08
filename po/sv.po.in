@@ -7,20 +7,20 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libidn 1.29\n"
 "Report-Msgid-Bugs-To: bug-libidn@gnu.org\n"
-"POT-Creation-Date: 2014-08-10 22:50+0200\n"
+"POT-Creation-Date: 2018-05-09 08:44+0200\n"
 "PO-Revision-Date: 2016-07-16 19:36+0100\n"
 "Last-Translator: Josef Andersson <josef.andersson@fripost.org>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
-"X-Bugs: Report translation errors to the Language-Team address.\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Bugs: Report translation errors to the Language-Team address.\n"
 "X-Generator: Poedit 1.8.7.1\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: lib/strerror-idna.c:82 lib/strerror-pr29.c:66 lib/strerror-punycode.c:66
-#: lib/strerror-stringprep.c:86 lib/strerror-tld.c:68
+#: lib/strerror-stringprep.c:87 lib/strerror-tld.c:68
 msgid "Success"
 msgstr "Lyckades"
 
@@ -56,11 +56,11 @@ msgstr "Strängen är inte idempotent under ToASCII"
 msgid "Input already contain ACE prefix (`xn--')"
 msgstr "Indata innehåller redan ACE-prefix (”xn--”)"
 
-#: lib/strerror-idna.c:118 lib/strerror-tld.c:84
-msgid "System iconv failed"
-msgstr "Misslyckades med systemanrop iconv"
+#: lib/strerror-idna.c:118
+msgid "Could not convert string in locale encoding"
+msgstr "Det gick inte att konvertera strängen till lokal kodning"
 
-#: lib/strerror-idna.c:122 lib/strerror-stringprep.c:130 lib/strerror-tld.c:80
+#: lib/strerror-idna.c:122 lib/strerror-stringprep.c:134 lib/strerror-tld.c:80
 msgid "Cannot allocate memory"
 msgstr "Kan inte allokera minne"
 
@@ -69,7 +69,7 @@ msgid "System dlopen failed"
 msgstr "Misslyckades med systemanrop dlopen"
 
 #: lib/strerror-idna.c:130 lib/strerror-pr29.c:78 lib/strerror-punycode.c:82
-#: lib/strerror-stringprep.c:134 lib/strerror-tld.c:92
+#: lib/strerror-stringprep.c:138 lib/strerror-tld.c:92
 msgid "Unknown error"
 msgstr "Okänt fel"
 
@@ -81,7 +81,7 @@ msgstr "Strängen inte idempotent under Unicode NFKC-normalisering"
 msgid "Invalid input"
 msgstr "Ogiltig indata"
 
-#: lib/strerror-punycode.c:74 lib/strerror-stringprep.c:110
+#: lib/strerror-punycode.c:74 lib/strerror-stringprep.c:111
 msgid "Output would exceed the buffer space provided"
 msgstr "Utdata skulle överskrida tillhandahållet buffertutrymme"
 
@@ -89,39 +89,43 @@ msgstr "Utdata skulle överskrida tillhandahållet buffertutrymme"
 msgid "String size limit exceeded"
 msgstr "Strängstorleken överskriden"
 
-#: lib/strerror-stringprep.c:90
+#: lib/strerror-stringprep.c:91
 msgid "Forbidden unassigned code points in input"
 msgstr "Förbjudna otilldelade kodpunkter i indata"
 
-#: lib/strerror-stringprep.c:94
+#: lib/strerror-stringprep.c:95
 msgid "Prohibited code points in input"
 msgstr "Förbjudna kodpunkter i indata"
 
-#: lib/strerror-stringprep.c:98
+#: lib/strerror-stringprep.c:99
 msgid "Conflicting bidirectional properties in input"
 msgstr "Motsägelsefulla dubbelriktade egenskaper i indata"
 
-#: lib/strerror-stringprep.c:102
+#: lib/strerror-stringprep.c:103
 msgid "Malformed bidirectional string"
 msgstr "Felaktig dubbelriktad sträng"
 
-#: lib/strerror-stringprep.c:106
+#: lib/strerror-stringprep.c:107
 msgid "Prohibited bidirectional code points in input"
 msgstr "Förbjudna dubbelriktade kodpunkter i indata"
 
-#: lib/strerror-stringprep.c:114
+#: lib/strerror-stringprep.c:115
 msgid "Error in stringprep profile definition"
 msgstr "Fel i profildefinition för stringprep"
 
-#: lib/strerror-stringprep.c:118
+#: lib/strerror-stringprep.c:119
 msgid "Flag conflict with profile"
 msgstr "Märk konflikt med profil"
 
-#: lib/strerror-stringprep.c:122
+#: lib/strerror-stringprep.c:123
 msgid "Unknown profile"
 msgstr "Okänd profil"
 
 #: lib/strerror-stringprep.c:126
+msgid "Could not convert string in locale encoding."
+msgstr "Kunde inte konvertera sträng i lokal kodning."
+
+#: lib/strerror-stringprep.c:130
 msgid "Unicode normalization failed (internal error)"
 msgstr "Misslyckades med Unicode-normalisering (internt fel)"
 
@@ -132,6 +136,10 @@ msgstr "Kodpunkter förbjudna hos toppnivådomän"
 #: lib/strerror-tld.c:76
 msgid "Missing input"
 msgstr "Saknar indata"
+
+#: lib/strerror-tld.c:84
+msgid "System iconv failed"
+msgstr "Misslyckades med systemanrop iconv"
 
 #: lib/strerror-tld.c:88
 msgid "No top-level domain found in input"
@@ -152,7 +160,8 @@ msgid ""
 "Internationalized Domain Name (IDN) convert STRINGS, or standard input.\n"
 "\n"
 msgstr ""
-"Internationaliserat domännamn (IDN) konverterar STRÄNGAR, eller standard in.\n"
+"Internationaliserat domännamn (IDN) konverterar STRÄNGAR, eller standard "
+"in.\n"
 "\n"
 
 #: src/idn.c:76
@@ -171,13 +180,17 @@ msgstr ""
 "Kommandoradsgränssnitt till biblioteket för internationaliserade domännamn.\n"
 "\n"
 "Alla strängar förväntas vara kodade i den teckenuppsättning din lokal\n"
-"använder. Använd ”--debug” för att ta reda på vad denna teckenuppsättning är. Du\n"
-"kan åsidosätta den använda teckenuppsättningen genom att sätta miljövariabeln CHARSET.\n"
+"använder. Använd ”--debug” för att ta reda på vad denna teckenuppsättning "
+"är. Du\n"
+"kan åsidosätta den använda teckenuppsättningen genom att sätta "
+"miljövariabeln CHARSET.\n"
 "\n"
-"För att bearbeta en sträng som börjar med ”-”, till exempel ”-foo”, använd ”--”\n"
+"För att bearbeta en sträng som börjar med ”-”, till exempel ”-foo”, använd "
+"”--”\n"
 "för signalera slut på parametrar, som i ”idn --quiet -a -- -foo”.\n"
 "\n"
-"Obligatoriska argument för långa flaggor är obligatoriska också för korta flaggor.\n"
+"Obligatoriska argument för långa flaggor är obligatoriska också för korta "
+"flaggor.\n"
 
 #: src/idn.c:88
 msgid ""
@@ -206,20 +219,26 @@ msgid ""
 "      --allow-unassigned   Toggle IDNA AllowUnassigned flag (default off)\n"
 "      --usestd3asciirules  Toggle IDNA UseSTD3ASCIIRules flag (default off)\n"
 msgstr ""
-"      --allow-unassigned   Växla IDNA AllowUnassigned-flaggan (av som standard)\n"
-"      --usestd3asciirules  Växla IDNA UseSTD3ASCIIRules-flaggan (av som standard)\n"
+"      --allow-unassigned   Växla IDNA AllowUnassigned-flaggan (av som "
+"standard)\n"
+"      --usestd3asciirules  Växla IDNA UseSTD3ASCIIRules-flaggan (av som "
+"standard)\n"
 
 #: src/idn.c:103
 msgid ""
 "      --no-tld             Don't check string for TLD specific rules\n"
 "                             Only for --idna-to-ascii and --idna-to-unicode\n"
 msgstr ""
-"      --no-tld             Kontrollera inte sträng efter TLD-specifika regler\n"
-"                             Endast för --idna-to-ascii och --idna-to-unicode\n"
+"      --no-tld             Kontrollera inte sträng efter TLD-specifika "
+"regler\n"
+"                             Endast för --idna-to-ascii och --idna-to-"
+"unicode\n"
 
 #: src/idn.c:107
-msgid "  -n, --nfkc               Normalize string according to Unicode v3.2 NFKC\n"
-msgstr "  -n, --nfkc               Normalisera sträng utefter Unicode v3.2 NFKC\n"
+msgid ""
+"  -n, --nfkc               Normalize string according to Unicode v3.2 NFKC\n"
+msgstr ""
+"  -n, --nfkc               Normalisera sträng utefter Unicode v3.2 NFKC\n"
 
 #: src/idn.c:110
 msgid ""
@@ -241,43 +260,46 @@ msgstr ""
 "      --debug              Skriv ut felsökningsinformation\n"
 "      --quiet              Tyst åtgärd\n"
 
-#: src/idn.c:172
+#: src/idn.c:173
 #, c-format
 msgid "only one of -s, -e, -d, -a, -u or -n can be specified"
 msgstr "kan endast specificera en av -s, -e, -d, -a, -u eller -n"
 
-#: src/idn.c:182
+#: src/idn.c:183
 #, c-format
 msgid "Charset `%s'.\n"
 msgstr "Teckenuppsättning ”%s”.\n"
 
-#: src/idn.c:187
+#: src/idn.c:188
 #, c-format
-msgid "Type each input string on a line by itself, terminated by a newline character.\n"
-msgstr "Skriv varje inmatningssträng på en egen rad, avslutad med nyradstecken.\n"
+msgid ""
+"Type each input string on a line by itself, terminated by a newline "
+"character.\n"
+msgstr ""
+"Skriv varje inmatningssträng på en egen rad, avslutad med nyradstecken.\n"
 
-#: src/idn.c:202
+#: src/idn.c:200
 #, c-format
 msgid "input error"
 msgstr "indatafel"
 
-#: src/idn.c:212 src/idn.c:274 src/idn.c:357 src/idn.c:434 src/idn.c:515
+#: src/idn.c:211 src/idn.c:274 src/idn.c:357 src/idn.c:434 src/idn.c:515
 #, c-format
 msgid "could not convert from %s to UTF-8"
 msgstr "kunde inte konvertera från %s till UTF-8"
 
-#: src/idn.c:220 src/idn.c:245 src/idn.c:281 src/idn.c:498 src/idn.c:527
+#: src/idn.c:219 src/idn.c:244 src/idn.c:281 src/idn.c:498 src/idn.c:527
 #: src/idn.c:551
 #, c-format
 msgid "could not convert from UTF-8 to UCS-4"
 msgstr "kunde inte konvertera från UTF-8 till UCS-4"
 
-#: src/idn.c:237
+#: src/idn.c:236
 #, c-format
 msgid "stringprep_profile: %s"
 msgstr "stringprep_profil: %s"
 
-#: src/idn.c:260 src/idn.c:302 src/idn.c:345 src/idn.c:503 src/idn.c:564
+#: src/idn.c:259 src/idn.c:302 src/idn.c:345 src/idn.c:503 src/idn.c:564
 #, c-format
 msgid "could not convert from UTF-8 to %s"
 msgstr "kunde inte konvertera från UTF-8 till %s"
@@ -331,9 +353,3 @@ msgstr "idna_to_unicode_8z4z: %s"
 #, c-format
 msgid "could not do NFKC normalization"
 msgstr "kunde inte genomföra NFKC-normalisering"
-
-#~ msgid "Could not convert string in locale encoding"
-#~ msgstr "Det gick inte att konvertera strängen till lokal kodning"
-
-#~ msgid "Could not convert string in locale encoding."
-#~ msgstr "Kunde inte konvertera sträng i lokal kodning."

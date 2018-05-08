@@ -7,18 +7,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libidn-1.24\n"
 "Report-Msgid-Bugs-To: bug-libidn@gnu.org\n"
-"POT-Creation-Date: 2012-01-10 21:21+0100\n"
+"POT-Creation-Date: 2018-05-09 08:44+0200\n"
 "PO-Revision-Date: 2012-01-15 00:30+0200\n"
 "Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: Serbian <gnu@prevod.org>\n"
 "Language: sr\n"
-"X-Bugs: Report translation errors to the Language-Team address.\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Bugs: Report translation errors to the Language-Team address.\n"
 
 #: lib/strerror-idna.c:82 lib/strerror-pr29.c:66 lib/strerror-punycode.c:66
-#: lib/strerror-stringprep.c:86 lib/strerror-tld.c:68
+#: lib/strerror-stringprep.c:87 lib/strerror-tld.c:68
 msgid "Success"
 msgstr "Успешно"
 
@@ -54,11 +54,11 @@ msgstr "Ниска није истомоћна под ТоАСКРИ"
 msgid "Input already contain ACE prefix (`xn--')"
 msgstr "Улаз већ садржи АЦЕ префикс („xn--“)"
 
-#: lib/strerror-idna.c:118 lib/strerror-tld.c:84
-msgid "System iconv failed"
-msgstr "Иконв система није успео"
+#: lib/strerror-idna.c:118
+msgid "Could not convert string in locale encoding"
+msgstr ""
 
-#: lib/strerror-idna.c:122 lib/strerror-stringprep.c:130 lib/strerror-tld.c:80
+#: lib/strerror-idna.c:122 lib/strerror-stringprep.c:134 lib/strerror-tld.c:80
 msgid "Cannot allocate memory"
 msgstr "Не могу да доделим меморију"
 
@@ -67,7 +67,7 @@ msgid "System dlopen failed"
 msgstr "Длопен система није успео"
 
 #: lib/strerror-idna.c:130 lib/strerror-pr29.c:78 lib/strerror-punycode.c:82
-#: lib/strerror-stringprep.c:134 lib/strerror-tld.c:92
+#: lib/strerror-stringprep.c:138 lib/strerror-tld.c:92
 msgid "Unknown error"
 msgstr "Непозната грешка"
 
@@ -79,7 +79,7 @@ msgstr "Ниска није истомоћна под нормализацијо
 msgid "Invalid input"
 msgstr "Неисправан улаз"
 
-#: lib/strerror-punycode.c:74 lib/strerror-stringprep.c:110
+#: lib/strerror-punycode.c:74 lib/strerror-stringprep.c:111
 msgid "Output would exceed the buffer space provided"
 msgstr "Излаз би премашио предвиђену величину бафера"
 
@@ -87,39 +87,43 @@ msgstr "Излаз би премашио предвиђену величину �
 msgid "String size limit exceeded"
 msgstr "Премашено је ограничење величине ниске"
 
-#: lib/strerror-stringprep.c:90
+#: lib/strerror-stringprep.c:91
 msgid "Forbidden unassigned code points in input"
 msgstr "Недозвољене недодељене кодне тачке у улазу"
 
-#: lib/strerror-stringprep.c:94
+#: lib/strerror-stringprep.c:95
 msgid "Prohibited code points in input"
 msgstr "Забрањене кодне тачке у улазу"
 
-#: lib/strerror-stringprep.c:98
+#: lib/strerror-stringprep.c:99
 msgid "Conflicting bidirectional properties in input"
 msgstr "Сукобљавајућа двосмерна својства у улазу"
 
-#: lib/strerror-stringprep.c:102
+#: lib/strerror-stringprep.c:103
 msgid "Malformed bidirectional string"
 msgstr "Лоша двосмерна ниска"
 
-#: lib/strerror-stringprep.c:106
+#: lib/strerror-stringprep.c:107
 msgid "Prohibited bidirectional code points in input"
 msgstr "Забрањене двосмерне кодне тачке у улазу"
 
-#: lib/strerror-stringprep.c:114
+#: lib/strerror-stringprep.c:115
 msgid "Error in stringprep profile definition"
 msgstr "Грешка у одредници профила стрингпреп"
 
-#: lib/strerror-stringprep.c:118
+#: lib/strerror-stringprep.c:119
 msgid "Flag conflict with profile"
 msgstr "Сукоб опција са профилом"
 
-#: lib/strerror-stringprep.c:122
+#: lib/strerror-stringprep.c:123
 msgid "Unknown profile"
 msgstr "Непознат профил"
 
 #: lib/strerror-stringprep.c:126
+msgid "Could not convert string in locale encoding."
+msgstr ""
+
+#: lib/strerror-stringprep.c:130
 msgid "Unicode normalization failed (internal error)"
 msgstr "Неуспех Уникод нормализације (унутрашња грешка)"
 
@@ -130,6 +134,10 @@ msgstr "Кодне тачке забрањене доменом највишег
 #: lib/strerror-tld.c:76
 msgid "Missing input"
 msgstr "Недостаје улаз"
+
+#: lib/strerror-tld.c:84
+msgid "System iconv failed"
+msgstr "Иконв система није успео"
 
 #: lib/strerror-tld.c:88
 msgid "No top-level domain found in input"
@@ -150,7 +158,8 @@ msgid ""
 "Internationalized Domain Name (IDN) convert STRINGS, or standard input.\n"
 "\n"
 msgstr ""
-"Интернационализовани назив домена (IDN) претвара НИСКЕ, или стандардни улаз.\n"
+"Интернационализовани назив домена (IDN) претвара НИСКЕ, или стандардни "
+"улаз.\n"
 "\n"
 
 #: src/idn.c:76
@@ -169,8 +178,10 @@ msgstr ""
 "Сучеље линије наредби за библиотеку интернационализованог назива домена.\n"
 "\n"
 "Очекује се да су све ниске кодиране у жељеном скупу знакова коришћеном\n"
-"вашим локалитетом.  Употребите „--debug“ да сазнате који је то скуп знакова.\n"
-"Можете да препишете коришћени скуп знакова подешавајући променљиву окружења СКУПЗНАКОВА.\n"
+"вашим локалитетом.  Употребите „--debug“ да сазнате који је то скуп "
+"знакова.\n"
+"Можете да препишете коришћени скуп знакова подешавајући променљиву окружења "
+"СКУПЗНАКОВА.\n"
 "\n"
 "Да обрадите ниску која почиње са „-“, на пример „-foo“, употребите „--“\n"
 "да назначите крај параметара, као у „idn --quiet -a -- -foo“.\n"
@@ -196,7 +207,8 @@ msgstr ""
 "  -s, --stringprep         Припрема ниску у складу са профилом нејмпреп\n"
 "  -d, --punycode-decode    Декодира Паникод\n"
 "  -e, --punycode-encode    Кодира Паникод\n"
-"  -a, --idna-to-ascii      Претвара у АЦЕ у складу са ИДНА-ом (основни режим)\n"
+"  -a, --idna-to-ascii      Претвара у АЦЕ у складу са ИДНА-ом (основни "
+"режим)\n"
 "  -u, --idna-to-unicode    Претвара из АЦЕ-а у складу са ИДНА-ом\n"
 
 #: src/idn.c:99
@@ -204,8 +216,10 @@ msgid ""
 "      --allow-unassigned   Toggle IDNA AllowUnassigned flag (default off)\n"
 "      --usestd3asciirules  Toggle IDNA UseSTD3ASCIIRules flag (default off)\n"
 msgstr ""
-"      --allow-unassigned   Пребацује опцију ИДНА Дозволи недодељене (унапред искључено)\n"
-"      --usestd3asciirules  Пребацује опцију ИДНА КористиСТД3АСКРИ правила (унапред искључено)\n"
+"      --allow-unassigned   Пребацује опцију ИДНА Дозволи недодељене (унапред "
+"искључено)\n"
+"      --usestd3asciirules  Пребацује опцију ИДНА КористиСТД3АСКРИ правила "
+"(унапред искључено)\n"
 
 #: src/idn.c:103
 msgid ""
@@ -216,8 +230,10 @@ msgstr ""
 "                             Само за --idna-to-ascii и --idna-to-unicode\n"
 
 #: src/idn.c:107
-msgid "  -n, --nfkc               Normalize string according to Unicode v3.2 NFKC\n"
-msgstr "  -n, --nfkc               Нормализује ниску у складу са Уникодом в3.2 НФКЦ\n"
+msgid ""
+"  -n, --nfkc               Normalize string according to Unicode v3.2 NFKC\n"
+msgstr ""
+"  -n, --nfkc               Нормализује ниску у складу са Уникодом в3.2 НФКЦ\n"
 
 #: src/idn.c:110
 msgid ""
@@ -239,43 +255,46 @@ msgstr ""
 "      --debug              Исписује податке за уклањање грешака\n"
 "      --quiet              Нечујна операција\n"
 
-#: src/idn.c:172
+#: src/idn.c:173
 #, c-format
 msgid "only one of -s, -e, -d, -a, -u or -n can be specified"
 msgstr "може бити задато само једно од: -s, -e, -d, -a или -u"
 
-#: src/idn.c:182
+#: src/idn.c:183
 #, c-format
 msgid "Charset `%s'.\n"
 msgstr "Скуп знакова „%s“.\n"
 
-#: src/idn.c:187
+#: src/idn.c:188
 #, c-format
-msgid "Type each input string on a line by itself, terminated by a newline character.\n"
-msgstr "Куцајте улазну ниску на засебној линији, завршавајући знаком за нови ред.\n"
+msgid ""
+"Type each input string on a line by itself, terminated by a newline "
+"character.\n"
+msgstr ""
+"Куцајте улазну ниску на засебној линији, завршавајући знаком за нови ред.\n"
 
-#: src/idn.c:202
+#: src/idn.c:200
 #, c-format
 msgid "input error"
 msgstr "улазна грешка"
 
-#: src/idn.c:212 src/idn.c:274 src/idn.c:357 src/idn.c:434 src/idn.c:515
+#: src/idn.c:211 src/idn.c:274 src/idn.c:357 src/idn.c:434 src/idn.c:515
 #, c-format
 msgid "could not convert from %s to UTF-8"
 msgstr "не могу да претворим из „%s“ у УТФ-8"
 
-#: src/idn.c:220 src/idn.c:245 src/idn.c:281 src/idn.c:498 src/idn.c:527
+#: src/idn.c:219 src/idn.c:244 src/idn.c:281 src/idn.c:498 src/idn.c:527
 #: src/idn.c:551
 #, c-format
 msgid "could not convert from UTF-8 to UCS-4"
 msgstr "не могу да претворим из УТФ-8 у УЦС-4"
 
-#: src/idn.c:237
+#: src/idn.c:236
 #, c-format
 msgid "stringprep_profile: %s"
 msgstr "stringprep_profile: %s"
 
-#: src/idn.c:260 src/idn.c:302 src/idn.c:345 src/idn.c:503 src/idn.c:564
+#: src/idn.c:259 src/idn.c:302 src/idn.c:345 src/idn.c:503 src/idn.c:564
 #, c-format
 msgid "could not convert from UTF-8 to %s"
 msgstr "не могу да претворим из УТФ-8 у %s"
@@ -286,6 +305,7 @@ msgid "punycode_encode: %s"
 msgstr "punycode_encode: %s"
 
 #: src/idn.c:317
+#, c-format
 msgid "malloc"
 msgstr "додела меморије"
 

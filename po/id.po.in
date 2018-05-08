@@ -7,18 +7,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libidn 1.24\n"
 "Report-Msgid-Bugs-To: bug-libidn@gnu.org\n"
-"POT-Creation-Date: 2012-01-10 21:21+0100\n"
+"POT-Creation-Date: 2018-05-09 08:44+0200\n"
 "PO-Revision-Date: 2012-05-18 17:42+0700\n"
 "Last-Translator: Andhika Padmawan <andhika.padmawan@gmail.com>\n"
 "Language-Team: Indonesian <translation-team-id@lists.sourceforge.net>\n"
 "Language: id\n"
-"X-Bugs: Report translation errors to the Language-Team address.\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Bugs: Report translation errors to the Language-Team address.\n"
 
 #: lib/strerror-idna.c:82 lib/strerror-pr29.c:66 lib/strerror-punycode.c:66
-#: lib/strerror-stringprep.c:86 lib/strerror-tld.c:68
+#: lib/strerror-stringprep.c:87 lib/strerror-tld.c:68
 msgid "Success"
 msgstr "Sukses"
 
@@ -54,11 +54,11 @@ msgstr "Benar tidak idempoten di bawah ToASCII"
 msgid "Input already contain ACE prefix (`xn--')"
 msgstr "Masukan telah berisi prefiks ACE (`xn--')"
 
-#: lib/strerror-idna.c:118 lib/strerror-tld.c:84
-msgid "System iconv failed"
-msgstr "Sistem iconv gagal"
+#: lib/strerror-idna.c:118
+msgid "Could not convert string in locale encoding"
+msgstr ""
 
-#: lib/strerror-idna.c:122 lib/strerror-stringprep.c:130 lib/strerror-tld.c:80
+#: lib/strerror-idna.c:122 lib/strerror-stringprep.c:134 lib/strerror-tld.c:80
 msgid "Cannot allocate memory"
 msgstr "Tak dapat alokasi memori"
 
@@ -67,7 +67,7 @@ msgid "System dlopen failed"
 msgstr "Sistem dlopen gagal"
 
 #: lib/strerror-idna.c:130 lib/strerror-pr29.c:78 lib/strerror-punycode.c:82
-#: lib/strerror-stringprep.c:134 lib/strerror-tld.c:92
+#: lib/strerror-stringprep.c:138 lib/strerror-tld.c:92
 msgid "Unknown error"
 msgstr "Galat tak dikenal"
 
@@ -79,7 +79,7 @@ msgstr "Benang tak idempoten di bawah normalisasi Unicode NFKC"
 msgid "Invalid input"
 msgstr "Masukan tidak sah"
 
-#: lib/strerror-punycode.c:74 lib/strerror-stringprep.c:110
+#: lib/strerror-punycode.c:74 lib/strerror-stringprep.c:111
 msgid "Output would exceed the buffer space provided"
 msgstr "Keluaran akan melebihi ruang penyangga yang disediakan"
 
@@ -87,39 +87,43 @@ msgstr "Keluaran akan melebihi ruang penyangga yang disediakan"
 msgid "String size limit exceeded"
 msgstr "Batas ruang benang tercapai"
 
-#: lib/strerror-stringprep.c:90
+#: lib/strerror-stringprep.c:91
 msgid "Forbidden unassigned code points in input"
 msgstr "Titik kode tak ditugaskan terlarang di masukan"
 
-#: lib/strerror-stringprep.c:94
+#: lib/strerror-stringprep.c:95
 msgid "Prohibited code points in input"
 msgstr "Titik kode terlarang di masukan"
 
-#: lib/strerror-stringprep.c:98
+#: lib/strerror-stringprep.c:99
 msgid "Conflicting bidirectional properties in input"
 msgstr "Properti dwiarah konflik di masukan"
 
-#: lib/strerror-stringprep.c:102
+#: lib/strerror-stringprep.c:103
 msgid "Malformed bidirectional string"
 msgstr "Benang dwiarah salah bentuk"
 
-#: lib/strerror-stringprep.c:106
+#: lib/strerror-stringprep.c:107
 msgid "Prohibited bidirectional code points in input"
 msgstr "Titik kode dwiarah terlarang di masukan"
 
-#: lib/strerror-stringprep.c:114
+#: lib/strerror-stringprep.c:115
 msgid "Error in stringprep profile definition"
 msgstr "Galat di definisi profil stringprep"
 
-#: lib/strerror-stringprep.c:118
+#: lib/strerror-stringprep.c:119
 msgid "Flag conflict with profile"
 msgstr "Bendera konflik dengan profil"
 
-#: lib/strerror-stringprep.c:122
+#: lib/strerror-stringprep.c:123
 msgid "Unknown profile"
 msgstr "Profil tak diketahui"
 
 #: lib/strerror-stringprep.c:126
+msgid "Could not convert string in locale encoding."
+msgstr ""
+
+#: lib/strerror-stringprep.c:130
 msgid "Unicode normalization failed (internal error)"
 msgstr "Normalisasi unicode gagal (galat internal)"
 
@@ -130,6 +134,10 @@ msgstr "Titik kode dilarang oleh ranah level atas"
 #: lib/strerror-tld.c:76
 msgid "Missing input"
 msgstr "Masukan hilang"
+
+#: lib/strerror-tld.c:84
+msgid "System iconv failed"
+msgstr "Sistem iconv gagal"
 
 #: lib/strerror-tld.c:88
 msgid "No top-level domain found in input"
@@ -149,7 +157,8 @@ msgstr "Penggunaan: %s [OPSI]... [BENANG]...\n"
 msgid ""
 "Internationalized Domain Name (IDN) convert STRINGS, or standard input.\n"
 "\n"
-msgstr "BENANG konversi Internationalized Domain Name (IDN), atau masukan standar.\n"
+msgstr ""
+"BENANG konversi Internationalized Domain Name (IDN), atau masukan standar.\n"
 
 #: src/idn.c:76
 msgid ""
@@ -167,13 +176,17 @@ msgstr ""
 "Antarmuka baris perintah ke pustaka nama ranah internasionalisasi.\n"
 "\n"
 "Semua benang diharapkan tersandi dalam set karakter kesukaan yang dipakai\n"
-"oleh lokal anda. Gunakan `--debug' untuk mencari tahu apakah set karakter ini.\n"
-"Anda dapat menimpa set karakter yang digunakan oleh pengaturan variabel lingkungan CHARSET.\n"
+"oleh lokal anda. Gunakan `--debug' untuk mencari tahu apakah set karakter "
+"ini.\n"
+"Anda dapat menimpa set karakter yang digunakan oleh pengaturan variabel "
+"lingkungan CHARSET.\n"
 "\n"
 "Untuk memproses benang yang dimulai dengan `-', misalnya `-foo', gunakan\n"
-"`--' untuk menandai akhir parameter, seperti dalam `idn --quiet -a -- -foo'.\n"
+"`--' untuk menandai akhir parameter, seperti dalam `idn --quiet -a -- -"
+"foo'.\n"
 "\n"
-"Argumen mandatori untuk opsi panjang merupakan mandatori untuk opsi pendek juga.\n"
+"Argumen mandatori untuk opsi panjang merupakan mandatori untuk opsi pendek "
+"juga.\n"
 
 #: src/idn.c:88
 msgid ""
@@ -203,7 +216,8 @@ msgid ""
 "      --usestd3asciirules  Toggle IDNA UseSTD3ASCIIRules flag (default off)\n"
 msgstr ""
 "      --allow-unassigned   Ubah bendera AllowUnassigned IDNA (standar mati)\n"
-"      --usestd3asciirules  Ubah bendera UseSTD3ASCIIRules IDNA (standar mati)\n"
+"      --usestd3asciirules  Ubah bendera UseSTD3ASCIIRules IDNA (standar "
+"mati)\n"
 
 #: src/idn.c:103
 msgid ""
@@ -211,11 +225,14 @@ msgid ""
 "                             Only for --idna-to-ascii and --idna-to-unicode\n"
 msgstr ""
 "      --no-tld             Jangan cek benang untuk peraturan spesifik TLD\n"
-"                             Hanya untuk --idna-to-ascii dan --idna-to-unicode\n"
+"                             Hanya untuk --idna-to-ascii dan --idna-to-"
+"unicode\n"
 
 #: src/idn.c:107
-msgid "  -n, --nfkc               Normalize string according to Unicode v3.2 NFKC\n"
-msgstr "  -n, --nfkc               Normalisasi benang berdasarkan Unicode v3.2 NFKC\n"
+msgid ""
+"  -n, --nfkc               Normalize string according to Unicode v3.2 NFKC\n"
+msgstr ""
+"  -n, --nfkc               Normalisasi benang berdasarkan Unicode v3.2 NFKC\n"
 
 #: src/idn.c:110
 msgid ""
@@ -237,43 +254,48 @@ msgstr ""
 "      --debug              Cetak informasi awakutu\n"
 "      --quiet              Operasi diam\n"
 
-#: src/idn.c:172
+#: src/idn.c:173
 #, c-format
 msgid "only one of -s, -e, -d, -a, -u or -n can be specified"
-msgstr "Hanya salah satu dari -s, -e, -d, -a, -u, atau -n yang dapat ditentukan"
+msgstr ""
+"Hanya salah satu dari -s, -e, -d, -a, -u, atau -n yang dapat ditentukan"
 
-#: src/idn.c:182
+#: src/idn.c:183
 #, c-format
 msgid "Charset `%s'.\n"
 msgstr "Set karakter `%s'.\n"
 
-#: src/idn.c:187
+#: src/idn.c:188
 #, c-format
-msgid "Type each input string on a line by itself, terminated by a newline character.\n"
-msgstr "Ketik tiap benang masukan pada baris itu sendiri, diakhiri oleh karakter newline.\n"
+msgid ""
+"Type each input string on a line by itself, terminated by a newline "
+"character.\n"
+msgstr ""
+"Ketik tiap benang masukan pada baris itu sendiri, diakhiri oleh karakter "
+"newline.\n"
 
-#: src/idn.c:202
+#: src/idn.c:200
 #, c-format
 msgid "input error"
 msgstr "galat masukan"
 
-#: src/idn.c:212 src/idn.c:274 src/idn.c:357 src/idn.c:434 src/idn.c:515
+#: src/idn.c:211 src/idn.c:274 src/idn.c:357 src/idn.c:434 src/idn.c:515
 #, c-format
 msgid "could not convert from %s to UTF-8"
 msgstr "tak dapat konversi dari %s ke UTF-8."
 
-#: src/idn.c:220 src/idn.c:245 src/idn.c:281 src/idn.c:498 src/idn.c:527
+#: src/idn.c:219 src/idn.c:244 src/idn.c:281 src/idn.c:498 src/idn.c:527
 #: src/idn.c:551
 #, c-format
 msgid "could not convert from UTF-8 to UCS-4"
 msgstr "tak dapat konversi dari UTF-8 ke UCS-4"
 
-#: src/idn.c:237
+#: src/idn.c:236
 #, c-format
 msgid "stringprep_profile: %s"
 msgstr "stringprep_profile: %s"
 
-#: src/idn.c:260 src/idn.c:302 src/idn.c:345 src/idn.c:503 src/idn.c:564
+#: src/idn.c:259 src/idn.c:302 src/idn.c:345 src/idn.c:503 src/idn.c:564
 #, c-format
 msgid "could not convert from UTF-8 to %s"
 msgstr "tak dapat konversi dari UTF-8 ke %s"
@@ -284,6 +306,7 @@ msgid "punycode_encode: %s"
 msgstr "punycode_encode: %s"
 
 #: src/idn.c:317
+#, c-format
 msgid "malloc"
 msgstr "malloc"
 
