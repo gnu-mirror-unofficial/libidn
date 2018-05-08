@@ -2,6 +2,16 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002-2018 Simon Josefsson
 See the end for copying conditions.
 
+* Version 1.35 (2018-05-09)
+
+** Reflect ABI/API breakage in version 1.34
+   Reported-by: Miroslav Lichvar
+
+** Added new gnulib files to repository
+
+** Fix build issues introduced in 1.34
+
+**
 * Version 1.34 (2018-03-31)
 
 ** libidn: Fix integer overflow in combine_hangul()

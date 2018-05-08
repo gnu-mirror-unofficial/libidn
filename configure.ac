@@ -18,7 +18,7 @@ dnl You should have received a copy of the GNU General Public License
 dnl along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 AC_PREREQ(2.61)
-AC_INIT([GNU Libidn], [1.34], [bug-libidn@gnu.org])
+AC_INIT([GNU Libidn], [1.35], [bug-libidn@gnu.org])
 AC_CONFIG_AUX_DIR([build-aux])
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_HEADERS(config.h)
@@ -29,8 +29,8 @@ m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 # Interfaces changed/added/removed:   CURRENT++       REVISION=0
 # Interfaces added:                             AGE++
 # Interfaces removed:                           AGE=0
-AC_SUBST(LT_CURRENT, 17)
-AC_SUBST(LT_REVISION, 18)
+AC_SUBST(LT_CURRENT, 18)
+AC_SUBST(LT_REVISION, 0)
 AC_SUBST(LT_AGE, 6)
 
 AC_PROG_CC
