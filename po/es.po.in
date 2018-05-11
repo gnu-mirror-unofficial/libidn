@@ -7,21 +7,21 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libidn 1.29\n"
 "Report-Msgid-Bugs-To: bug-libidn@gnu.org\n"
-"POT-Creation-Date: 2018-05-11 12:04+0200\n"
+"POT-Creation-Date: 2014-08-10 22:50+0200\n"
 "PO-Revision-Date: 2018-04-28 13:46+0200\n"
 "Last-Translator: Francisco Javier Serrador <fserrador@gmail.com>\n"
 "Language-Team: Spanish <es@tp.org.es>\n"
 "Language: es\n"
+"X-Bugs: Report translation errors to the Language-Team address.\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Bugs: Report translation errors to the Language-Team address.\n"
 "X-Generator: Poedit 2.0.4\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #: lib/strerror-idna.c:82 lib/strerror-pr29.c:66 lib/strerror-punycode.c:66
-#: lib/strerror-stringprep.c:87 lib/strerror-tld.c:68
+#: lib/strerror-stringprep.c:86 lib/strerror-tld.c:68
 msgid "Success"
 msgstr "Conseguido"
 
@@ -60,11 +60,12 @@ msgstr ""
 msgid "Input already contain ACE prefix (`xn--')"
 msgstr ""
 
-#: lib/strerror-idna.c:118
-msgid "Could not convert string in locale encoding"
-msgstr ""
+#: lib/strerror-idna.c:118 lib/strerror-tld.c:84
+#, fuzzy
+msgid "System iconv failed"
+msgstr "falló iconv sobre %s.\n"
 
-#: lib/strerror-idna.c:122 lib/strerror-stringprep.c:134 lib/strerror-tld.c:80
+#: lib/strerror-idna.c:122 lib/strerror-stringprep.c:130 lib/strerror-tld.c:80
 #, fuzzy
 msgid "Cannot allocate memory"
 msgstr "No puede asignar memoria para coincidente proc: %s\n"
@@ -75,7 +76,7 @@ msgid "System dlopen failed"
 msgstr "Marca el DSO como no disponible para dlopen"
 
 #: lib/strerror-idna.c:130 lib/strerror-pr29.c:78 lib/strerror-punycode.c:82
-#: lib/strerror-stringprep.c:138 lib/strerror-tld.c:92
+#: lib/strerror-stringprep.c:134 lib/strerror-tld.c:92
 #, fuzzy
 msgid "Unknown error"
 msgstr "error desconocido"
@@ -89,7 +90,7 @@ msgstr ""
 msgid "Invalid input"
 msgstr "entrada inválida"
 
-#: lib/strerror-punycode.c:74 lib/strerror-stringprep.c:111
+#: lib/strerror-punycode.c:74 lib/strerror-stringprep.c:110
 msgid "Output would exceed the buffer space provided"
 msgstr ""
 
@@ -98,46 +99,42 @@ msgstr ""
 msgid "String size limit exceeded"
 msgstr "Excedido el límite de tamaño de fichero"
 
-#: lib/strerror-stringprep.c:91
+#: lib/strerror-stringprep.c:90
 msgid "Forbidden unassigned code points in input"
 msgstr ""
 
-#: lib/strerror-stringprep.c:95
+#: lib/strerror-stringprep.c:94
 msgid "Prohibited code points in input"
 msgstr ""
 
-#: lib/strerror-stringprep.c:99
+#: lib/strerror-stringprep.c:98
 msgid "Conflicting bidirectional properties in input"
 msgstr ""
 
-#: lib/strerror-stringprep.c:103
+#: lib/strerror-stringprep.c:102
 msgid "Malformed bidirectional string"
 msgstr ""
 
-#: lib/strerror-stringprep.c:107
+#: lib/strerror-stringprep.c:106
 msgid "Prohibited bidirectional code points in input"
 msgstr ""
 
-#: lib/strerror-stringprep.c:115
+#: lib/strerror-stringprep.c:114
 #, fuzzy
 msgid "Error in stringprep profile definition"
 msgstr "se envía el perfil a la salida común de error"
 
-#: lib/strerror-stringprep.c:119
+#: lib/strerror-stringprep.c:118
 #, fuzzy
 msgid "Flag conflict with profile"
 msgstr "conflicto de recurso (opción C)"
 
-#: lib/strerror-stringprep.c:123
+#: lib/strerror-stringprep.c:122
 #, fuzzy
 msgid "Unknown profile"
 msgstr "Alarma (entorno)"
 
 #: lib/strerror-stringprep.c:126
-msgid "Could not convert string in locale encoding."
-msgstr ""
-
-#: lib/strerror-stringprep.c:130
 #, fuzzy
 msgid "Unicode normalization failed (internal error)"
 msgstr "error interno: fallaron los operandos lookup/get"
@@ -155,11 +152,6 @@ msgstr ""
 "                      NUMFICH, donde NUMFICH es 1 o 2, correspondiendo a\n"
 "                      FICHERO1 o FICHERO2\n"
 "  -e VACÍO          sustituye los campos inexistentes por VACÍO\n"
-
-#: lib/strerror-tld.c:84
-#, fuzzy
-msgid "System iconv failed"
-msgstr "falló iconv sobre %s.\n"
 
 #: lib/strerror-tld.c:88
 msgid "No top-level domain found in input"
@@ -225,8 +217,7 @@ msgid ""
 msgstr ""
 
 #: src/idn.c:107
-msgid ""
-"  -n, --nfkc               Normalize string according to Unicode v3.2 NFKC\n"
+msgid "  -n, --nfkc               Normalize string according to Unicode v3.2 NFKC\n"
 msgstr ""
 
 #: src/idn.c:110
@@ -243,50 +234,46 @@ msgid ""
 "      --quiet              Silent operation\n"
 msgstr ""
 
-#: src/idn.c:173
+#: src/idn.c:172
 #, c-format
 msgid "only one of -s, -e, -d, -a, -u or -n can be specified"
 msgstr ""
 
-#: src/idn.c:183
+#: src/idn.c:182
 #, fuzzy, c-format
 msgid "Charset `%s'.\n"
 msgstr "Conjunto de caracteres:"
 
-#: src/idn.c:188
+#: src/idn.c:187
 #, c-format
-msgid ""
-"Type each input string on a line by itself, terminated by a newline "
-"character.\n"
+msgid "Type each input string on a line by itself, terminated by a newline character.\n"
 msgstr ""
 
-#: src/idn.c:200
+#: src/idn.c:202
 #, fuzzy, c-format
 msgid "input error"
 msgstr "Error de entrada: Espacio maximo debe ser mayor que el minimo"
 
-#: src/idn.c:211 src/idn.c:274 src/idn.c:357 src/idn.c:434 src/idn.c:515
+#: src/idn.c:212 src/idn.c:274 src/idn.c:357 src/idn.c:434 src/idn.c:515
 #, fuzzy, c-format
 msgid "could not convert from %s to UTF-8"
-msgstr ""
-"[No puede convertir conjuntos de caracteres (desde «%s» hasta «utf-8»)]]"
+msgstr "[No puede convertir conjuntos de caracteres (desde «%s» hasta «utf-8»)]]"
 
-#: src/idn.c:219 src/idn.c:244 src/idn.c:281 src/idn.c:498 src/idn.c:527
+#: src/idn.c:220 src/idn.c:245 src/idn.c:281 src/idn.c:498 src/idn.c:527
 #: src/idn.c:551
 #, fuzzy, c-format
 msgid "could not convert from UTF-8 to UCS-4"
 msgstr "Convertir de Unix UTF-8 a Windows UTF-8 sin una BOM:"
 
-#: src/idn.c:236
+#: src/idn.c:237
 #, fuzzy, c-format
 msgid "stringprep_profile: %s"
 msgstr "\t# perfil de gawk, creado %s\n"
 
-#: src/idn.c:259 src/idn.c:302 src/idn.c:345 src/idn.c:503 src/idn.c:564
+#: src/idn.c:260 src/idn.c:302 src/idn.c:345 src/idn.c:503 src/idn.c:564
 #, fuzzy, c-format
 msgid "could not convert from UTF-8 to %s"
-msgstr ""
-"[No puede convertir conjuntos de caracteres (desde «%s» hasta «utf-8»)]]"
+msgstr "[No puede convertir conjuntos de caracteres (desde «%s» hasta «utf-8»)]]"
 
 #: src/idn.c:295
 #, fuzzy, c-format
