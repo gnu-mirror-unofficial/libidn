@@ -39,7 +39,7 @@
 
 #include <dirent.h>
 
-static void test_all_from(const char *dirname)
+static int test_all_from(const char *dirname)
 {
 	DIR *dirp;
 	struct dirent *dp;
@@ -76,7 +76,10 @@ static void test_all_from(const char *dirname)
 			close(fd);
 		}
 		closedir(dirp);
+		return 0;
 	}
+
+	return 1;
 }
 
 int main(int argc, char **argv)
@@ -84,14 +87,20 @@ int main(int argc, char **argv)
 	const char *target = strrchr(argv[0], '/');
 	target = target ? target + 1 : argv[0];
 
-	char corporadir[sizeof(SRCDIR) + 1 + strlen(target) + 8];
-	snprintf(corporadir, sizeof(corporadir), SRCDIR "/%s.in", target);
+	{
+		int  rc;
+		char corporadir[sizeof(SRCDIR) + 1 + strlen(target) + 8];
+		snprintf(corporadir, sizeof(corporadir), SRCDIR "/%s.in", target);
 
-	test_all_from(corporadir);
+		rc = test_all_from(corporadir);
+		if (rc)
+			fprintf(stderr, "Failed to find %s\n", corporadir);
 
-	snprintf(corporadir, sizeof(corporadir), SRCDIR "/%s.repro", target);
-
-	test_all_from(corporadir);
+		snprintf(corporadir, sizeof(corporadir), SRCDIR "/%s.repro", target);
+		test_all_from(corporadir);
+		if (test_all_from(corporadir) && rc)
+			return 77; // SKIP
+	}
 
 	return 0;
 }

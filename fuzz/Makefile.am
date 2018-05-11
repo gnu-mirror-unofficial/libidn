@@ -19,7 +19,7 @@ libidn_stringprep_fuzzer_SOURCES = libidn_stringprep_fuzzer.c main.c fuzzer.h
 dist-hook:
 	find . -name '*.options' -exec cp -v '{}' $(distdir) ';'
 	find . -name '*.dict' -exec cp -v '{}' $(distdir) ';'
-	find . -name '*.in' -exec cp -vr '{}' $(distdir) ';'
+#	find . -name '*.in' -exec cp -vr '{}' $(distdir) ';'
 	find . -name '*.repro' -exec cp -vr '{}' $(distdir) ';'
 
 TESTS = $(IDN_TESTS)
