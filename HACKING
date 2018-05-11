@@ -24,9 +24,7 @@ We require several tools to build the software, including:
 - Git <http://git.or.cz/>
 - Perl <http://www.cpan.org/>
 - Valgrind <http://valgrind.org/> (optional)
-- Gcj <http://www.gnu.org/software/gcc/java/> (for java port)
 - OpenJDK (for java port)
-- gjdoc <http://www.gnu.org/software/classpath/cp-tools/> (for java port)
 - Mono mcs <http://www.mono.org/> (for C# port)
 - fig2dev <http://www-epb.lbl.gov/xfig/>
 
@@ -38,7 +36,7 @@ gNewSense/Debian/Ubuntu:
 apt-get install make git-core autoconf automake libtool gettext cvs
 apt-get install texinfo texlive texlive-generic-recommended texlive-extra-utils
 apt-get install help2man gtk-doc-tools valgrind gengetopt
-apt-get install gcj-jdk gjdoc transfig mono-mcs gperf openjdk-7-jdk
+apt-get install transfig mono-mcs gperf openjdk-10-jdk-headless
 
 To download the version controlled sources:
 

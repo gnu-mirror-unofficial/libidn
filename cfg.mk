@@ -146,7 +146,7 @@ gtkdoc-upload:
 		cvs commit -m "Update." reference/
 
 javadoc-copy:
-	cp -rv doc/java/* $(htmldir)/javadoc/
+	cp -rv doc/java/html $(htmldir)/javadoc/
 
 javadoc-upload:
 	cd $(htmldir) && \

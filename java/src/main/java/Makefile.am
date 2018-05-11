@@ -25,5 +25,5 @@ if JAVA
 .PHONY: javadoc
 javadoc:
 	cd $(srcdir) && \
-		$(GJDOC) -d $(top_builddir)/doc/java gnu/inet/encoding/*.java
+		$(JAVADOC) -d $(top_builddir)/doc/java/html gnu/inet/encoding/*.java
 endif

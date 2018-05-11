@@ -17,7 +17,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 if JAVA
-HTML = about.html deprecated.html package-list alphaindex.html		\
+#HTML = about.html deprecated.html package-list alphaindex.html		\
 	index.html serialized-form.html					\
 	resources/gjdochtml-clean-color1.css				\
 	resources/gjdochtml-clean-layout.css resources/gjdoc.js		\
@@ -33,13 +33,13 @@ HTML = about.html deprecated.html package-list alphaindex.html		\
 	gnu/inet/encoding/Punycode.html gnu/inet/encoding/RFC3454.html	\
 	gnu/inet/encoding/StringprepException.html			\
 	gnu/inet/encoding/Stringprep.html gnu/inet/encoding/tree.html
-EXTRA_DIST = $(HTML)
+EXTRA_DIST = html
 
-all-local: $(HTML)
+all-local: html
 
-$(HTML): $(top_srcdir)/java/src/main/java/gnu/inet/encoding/*.java
+html: $(top_srcdir)/java/src/main/java/gnu/inet/encoding/*.java
 	cd ../../java/src/main/java && make javadoc
 
 clean-local:
-	rm -f $(HTML)
+	rm -rf html
 endif

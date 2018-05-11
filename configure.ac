@@ -97,10 +97,12 @@ AM_CONDITIONAL([ENABLE_GTK_DOC], false)
 # Check for java
 AC_ARG_ENABLE(java, AC_HELP_STRING([--enable-java], [enable Java API]),,
 		enable_java=no)
-AM_PROG_GCJ
 if test "$enable_java" != "no"; then
-	AC_PROG_JAR
-	AM_MISSING_PROG(GJDOC, gjdoc, $missing_dir)
+  AC_JAVA_OPTIONS
+  AC_PROG_JAVAC
+  AC_PROG_JAVADOC
+  AC_PROG_JAR
+  AM_MISSING_PROG(JAVADOC, javadoc, $missing_dir)
 fi
 AM_CONDITIONAL(JAVA, test "$enable_java" != "no")
 AC_MSG_CHECKING([if implementation in Java should be built])
