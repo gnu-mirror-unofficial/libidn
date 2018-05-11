@@ -36,7 +36,7 @@ gNewSense/Debian/Ubuntu:
 apt-get install make git-core autoconf automake libtool gettext cvs
 apt-get install texinfo texlive texlive-generic-recommended texlive-extra-utils
 apt-get install help2man gtk-doc-tools valgrind gengetopt
-apt-get install transfig mono-mcs gperf openjdk-10-jdk-headless
+apt-get install transfig mono-mcs gperf default-jdk-headless autoconf-archive
 
 To download the version controlled sources:
 
