@@ -228,6 +228,8 @@ punycode_encode (size_t input_length,
 	  output[out++] = case_flags ?
 	    encode_basic (input[j], case_flags[j]) : (char) input[j];
 	}
+      else if (input[j] > 0x10FFFF)
+	return punycode_bad_input;
       /* else if (input[j] < n) return punycode_bad_input; */
       /* (not needed for Punycode with unsigned code points) */
     }
@@ -418,6 +420,8 @@ punycode_decode (size_t input_length,
       if (i / (out + 1) > maxint - n)
 	return punycode_overflow;
       n += i / (out + 1);
+      if (n > 0x10FFFF)
+	return punycode_bad_input;
       i %= (out + 1);
 
       /* Insert n at position i of the output: */
