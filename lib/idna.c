@@ -658,7 +658,10 @@ idna_to_unicode_4z4z (const uint32_t * input, uint32_t ** output, int flags)
       buflen = (size_t) (end - start);
       buf = malloc (sizeof (buf[0]) * (buflen + 1));
       if (!buf)
-	return IDNA_MALLOC_ERROR;
+	{
+	  free (out);
+	  return IDNA_MALLOC_ERROR;
+	}
 
       /* don't check return code as per specification! */
       idna_to_unicode_44i (start, (size_t) (end - start),
