@@ -1,5 +1,5 @@
 /* Test of <stat-time.h>.
-   Copyright (C) 2007-2018 Free Software Foundation, Inc.
+   Copyright (C) 2007-2019 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -167,7 +167,7 @@ test_mtime (const struct stat *statinfo, struct timespec *modtimes)
     }
 }
 
-#if (defined _WIN32 || defined __WIN32__) && !defined __CYGWIN__
+#if defined _WIN32 && !defined __CYGWIN__
 /* Skip the ctime tests on native Windows platforms, because their
    st_ctime is either the same as st_mtime (plus or minus an offset)
    or set to the file _creation_ time, and is not influenced by rename

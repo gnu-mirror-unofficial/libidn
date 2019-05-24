@@ -1,5 +1,5 @@
 /* Test of pthread_sigmask in a multi-threaded program.
-   Copyright (C) 2011-2018 Free Software Foundation, Inc.
+   Copyright (C) 2011-2019 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -83,6 +83,10 @@ main (int argc, char *argv[])
         pthread_sigmask(), at least one of those signals shall be delivered
         before the call to pthread_sigmask() returns."  */
   ASSERT (sigint_occurred == 1);
+
+  /* Clean up the thread.  This avoid a "ThreadSanitizer: thread leak" warning
+     from "gcc -fsanitize=thread".  */
+  gl_thread_join (killer_thread, NULL);
 
   return 0;
 }

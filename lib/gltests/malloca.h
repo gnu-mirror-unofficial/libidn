@@ -1,5 +1,5 @@
 /* Safe automatic memory allocation.
-   Copyright (C) 2003-2007, 2009-2018 Free Software Foundation, Inc.
+   Copyright (C) 2003-2007, 2009-2019 Free Software Foundation, Inc.
    Written by Bruno Haible <bruno@clisp.org>, 2003.
 
    This program is free software; you can redistribute it and/or modify
@@ -56,10 +56,10 @@ extern "C" {
    the function returns.  Upon failure, it returns NULL.  */
 #if HAVE_ALLOCA
 # define malloca(N) \
-  ((N) < 4032 - (2 * sa_alignment_max - 1)                          \
-   ? (void *) (((uintptr_t) alloca ((N) + 2 * sa_alignment_max - 1) \
-                + (2 * sa_alignment_max - 1))                       \
-               & ~(uintptr_t)(2 * sa_alignment_max - 1))            \
+  ((N) < 4032 - (2 * sa_alignment_max - 1)                                   \
+   ? (void *) (((uintptr_t) (char *) alloca ((N) + 2 * sa_alignment_max - 1) \
+                + (2 * sa_alignment_max - 1))                                \
+               & ~(uintptr_t)(2 * sa_alignment_max - 1))                     \
    : mmalloca (N))
 #else
 # define malloca(N) \

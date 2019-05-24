@@ -1,5 +1,5 @@
 /* Creating and controlling threads.
-   Copyright (C) 2005-2018 Free Software Foundation, Inc.
+   Copyright (C) 2005-2019 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -90,6 +90,17 @@ _GL_INLINE_HEADER_BEGIN
 
 # include <pthread.h>
 
+/* On IRIX, pthread_atfork is declared in <unistd.h>, not in <pthread.h>.  */
+# if defined __sgi
+#  include <unistd.h>
+# endif
+
+# if USE_POSIX_THREADS_WEAK
+/* Compilers other than GCC need to see the declaration of pthread_sigmask
+   before the "#pragma weak pthread_sigmask" below.  */
+#  include <signal.h>
+# endif
+
 # ifdef __cplusplus
 extern "C" {
 # endif
@@ -122,12 +133,6 @@ extern int glthread_in_use (void);
    call to foo(...) in the same function.  To avoid this, we test the
    address of a function in libpthread that we don't use.  */
 
-#  pragma weak pthread_create
-
-#  ifdef __clang__
-  /* Without this, clang complains that pthread_sigmask is never declared.  */
-#   include <signal.h>
-#  endif
 #  ifndef pthread_sigmask /* Do not declare rpl_pthread_sigmask weak.  */
 #   pragma weak pthread_sigmask
 #  endif
@@ -142,8 +147,8 @@ extern int glthread_in_use (void);
 #  endif
 
 #  if !PTHREAD_IN_USE_DETECTION_HARD
-#   pragma weak pthread_cancel
-#   define pthread_in_use() (pthread_cancel != NULL)
+#   pragma weak pthread_mutexattr_gettype
+#   define pthread_in_use() (pthread_mutexattr_gettype != NULL)
 #  endif
 
 # else

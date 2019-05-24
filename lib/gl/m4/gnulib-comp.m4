@@ -1,5 +1,5 @@
 # DO NOT EDIT! GENERATED AUTOMATICALLY!
-# Copyright (C) 2002-2018 Free Software Foundation, Inc.
+# Copyright (C) 2002-2019 Free Software Foundation, Inc.
 #
 # This file is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -60,7 +60,6 @@ AC_DEFUN([lgl_EARLY],
   # Code from module gettext-h:
   # Code from module gperf:
   # Code from module havelib:
-  # Code from module host-cpu-c-abi:
   # Code from module iconv:
   # Code from module iconv-h:
   # Code from module iconv-tests:
@@ -176,7 +175,6 @@ AC_DEFUN([lgl_INIT],
   AC_REQUIRE([gl_EXTERN_INLINE])
   AC_SUBST([LIBINTL])
   AC_SUBST([LTLIBINTL])
-  AC_REQUIRE([gl_HOST_CPU_C_ABI])
   AM_ICONV
   m4_ifdef([gl_ICONV_MODULE_INDICATOR],
     [gl_ICONV_MODULE_INDICATOR([iconv])])
@@ -283,10 +281,12 @@ changequote([, ])dnl
   gl_LOCALE_H
   AC_CHECK_FUNCS_ONCE([newlocale])
   gl_LOCALENAME
+  gl_LOCALE_MODULE_INDICATOR([localename])
   AC_CHECK_FUNCS_ONCE([newlocale])
   gl_LOCK
   gl_MODULE_INDICATOR([lock])
   AC_CHECK_HEADERS_ONCE([semaphore.h])
+  AC_CHECK_DECLS_ONCE([alarm])
   gl_FUNC_MALLOC_POSIX
   if test $REPLACE_MALLOC = 1; then
     AC_LIBOBJ([malloc])
@@ -494,7 +494,6 @@ AC_DEFUN([lgl_FILE_LIST], [
   m4/00gnulib.m4
   m4/absolute-header.m4
   m4/alloca.m4
-  m4/asm-underscore.m4
   m4/codeset.m4
   m4/ctype.m4
   m4/eealloc.m4
@@ -509,6 +508,7 @@ AC_DEFUN([lgl_FILE_LIST], [
   m4/iconv_open.m4
   m4/include_next.m4
   m4/inline.m4
+  m4/intl-thread-locale.m4
   m4/intlmacosx.m4
   m4/inttypes-pri.m4
   m4/inttypes.m4
@@ -585,6 +585,7 @@ AC_DEFUN([lgl_FILE_LIST], [
   tests/test-localename.c
   tests/test-lock.c
   tests/test-malloca.c
+  tests/test-once.c
   tests/test-pthread_sigmask1.c
   tests/test-pthread_sigmask2.c
   tests/test-raise.c
@@ -635,6 +636,8 @@ AC_DEFUN([lgl_FILE_LIST], [
   tests=lib/isblank.c
   tests=lib/langinfo.in.h
   tests=lib/locale.in.h
+  tests=lib/localename-table.c
+  tests=lib/localename-table.h
   tests=lib/localename.c
   tests=lib/localename.h
   tests=lib/malloc.c

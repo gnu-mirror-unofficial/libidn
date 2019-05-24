@@ -1,5 +1,5 @@
 /* Test of locking in multithreaded situations.
-   Copyright (C) 2005, 2008-2018 Free Software Foundation, Inc.
+   Copyright (C) 2005, 2008-2019 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -83,6 +83,7 @@
    an "OK" result even without ENABLE_LOCKING (on Linux/x86).  */
 #define REPEAT_COUNT 50000
 
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -116,6 +117,11 @@
 # include <errno.h>
 # include <fcntl.h>
 # include <semaphore.h>
+# include <unistd.h>
+#endif
+
+#if HAVE_DECL_ALARM
+# include <signal.h>
 # include <unistd.h>
 #endif
 
@@ -587,7 +593,7 @@ once_execute (void)
 static void *
 once_contender_thread (void *arg)
 {
-  int id = (int) (long) arg;
+  int id = (int) (intptr_t) arg;
   int repeat;
 
   for (repeat = 0; repeat <= REPEAT_COUNT; repeat++)
@@ -647,7 +653,8 @@ test_once (void)
 
   /* Spawn the threads.  */
   for (i = 0; i < THREAD_COUNT; i++)
-    threads[i] = gl_thread_create (once_contender_thread, (void *) (long) i);
+    threads[i] =
+      gl_thread_create (once_contender_thread, (void *) (intptr_t) i);
 
   for (repeat = 0; repeat <= REPEAT_COUNT; repeat++)
     {
@@ -713,6 +720,14 @@ test_once (void)
 int
 main ()
 {
+#if HAVE_DECL_ALARM
+  /* Declare failure if test takes too long, by using default abort
+     caused by SIGALRM.  */
+  int alarm_value = 600;
+  signal (SIGALRM, SIG_DFL);
+  alarm (alarm_value);
+#endif
+
 #if TEST_PTH_THREADS
   if (!pth_init ())
     abort ();

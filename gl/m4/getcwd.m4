@@ -1,12 +1,12 @@
 # getcwd.m4 - check for working getcwd that is compatible with glibc
 
-# Copyright (C) 2001, 2003-2007, 2009-2018 Free Software Foundation, Inc.
+# Copyright (C) 2001, 2003-2007, 2009-2019 Free Software Foundation, Inc.
 # This file is free software; the Free Software Foundation
 # gives unlimited permission to copy and/or distribute it,
 # with or without modifications, as long as this notice is preserved.
 
 # Written by Paul Eggert.
-# serial 15
+# serial 17
 
 AC_DEFUN([gl_FUNC_GETCWD_NULL],
   [
@@ -25,7 +25,7 @@ AC_DEFUN([gl_FUNC_GETCWD_NULL],
          char *getcwd ();
 #        endif
 ]], [[
-#if (defined _WIN32 || defined __WIN32__) && ! defined __CYGWIN__
+#if defined _WIN32 && ! defined __CYGWIN__
 /* mingw cwd does not start with '/', but getcwd does allocate.
    However, mingw fails to honor non-zero size.  */
 #else
@@ -50,6 +50,8 @@ AC_DEFUN([gl_FUNC_GETCWD_NULL],
         [[case "$host_os" in
                            # Guess yes on glibc systems.
             *-gnu* | gnu*) gl_cv_func_getcwd_null="guessing yes";;
+                           # Guess yes on musl systems.
+            *-musl*)       gl_cv_func_getcwd_null="guessing yes";;
                            # Guess yes on Cygwin.
             cygwin*)       gl_cv_func_getcwd_null="guessing yes";;
                            # If we don't know, assume the worst.
