@@ -228,7 +228,7 @@ punycode_encode (size_t input_length,
 	  output[out++] = case_flags ?
 	    encode_basic (input[j], case_flags[j]) : (char) input[j];
 	}
-      else if (input[j] > 0x10FFFF)
+      else if (input[j] > 0x10FFFF || (input[j] >= 0xD800 && input[j] <= 0xDBFF))
 	return punycode_bad_input;
       /* else if (input[j] < n) return punycode_bad_input; */
       /* (not needed for Punycode with unsigned code points) */
@@ -378,6 +378,9 @@ punycode_decode (size_t input_length,
 	return punycode_bad_input;
       output[out++] = input[j];
     }
+  for (j = b + (b > 0);  j < input_length;  ++j)
+    if (!basic (input[j]))
+      return punycode_bad_input;
 
   /* Main decoding loop:  Start just after the last delimiter if any  */
   /* basic code points were copied; start at the beginning otherwise. */
@@ -420,7 +423,7 @@ punycode_decode (size_t input_length,
       if (i / (out + 1) > maxint - n)
 	return punycode_overflow;
       n += i / (out + 1);
-      if (n > 0x10FFFF)
+      if (n > 0x10FFFF  || (n >= 0xD800 && n <= 0xDBFF))
 	return punycode_bad_input;
       i %= (out + 1);
 

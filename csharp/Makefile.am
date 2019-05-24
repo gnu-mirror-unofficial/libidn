@@ -59,15 +59,15 @@ GenerateTables.exe: $(SOURCES_GENERATE)
 		`for src in $(SOURCES_GENERATE); do echo $(srcdir)/$$src; done`
 	if ! test -f rfc3454.txt; then \
 		ln -s $(SPEC)/rfc3454.txt . \
-		|| cp $(SPEC)/rfc3454.txt .; \
+		|| cp $(SPEC)/rfc3454.txt . || true; \
 	fi
 	if ! test -f UnicodeData.txt; then \
 		ln -s $(SPEC)/UnicodeData-3.2.0.txt UnicodeData.txt \
-		|| cp $(SPEC)/UnicodeData-3.2.0.txt UnicodeData.txt; \
+		|| cp $(SPEC)/UnicodeData-3.2.0.txt UnicodeData.txt || true; \
 	fi
 	if ! test -f CompositionExclusions.txt; then \
 		ln -s $(SPEC)/CompositionExclusions-3.2.0.txt CompositionExclusions.txt \
-		|| cp $(SPEC)/CompositionExclusions-3.2.0.txt CompositionExclusions.txt; \
+		|| cp $(SPEC)/CompositionExclusions-3.2.0.txt CompositionExclusions.txt || true; \
 	fi
 
 RFC3454.cs CombiningClass.cs DecompositionKeys.cs DecompositionMappings.cs Composition.cs: $(GEN_SOURCES)
