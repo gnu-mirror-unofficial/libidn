@@ -254,7 +254,6 @@ gltests/test-listen
 gltests/test-lock
 gltests/test-nanosleep
 gltests/test-netinet_in
-gltests/test-once.c
 gltests/test-once1
 gltests/test-once2
 gltests/test-perror
