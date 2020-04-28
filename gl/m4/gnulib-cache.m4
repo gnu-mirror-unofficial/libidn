@@ -1,4 +1,4 @@
-# Copyright (C) 2002-2019 Free Software Foundation, Inc.
+# Copyright (C) 2002-2020 Free Software Foundation, Inc.
 #
 # This file is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -90,7 +90,7 @@ gl_MODULES([
   version-etc
   warnings
 ])
-gl_AVOID([ fcntl-h-tests stdlib-tests string-tests sys_stat-tests time-tests unistd-tests update-copyright-tests wchar-tests])
+gl_AVOID([fcntl-h-tests stdlib-tests string-tests sys_stat-tests time-tests unistd-tests update-copyright-tests wchar-tests])
 gl_SOURCE_BASE([gl])
 gl_M4_BASE([gl/m4])
 gl_PO_BASE([])

@@ -1,5 +1,5 @@
 /* Program name management.
-   Copyright (C) 2016-2019 Free Software Foundation, Inc.
+   Copyright (C) 2016-2020 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -233,12 +233,13 @@ getprogname (void)
         {
           char *name = buf.pr_fname;
           size_t namesize = sizeof buf.pr_fname;
+          /* It may not be NUL-terminated.  */
           char *namenul = memchr (name, '\0', namesize);
           size_t namelen = namenul ? namenul - name : namesize;
           char *namecopy = malloc (namelen + 1);
           if (namecopy)
             {
-              namecopy[namelen] = 0;
+              namecopy[namelen] = '\0';
               return memcpy (namecopy, name, namelen);
             }
         }

@@ -1,5 +1,5 @@
 # DO NOT EDIT! GENERATED AUTOMATICALLY!
-# Copyright (C) 2002-2019 Free Software Foundation, Inc.
+# Copyright (C) 2002-2020 Free Software Foundation, Inc.
 #
 # This file is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -69,7 +69,6 @@ AC_DEFUN([gl_EARLY],
   # Code from module ctype:
   # Code from module ctype-tests:
   # Code from module dirname-lgpl:
-  # Code from module dosname:
   # Code from module double-slash-root:
   # Code from module dup2:
   # Code from module dup2-tests:
@@ -116,7 +115,6 @@ AC_DEFUN([gl_EARLY],
   # Code from module gettimeofday-tests:
   # Code from module gnumakefile:
   # Code from module gnupload:
-  # Code from module havelib:
   # Code from module ignore-value:
   # Code from module ignore-value-tests:
   # Code from module include_next:
@@ -165,12 +163,19 @@ AC_DEFUN([gl_EARLY],
   # Code from module pipe-posix-tests:
   # Code from module pmccabe2html:
   # Code from module progname:
+  # Code from module pthread-h:
+  gl_ANYTHREADLIB_EARLY
+  # Code from module pthread-h-tests:
+  # Code from module pthread-thread:
+  # Code from module pthread-thread-tests:
   # Code from module pthread_sigmask:
   # Code from module pthread_sigmask-tests:
   # Code from module putenv:
   # Code from module raise:
   # Code from module raise-tests:
   # Code from module same-inode:
+  # Code from module sched:
+  # Code from module sched-tests:
   # Code from module select:
   # Code from module select-tests:
   # Code from module setenv:
@@ -205,6 +210,7 @@ AC_DEFUN([gl_EARLY],
   dnl Some compilers (e.g., AIX 5.3 cc) need to be in c99 mode
   dnl for the builtin va_copy to work.  gl_PROG_CC_C99 arranges for this.
   gl_PROG_CC_C99
+  # Code from module stdarg-tests:
   # Code from module stdbool:
   # Code from module stdbool-tests:
   # Code from module stddef:
@@ -259,6 +265,12 @@ AC_DEFUN([gl_EARLY],
   # Code from module version-etc-tests:
   # Code from module warnings:
   # Code from module wchar:
+  # Code from module windows-mutex:
+  # Code from module windows-once:
+  # Code from module windows-recmutex:
+  # Code from module windows-rwlock:
+  # Code from module windows-thread:
+  # Code from module windows-tls:
   # Code from module xalloc-oversized:
   # Code from module yield:
 ])
@@ -317,6 +329,7 @@ AC_DEFUN([gl_INIT],
     GNULIB_GL_UNISTD_H_GETOPT=1
   fi
   AC_SUBST([GNULIB_GL_UNISTD_H_GETOPT])
+  gl_UNISTD_MODULE_INDICATOR([getopt-posix])
   gl_FUNC_GETPROGNAME
   AC_SUBST([LIBINTL])
   AC_SUBST([LTLIBINTL])
@@ -504,7 +517,7 @@ changequote([, ])dnl
   fi
   gl_SYS_TIME_MODULE_INDICATOR([gettimeofday])
   gl_FUNC_INET_PTON
-  if test $HAVE_INET_PTON = 0 || test $REPLACE_INET_NTOP = 1; then
+  if test $HAVE_INET_PTON = 0 || test $REPLACE_INET_PTON = 1; then
     AC_LIBOBJ([inet_pton])
     gl_PREREQ_INET_PTON
   fi
@@ -521,6 +534,7 @@ changequote([, ])dnl
   if test $HAVE_ISBLANK = 0; then
     AC_LIBOBJ([isblank])
   fi
+  gl_MODULE_INDICATOR([isblank])
   gl_CTYPE_MODULE_INDICATOR([isblank])
   AC_REQUIRE([gl_LARGEFILE])
   AC_REQUIRE([gl_HEADER_SYS_SOCKET])
@@ -534,6 +548,7 @@ changequote([, ])dnl
   gl_MODULE_INDICATOR([lock])
   AC_CHECK_HEADERS_ONCE([semaphore.h])
   AC_CHECK_DECLS_ONCE([alarm])
+  AC_REQUIRE([gl_SEMAPHORE])
   gl_FUNC_LSTAT
   if test $REPLACE_LSTAT = 1; then
     AC_LIBOBJ([lstat])
@@ -567,6 +582,12 @@ changequote([, ])dnl
     AC_LIBOBJ([pipe])
   fi
   gl_UNISTD_MODULE_INDICATOR([pipe])
+  gl_PTHREAD_H
+  gl_PTHREAD_THREAD
+  if test $HAVE_PTHREAD_CREATE = 0 || test $REPLACE_PTHREAD_CREATE = 1; then
+    AC_LIBOBJ([pthread-thread])
+  fi
+  gl_PTHREAD_MODULE_INDICATOR([pthread-thread])
   gl_FUNC_PTHREAD_SIGMASK
   if test $HAVE_PTHREAD_SIGMASK = 0 || test $REPLACE_PTHREAD_SIGMASK = 1; then
     AC_LIBOBJ([pthread_sigmask])
@@ -585,6 +606,7 @@ changequote([, ])dnl
     gl_PREREQ_RAISE
   fi
   gl_SIGNAL_MODULE_INDICATOR([raise])
+  gl_SCHED_H
   gl_FUNC_SELECT
   if test $REPLACE_SELECT = 1; then
     AC_LIBOBJ([select])
@@ -680,7 +702,7 @@ changequote([, ])dnl
   gl_HEADER_SYS_UIO
   AC_PROG_MKDIR_P
   gl_THREAD
-  gl_THREADLIB
+  AC_REQUIRE([gl_THREADLIB])
   gl_HEADER_TIME_H
   gl_FUNC_UNSETENV
   if test $HAVE_UNSETENV = 0 || test $REPLACE_UNSETENV = 1; then
@@ -697,7 +719,43 @@ changequote([, ])dnl
   abs_aux_dir=`cd "$ac_aux_dir"; pwd`
   AC_SUBST([abs_aux_dir])
   gl_WCHAR_H
-  gl_YIELD
+  AC_REQUIRE([AC_CANONICAL_HOST])
+  case "$host_os" in
+    mingw*)
+      AC_LIBOBJ([windows-mutex])
+      ;;
+  esac
+  AC_REQUIRE([AC_CANONICAL_HOST])
+  case "$host_os" in
+    mingw*)
+      AC_LIBOBJ([windows-once])
+      ;;
+  esac
+  AC_REQUIRE([AC_CANONICAL_HOST])
+  case "$host_os" in
+    mingw*)
+      AC_LIBOBJ([windows-recmutex])
+      ;;
+  esac
+  AC_REQUIRE([AC_CANONICAL_HOST])
+  case "$host_os" in
+    mingw*)
+      AC_LIBOBJ([windows-rwlock])
+      ;;
+  esac
+  AC_REQUIRE([AC_CANONICAL_HOST])
+  case "$host_os" in
+    mingw*)
+      AC_LIBOBJ([windows-thread])
+      ;;
+  esac
+  AC_REQUIRE([AC_CANONICAL_HOST])
+  case "$host_os" in
+    mingw*)
+      AC_LIBOBJ([windows-tls])
+      ;;
+  esac
+  AC_REQUIRE([gl_YIELD])
   m4_popdef([gl_MODULE_INDICATOR_CONDITION])
   m4_ifval(gltests_LIBSOURCES_LIST, [
     m4_syscmd([test ! -d ]m4_defn([gltests_LIBSOURCES_DIR])[ ||
@@ -790,7 +848,6 @@ AC_DEFUN([gltests_LIBSOURCES], [
 # This macro records the list of files which have been installed by
 # gnulib-tool and may be removed by future gnulib-tool invocations.
 AC_DEFUN([gl_FILE_LIST], [
-  build-aux/config.rpath
   build-aux/csharpcomp.sh.in
   build-aux/csharpexec.sh.in
   build-aux/gendocs.sh
@@ -809,10 +866,10 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/c++defs.h
   lib/dirname-lgpl.c
   lib/dirname.h
-  lib/dosname.h
   lib/errno.in.h
   lib/error.c
   lib/error.h
+  lib/filename.h
   lib/getdelim.c
   lib/getline.c
   lib/getopt-cdefs.in.h
@@ -887,7 +944,6 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/getprogname.m4
   m4/gettimeofday.m4
   m4/gnulib-common.m4
-  m4/host-cpu-c-abi.m4
   m4/include_next.m4
   m4/inet_pton.m4
   m4/inttypes-pri.m4
@@ -895,13 +951,9 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/ioctl.m4
   m4/isblank.m4
   m4/largefile.m4
-  m4/lib-ld.m4
-  m4/lib-link.m4
-  m4/lib-prefix.m4
   m4/limits-h.m4
   m4/localtime-buffer.m4
   m4/lock.m4
-  m4/longlong.m4
   m4/lstat.m4
   m4/malloc.m4
   m4/malloca.m4
@@ -916,15 +968,20 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/nocrash.m4
   m4/off_t.m4
   m4/open-cloexec.m4
+  m4/open-slash.m4
   m4/open.m4
   m4/pathmax.m4
   m4/perror.m4
   m4/pipe.m4
+  m4/pthread-thread.m4
+  m4/pthread_h.m4
   m4/pthread_rwlock_rdlock.m4
   m4/pthread_sigmask.m4
   m4/putenv.m4
   m4/raise.m4
+  m4/sched_h.m4
   m4/select.m4
+  m4/semaphore.m4
   m4/setenv.m4
   m4/sigaction.m4
   m4/signal_h.m4
@@ -968,6 +1025,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/wchar_t.m4
   m4/wint_t.m4
   m4/yield.m4
+  m4/zzgnulib.m4
   tests/init.sh
   tests/macros.h
   tests/nap.h
@@ -1029,10 +1087,13 @@ AC_DEFUN([gl_FILE_LIST], [
   tests/test-perror.sh
   tests/test-perror2.c
   tests/test-pipe.c
+  tests/test-pthread-thread.c
+  tests/test-pthread.c
   tests/test-pthread_sigmask1.c
   tests/test-pthread_sigmask2.c
   tests/test-raise.c
   tests/test-rwlock1.c
+  tests/test-sched.c
   tests/test-select-fd.c
   tests/test-select-in.sh
   tests/test-select-out.sh
@@ -1098,7 +1159,6 @@ AC_DEFUN([gl_FILE_LIST], [
   tests=lib/fd-hook.c
   tests=lib/fd-hook.h
   tests=lib/fdopen.c
-  tests=lib/filename.h
   tests=lib/fstat.c
   tests=lib/ftruncate.c
   tests=lib/getcwd-lgpl.c
@@ -1127,10 +1187,13 @@ AC_DEFUN([gl_FILE_LIST], [
   tests=lib/pathmax.h
   tests=lib/perror.c
   tests=lib/pipe.c
+  tests=lib/pthread-thread.c
+  tests=lib/pthread.in.h
   tests=lib/pthread_sigmask.c
   tests=lib/putenv.c
   tests=lib/raise.c
   tests=lib/same-inode.h
+  tests=lib/sched.in.h
   tests=lib/select.c
   tests=lib/setenv.c
   tests=lib/setsockopt.c
@@ -1165,6 +1228,19 @@ AC_DEFUN([gl_FILE_LIST], [
   tests=lib/w32sock.h
   tests=lib/warn-on-use.h
   tests=lib/wchar.in.h
+  tests=lib/windows-initguard.h
+  tests=lib/windows-mutex.c
+  tests=lib/windows-mutex.h
+  tests=lib/windows-once.c
+  tests=lib/windows-once.h
+  tests=lib/windows-recmutex.c
+  tests=lib/windows-recmutex.h
+  tests=lib/windows-rwlock.c
+  tests=lib/windows-rwlock.h
+  tests=lib/windows-thread.c
+  tests=lib/windows-thread.h
+  tests=lib/windows-tls.c
+  tests=lib/windows-tls.h
   tests=lib/xalloc-oversized.h
   top/GNUmakefile
   top/maint.mk

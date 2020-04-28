@@ -1,4 +1,4 @@
-# Copyright (C) 2002-2019 Free Software Foundation, Inc.
+# Copyright (C) 2002-2020 Free Software Foundation, Inc.
 #
 # This file is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -64,7 +64,7 @@ gl_MODULES([
   strverscmp
   unistr/u8-check
 ])
-gl_AVOID([ iconv-h-tests string-tests wchar-tests])
+gl_AVOID([iconv-h-tests string-tests wchar-tests])
 gl_SOURCE_BASE([lib/gl])
 gl_M4_BASE([lib/gl/m4])
 gl_PO_BASE([])

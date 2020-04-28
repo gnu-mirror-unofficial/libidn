@@ -1,5 +1,5 @@
 /* Test of locking in multithreaded situations.
-   Copyright (C) 2005, 2008-2019 Free Software Foundation, Inc.
+   Copyright (C) 2005, 2008-2020 Free Software Foundation, Inc.
 
    This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -18,16 +18,16 @@
 
 #include <config.h>
 
-#if USE_POSIX_THREADS || USE_SOLARIS_THREADS || USE_PTH_THREADS || USE_WINDOWS_THREADS
+#if USE_ISOC_THREADS || USE_POSIX_THREADS || USE_ISOC_AND_POSIX_THREADS || USE_WINDOWS_THREADS
 
+#if USE_ISOC_THREADS
+# define TEST_ISOC_THREADS 1
+#endif
 #if USE_POSIX_THREADS
 # define TEST_POSIX_THREADS 1
 #endif
-#if USE_SOLARIS_THREADS
-# define TEST_SOLARIS_THREADS 1
-#endif
-#if USE_PTH_THREADS
-# define TEST_PTH_THREADS 1
+#if USE_ISOC_AND_POSIX_THREADS
+# define TEST_ISOC_AND_POSIX_THREADS 1
 #endif
 #if USE_WINDOWS_THREADS
 # define TEST_WINDOWS_THREADS 1
@@ -89,22 +89,22 @@
 #include <string.h>
 
 #if !ENABLE_LOCKING
+# undef USE_ISOC_THREADS
 # undef USE_POSIX_THREADS
-# undef USE_SOLARIS_THREADS
-# undef USE_PTH_THREADS
+# undef USE_ISOC_AND_POSIX_THREADS
 # undef USE_WINDOWS_THREADS
 #endif
 #include "glthread/lock.h"
 
 #if !ENABLE_LOCKING
+# if TEST_ISOC_THREADS
+#  define USE_ISOC_THREADS 1
+# endif
 # if TEST_POSIX_THREADS
 #  define USE_POSIX_THREADS 1
 # endif
-# if TEST_SOLARIS_THREADS
-#  define USE_SOLARIS_THREADS 1
-# endif
-# if TEST_PTH_THREADS
-#  define USE_PTH_THREADS 1
+# if TEST_ISOC_AND_POSIX_THREADS
+#  define USE_ISOC_AND_POSIX_THREADS 1
 # endif
 # if TEST_WINDOWS_THREADS
 #  define USE_WINDOWS_THREADS 1
@@ -647,9 +647,11 @@ test_once (void)
   fire_signal_state = 0;
 #endif
 
+#if ENABLE_LOCKING
   /* Block all fire_signals.  */
   for (i = REPEAT_COUNT-1; i >= 0; i--)
     gl_rwlock_wrlock (fire_signal[i]);
+#endif
 
   /* Spawn the threads.  */
   for (i = 0; i < THREAD_COUNT; i++)
@@ -726,11 +728,6 @@ main ()
   int alarm_value = 600;
   signal (SIGALRM, SIG_DFL);
   alarm (alarm_value);
-#endif
-
-#if TEST_PTH_THREADS
-  if (!pth_init ())
-    abort ();
 #endif
 
 #if DO_TEST_LOCK
