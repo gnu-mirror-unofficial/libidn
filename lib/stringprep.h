@@ -51,7 +51,7 @@ extern "C"
 {
 #endif
 
-#define STRINGPREP_VERSION "1.35"
+#define STRINGPREP_VERSION "1.36"
 
 /* Error codes. */
   typedef enum

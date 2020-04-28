@@ -2,6 +2,8 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002-2020 Simon Josefsson
 See the end for copying conditions.
 
+* Version 1.36 (2020-04-28)
+
 * Version 1.35 (2018-05-11)
 
 ** Reflect ABI/API breakage in version 1.34
