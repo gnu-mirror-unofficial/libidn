@@ -17,7 +17,7 @@
 
 WFLAGS ?= --enable-gcc-warnings
 ADDFLAGS ?=
-CFGFLAGS ?= --enable-java --enable-gtk-doc --enable-gtk-doc-pdf --disable-valgrind-tests \
+CFGFLAGS ?= --enable-java --enable-gtk-doc --enable-gtk-doc-pdf \
 	$(ADDFLAGS) $(WFLAGS)
 
 ifeq ($(.DEFAULT_GOAL),abort-due-to-no-makefile)
