@@ -43,7 +43,7 @@
  */
 
 int
-main(int argc, char *argv[])
+main (int argc, char *argv[])
 {
   char *in = argc > 1 ? argv[1] : "räksmörgås.josefsson.org";
   struct addrinfo hints;
@@ -54,21 +54,21 @@ main(int argc, char *argv[])
 
   //printf("locale charset `%s'\n", stringprep_locale_charset());
 
-  memset(&hints, 0, sizeof(hints));
-  hints.ai_flags = AI_CANONNAME|AI_IDN;
+  memset (&hints, 0, sizeof (hints));
+  hints.ai_flags = AI_CANONNAME | AI_IDN;
 
-  printf("gettaddrinfo(%s):\n", in);
-  rc = getaddrinfo(in, NULL, &hints, &res);
+  printf ("gettaddrinfo(%s):\n", in);
+  rc = getaddrinfo (in, NULL, &hints, &res);
   if (rc)
-    printf("gai err %d: %s\n", rc, gai_strerror(rc));
+    printf ("gai err %d: %s\n", rc, gai_strerror (rc));
   else if (res)
-    printf("address `%s'\ncanonical name `%s'\n",
-	   res->ai_addr ?
-	   /* FIXME: Use inet_ntop, so it works for IPv6 too. */
-	   inet_ntoa(((struct sockaddr_in*)res->ai_addr)->sin_addr) : "ERROR",
-	   res->ai_canonname ? res->ai_canonname : "ERROR");
+    printf ("address `%s'\ncanonical name `%s'\n", res->ai_addr ?
+	    /* FIXME: Use inet_ntop, so it works for IPv6 too. */
+	    inet_ntoa (((struct sockaddr_in *) res->
+			ai_addr)->sin_addr) : "ERROR",
+	    res->ai_canonname ? res->ai_canonname : "ERROR");
   else
-    printf("Bad magic\n");
+    printf ("Bad magic\n");
 
   return 0;
 }

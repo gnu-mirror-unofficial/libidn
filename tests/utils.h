@@ -19,16 +19,16 @@
  */
 
 #ifndef UTILS_H
-# define UTILS_H
+#define UTILS_H
 
-# include <string.h>
-# include <stdarg.h>
-# include <stringprep.h>
+#include <string.h>
+#include <stdarg.h>
+#include <stringprep.h>
 
 #ifndef __attribute__
-# if __GNUC__ < 2 || (__GNUC__ == 2 && __GNUC_MINOR__ < 5)
-#  define __attribute__(Spec)	/* empty */
-# endif
+#if __GNUC__ < 2 || (__GNUC__ == 2 && __GNUC_MINOR__ < 5)
+#define __attribute__(Spec)	/* empty */
+#endif
 #endif
 
 extern int debug;
@@ -36,7 +36,7 @@ extern int error_count;
 extern int break_on_error;
 
 extern void fail (const char *format, ...)
-  __attribute__ ((format (printf, 1, 2)));
+  __attribute__((format (printf, 1, 2)));
 extern void escapeprint (const char *str, size_t len);
 extern void hexprint (const char *str, size_t len);
 extern void binprint (const char *str, size_t len);

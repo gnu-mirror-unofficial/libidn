@@ -40,10 +40,10 @@ extern int strverscmp (const char *, const char *);
 #define LOCALEDIR "."
 
 #if _MSC_VER && !__cplusplus
-# define inline __inline
+#define inline __inline
 #endif
 
-#define _GL_ATTRIBUTE_PURE /* empty */
-#define _GL_ATTRIBUTE_CONST /* empty */
+#define _GL_ATTRIBUTE_PURE	/* empty */
+#define _GL_ATTRIBUTE_CONST	/* empty */
 
 #endif /* _CONFIG_H */

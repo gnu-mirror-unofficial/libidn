@@ -19,7 +19,7 @@
  */
 
 #ifdef HAVE_CONFIG_H
-# include "config.h"
+#include "config.h"
 #endif
 
 #include <stdio.h>
@@ -274,8 +274,8 @@ doit (void)
 
       if (debug)
 	{
-	  printf ("in: %s (%d==%d)\n", idna[i].out, (int) strlen (idna[i].out),
-		  (int) len);
+	  printf ("in: %s (%d==%d)\n", idna[i].out,
+		  (int) strlen (idna[i].out), (int) len);
 	  ucs4print (ucs4label, len);
 	}
 

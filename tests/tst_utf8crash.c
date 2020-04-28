@@ -19,7 +19,7 @@
  */
 
 #ifdef HAVE_CONFIG_H
-# include "config.h"
+#include "config.h"
 #endif
 
 #include <stdio.h>
@@ -42,7 +42,7 @@ doit (void)
   char *output;
   int rc;
 
-  rc = idna_to_unicode_8z8z(input, &output, 0);
+  rc = idna_to_unicode_8z8z (input, &output, 0);
   if (rc != IDNA_ICONV_ERROR)
     fail ("rc %d\n", rc);
 }

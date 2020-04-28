@@ -28,30 +28,30 @@
    not, see <http://www.gnu.org/licenses/>. */
 
 #ifndef PR29_H
-# define PR29_H
+#define PR29_H
 
-# ifndef IDNAPI
-#  if defined LIBIDN_BUILDING && defined HAVE_VISIBILITY && HAVE_VISIBILITY
-#   define IDNAPI __attribute__((__visibility__("default")))
-#  elif defined LIBIDN_BUILDING && defined _MSC_VER && ! defined LIBIDN_STATIC
-#   define IDNAPI __declspec(dllexport)
-#  elif defined _MSC_VER && ! defined LIBIDN_STATIC
-#   define IDNAPI __declspec(dllimport)
-#  else
-#   define IDNAPI
-#  endif
-# endif
+#ifndef IDNAPI
+#if defined LIBIDN_BUILDING && defined HAVE_VISIBILITY && HAVE_VISIBILITY
+#define IDNAPI __attribute__((__visibility__("default")))
+#elif defined LIBIDN_BUILDING && defined _MSC_VER && ! defined LIBIDN_STATIC
+#define IDNAPI __declspec(dllexport)
+#elif defined _MSC_VER && ! defined LIBIDN_STATIC
+#define IDNAPI __declspec(dllimport)
+#else
+#define IDNAPI
+#endif
+#endif
 
-# ifdef __cplusplus
+#ifdef __cplusplus
 extern "C"
 {
-# endif
+#endif
 
   /* Get size_t. */
-# include <stdlib.h>
+#include <stdlib.h>
 
   /* Get uint32_t. */
-# include <idn-int.h>
+#include <idn-int.h>
 
   /* Error codes. */
   typedef enum
@@ -67,7 +67,7 @@ extern "C"
   extern IDNAPI int pr29_4z (const uint32_t * in);
   extern IDNAPI int pr29_8z (const char *in);
 
-# ifdef __cplusplus
+#ifdef __cplusplus
 }
-# endif
+#endif
 #endif				/* PR29_H */

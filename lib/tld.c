@@ -277,7 +277,7 @@ _tld_checkchar (uint32_t ch, const Tld_table * tld)
  *   failure conditions.
  */
 int
-tld_check_4t (const uint32_t * in, size_t inlen, size_t * errpos,
+tld_check_4t (const uint32_t * in, size_t inlen, size_t *errpos,
 	      const Tld_table * tld)
 {
   const uint32_t *ipos;
@@ -319,7 +319,7 @@ tld_check_4t (const uint32_t * in, size_t inlen, size_t * errpos,
  *   failure conditions.
  */
 int
-tld_check_4tz (const uint32_t * in, size_t * errpos, const Tld_table * tld)
+tld_check_4tz (const uint32_t * in, size_t *errpos, const Tld_table * tld)
 {
   const uint32_t *ipos = in;
 
@@ -356,7 +356,7 @@ tld_check_4tz (const uint32_t * in, size_t * errpos, const Tld_table * tld)
  *   failure conditions.
  */
 int
-tld_check_4 (const uint32_t * in, size_t inlen, size_t * errpos,
+tld_check_4 (const uint32_t * in, size_t inlen, size_t *errpos,
 	     const Tld_table ** overrides)
 {
   const Tld_table *tld;
@@ -406,7 +406,7 @@ tld_check_4 (const uint32_t * in, size_t inlen, size_t * errpos,
  *   failure conditions.
  */
 int
-tld_check_4z (const uint32_t * in, size_t * errpos,
+tld_check_4z (const uint32_t * in, size_t *errpos,
 	      const Tld_table ** overrides)
 {
   const uint32_t *ipos = in;
@@ -444,7 +444,7 @@ tld_check_4z (const uint32_t * in, size_t * errpos,
  *   failure conditions.
  */
 int
-tld_check_8z (const char *in, size_t * errpos, const Tld_table ** overrides)
+tld_check_8z (const char *in, size_t *errpos, const Tld_table ** overrides)
 {
   uint32_t *iucs;
   size_t ilen;
@@ -489,7 +489,7 @@ tld_check_8z (const char *in, size_t * errpos, const Tld_table ** overrides)
  *   failure conditions.
  */
 int
-tld_check_lz (const char *in, size_t * errpos, const Tld_table ** overrides)
+tld_check_lz (const char *in, size_t *errpos, const Tld_table ** overrides)
 {
   char *utf8;
   int rc;

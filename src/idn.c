@@ -19,7 +19,7 @@
  */
 
 #ifdef HAVE_CONFIG_H
-# include "config.h"
+#include "config.h"
 #endif
 
 #include <stdio.h>
@@ -42,7 +42,7 @@
 #include <punycode.h>
 #include <idna.h>
 #ifdef WITH_TLD
-# include <tld.h>
+#include <tld.h>
 #endif
 
 #include "idn_cmd.h"
@@ -170,21 +170,20 @@ main (int argc, char *argv[])
       (args_info.idna_to_unicode_given ? 1 : 0) +
       (args_info.nfkc_given ? 1 : 0) != 1)
     {
-      error (0, 0, _("only one of -s, -e, -d, -a, -u or -n can be specified"));
+      error (0, 0,
+	     _("only one of -s, -e, -d, -a, -u or -n can be specified"));
       usage (EXIT_FAILURE);
     }
 
   if (!args_info.quiet_given
-      && args_info.inputs_num == 0
-      && isatty (fileno (stdin)))
+      && args_info.inputs_num == 0 && isatty (fileno (stdin)))
     fprintf (stderr, "%s %s\n" GREETING, PACKAGE, VERSION);
 
   if (args_info.debug_given)
     fprintf (stderr, _("Charset `%s'.\n"), stringprep_locale_charset ());
 
   if (!args_info.quiet_given
-      && args_info.inputs_num == 0
-      && isatty (fileno (stdin)))
+      && args_info.inputs_num == 0 && isatty (fileno (stdin)))
     fprintf (stderr, _("Type each input string on a line by itself, "
 		       "terminated by a newline character.\n"));
 

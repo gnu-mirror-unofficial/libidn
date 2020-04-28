@@ -19,7 +19,7 @@
  */
 
 #ifdef HAVE_CONFIG_H
-# include "config.h"
+#include "config.h"
 #endif
 
 #include <stdio.h>
@@ -62,20 +62,18 @@ static const struct tld tld[] = {
    3}
 };
 
-static const Tld_table _tld_fr_override =
-  {
-    "fr",
-    "2.0",
-    0,
-    NULL
-  };
+static const Tld_table _tld_fr_override = {
+  "fr",
+  "2.0",
+  0,
+  NULL
+};
 
 /* Main array */
-const Tld_table * my_tld_tables[] =
-  {
-    &_tld_fr_override,
-    NULL
-  };
+const Tld_table *my_tld_tables[] = {
+  &_tld_fr_override,
+  NULL
+};
 
 void
 doit (void)

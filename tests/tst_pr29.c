@@ -19,7 +19,7 @@
  */
 
 #ifdef HAVE_CONFIG_H
-# include "config.h"
+#include "config.h"
 #endif
 
 #include <stdio.h>
@@ -81,11 +81,11 @@ static const struct tv tv[] = {
    {0x1100, 0x00AA, 0x1161, 0},
    PR29_SUCCESS},
   {
-    /* http://lists.gnu.org/archive/html/help-libidn/2012-01/msg00008.html */
-    "Infloop",
-    3,
-    {0x1100, 0x0300, 0x4711, 0},
-    PR29_SUCCESS}
+   /* http://lists.gnu.org/archive/html/help-libidn/2012-01/msg00008.html */
+   "Infloop",
+   3,
+   {0x1100, 0x0300, 0x4711, 0},
+   PR29_SUCCESS}
 };
 
 void

@@ -462,8 +462,7 @@ g_utf8_to_ucs4_fast (const gchar * str, glong len, glong * items_written)
  **/
 static gchar *
 g_ucs4_to_utf8 (const gunichar * str,
-		glong len,
-		glong * items_read, glong * items_written)
+		glong len, glong * items_read, glong * items_written)
 {
   gint result_length;
   gchar *result = NULL;
@@ -690,13 +689,13 @@ combine_hangul (gunichar a, gunichar b, gunichar * result)
     {
       gint SIndex = a - SBase;
 
-		if ((SIndex % TCount) == 0)
-        {
-          gint TIndex = b - TBase;
+      if ((SIndex % TCount) == 0)
+	{
+	  gint TIndex = b - TBase;
 
-          *result = a + TIndex;
-          return TRUE;
-        }
+	  *result = a + TIndex;
+	  return TRUE;
+	}
     }
 
   return FALSE;
@@ -1005,7 +1004,7 @@ stringprep_unichar_to_utf8 (uint32_t c, char *outbuf)
  *               This value must be deallocated by the caller.
  **/
 uint32_t *
-stringprep_utf8_to_ucs4 (const char *str, ssize_t len, size_t * items_written)
+stringprep_utf8_to_ucs4 (const char *str, ssize_t len, size_t *items_written)
 {
   size_t n;
 
@@ -1039,7 +1038,7 @@ stringprep_utf8_to_ucs4 (const char *str, ssize_t len, size_t * items_written)
  **/
 char *
 stringprep_ucs4_to_utf8 (const uint32_t * str, ssize_t len,
-			 size_t * items_read, size_t * items_written)
+			 size_t *items_read, size_t *items_written)
 {
   return g_ucs4_to_utf8 (str, len, (glong *) items_read,
 			 (glong *) items_written);

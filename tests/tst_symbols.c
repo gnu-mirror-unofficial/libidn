@@ -19,7 +19,7 @@
  */
 
 #ifdef HAVE_CONFIG_H
-# include "config.h"
+#include "config.h"
 #endif
 
 #include <assert.h>
@@ -30,7 +30,7 @@
 #include <idn-free.h>
 #include <pr29.h>
 #ifdef WITH_TLD
-# include <tld.h>
+#include <tld.h>
 #endif
 
 static void

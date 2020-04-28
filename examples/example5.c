@@ -107,7 +107,8 @@ main (void)
   free (r);
   if (rc == TLD_INVALID)
     {
-      printf ("Domain rejected by TLD check, Unicode position %ld\n", (long int) errpos);
+      printf ("Domain rejected by TLD check, Unicode position %ld\n",
+	      (long int) errpos);
       return 1;
     }
   else if (rc != TLD_SUCCESS)

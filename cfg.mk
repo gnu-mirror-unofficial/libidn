@@ -40,6 +40,8 @@ exclude_file_name_regexp--sc_useless_cpp_parens = ^lib/nfkc.c$$
 exclude_file_name_regexp--sc_prohibit_strncpy = ^src/idn.c$$
 exclude_file_name_regexp--sc_prohibit_empty_lines_at_EOF = ^fuzz/libidn_.*fuzzer.(in|repro)/.*$$
 
+INDENT_SOURCES = `find . -name '*.[ch]'|grep -v -e ^./gl/ -e ^./fuzz/ -e ^./gltests/ -e ^./lib/gl/ -e ^./lib/gltests/ -e '^./lib/\(gunibreak.h\|gunicomp.h\|gunidecomp.h\|rfc3454.c\|rfc3454.h\|tlds.c\)$$'`
+
 doc/Makefile.gdoc:
 	printf "gdoc_MANS =\ngdoc_TEXINFOS =\n" > doc/Makefile.gdoc
 

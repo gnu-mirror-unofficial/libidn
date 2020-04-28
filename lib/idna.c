@@ -28,7 +28,7 @@
    not, see <http://www.gnu.org/licenses/>. */
 
 #ifdef HAVE_CONFIG_H
-# include "config.h"
+#include "config.h"
 #endif
 
 #include <stdlib.h>
@@ -280,7 +280,7 @@ step8:
 /* ToUnicode().  May realloc() utf8in.  Will free utf8in unconditionally. */
 static int
 idna_to_unicode_internal (char *utf8in,
-			  uint32_t * out, size_t * outlen, int flags)
+			  uint32_t * out, size_t *outlen, int flags)
 {
   int rc;
   char tmpout[64];
@@ -435,7 +435,7 @@ step3:
  */
 int
 idna_to_unicode_44i (const uint32_t * in, size_t inlen,
-		     uint32_t * out, size_t * outlen, int flags)
+		     uint32_t * out, size_t *outlen, int flags)
 {
   int rc;
   size_t outlensave = *outlen;

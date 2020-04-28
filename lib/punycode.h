@@ -64,19 +64,19 @@
  */
 
 #ifndef PUNYCODE_H
-# define PUNYCODE_H
+#define PUNYCODE_H
 
-# ifndef IDNAPI
-#  if defined LIBIDN_BUILDING && defined HAVE_VISIBILITY && HAVE_VISIBILITY
-#   define IDNAPI __attribute__((__visibility__("default")))
-#  elif defined LIBIDN_BUILDING && defined _MSC_VER && ! defined LIBIDN_STATIC
-#   define IDNAPI __declspec(dllexport)
-#  elif defined _MSC_VER && ! defined LIBIDN_STATIC
-#   define IDNAPI __declspec(dllimport)
-#  else
-#   define IDNAPI
-#  endif
-# endif
+#ifndef IDNAPI
+#if defined LIBIDN_BUILDING && defined HAVE_VISIBILITY && HAVE_VISIBILITY
+#define IDNAPI __attribute__((__visibility__("default")))
+#elif defined LIBIDN_BUILDING && defined _MSC_VER && ! defined LIBIDN_STATIC
+#define IDNAPI __declspec(dllexport)
+#elif defined _MSC_VER && ! defined LIBIDN_STATIC
+#define IDNAPI __declspec(dllimport)
+#else
+#define IDNAPI
+#endif
+#endif
 
 #ifdef __cplusplus
 extern "C"
@@ -117,7 +117,7 @@ extern "C"
   extern IDNAPI int punycode_encode (size_t input_length,
 				     const punycode_uint input[],
 				     const unsigned char case_flags[],
-				     size_t * output_length, char output[]);
+				     size_t *output_length, char output[]);
 
 /*
     punycode_encode() converts a sequence of code points (presumed to be
@@ -176,7 +176,7 @@ extern "C"
 
   extern IDNAPI int punycode_decode (size_t input_length,
 				     const char input[],
-				     size_t * output_length,
+				     size_t *output_length,
 				     punycode_uint output[],
 				     unsigned char case_flags[]);
 
