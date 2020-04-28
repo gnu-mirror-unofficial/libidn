@@ -27,17 +27,18 @@ endif
 local-checks-to-skip = sc_prohibit_strcmp sc_prohibit_have_config_h	\
 	sc_require_config_h sc_require_config_h_first			\
 	sc_prohibit_HAVE_MBRTOWC sc_program_name sc_trailing_blank	\
-	sc_GPL_version sc_immutable_NEWS
+	sc_GPL_version sc_immutable_NEWS sc_prohibit_gnu_make_extensions
 VC_LIST_ALWAYS_EXCLUDE_REGEX = \
 	^(GNUmakefile|maint.mk|gtk-doc.make|m4/pkg.m4|doc/specifications|contrib/doxygen/Doxyfile|doc/fdl-1.3.texi|csharp/libidn.*suo|(lib/)?(gl|gltests|build-aux)/)
 update-copyright-env = UPDATE_COPYRIGHT_HOLDER="Simon Josefsson" UPDATE_COPYRIGHT_USE_INTERVALS=1
 
 # Explicit syntax-check exceptions.
-exclude_file_name_regexp--sc_bindtextdomain = ^examples/|libc/|tests/
+exclude_file_name_regexp--sc_bindtextdomain = ^examples/|libc/|tests/|fuzz/
 exclude_file_name_regexp--sc_prohibit_atoi_atof = ^examples/example2.c$$
 exclude_file_name_regexp--sc_copyright_check = ^doc/libidn.texi
 exclude_file_name_regexp--sc_useless_cpp_parens = ^lib/nfkc.c$$
 exclude_file_name_regexp--sc_prohibit_strncpy = ^src/idn.c$$
+exclude_file_name_regexp--sc_prohibit_empty_lines_at_EOF = ^fuzz/libidn_.*fuzzer.(in|repro)/.*$$
 
 doc/Makefile.gdoc:
 	printf "gdoc_MANS =\ngdoc_TEXINFOS =\n" > doc/Makefile.gdoc

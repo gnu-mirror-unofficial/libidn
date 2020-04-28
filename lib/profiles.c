@@ -222,17 +222,17 @@ const Stringprep_table_element stringprep_saslprep_space_map[] = {
   {0x00A0, 0x00A0, {0x0020}},	/* 00A0; NO-BREAK SPACE */
   {0x1680, 0x1680, {0x0020}},	/* 1680; OGHAM SPACE MARK */
   {0x2000, 0x200B, {0x0020}},	/* 2000; EN QUAD */
-                            	/* 2001; EM QUAD */
-                            	/* 2002; EN SPACE */
-                            	/* 2003; EM SPACE */
-                            	/* 2004; THREE-PER-EM SPACE */
-                            	/* 2005; FOUR-PER-EM SPACE */
-                            	/* 2006; SIX-PER-EM SPACE */
-                            	/* 2007; FIGURE SPACE */
-                            	/* 2008; PUNCTUATION SPACE */
-                            	/* 2009; THIN SPACE */
-                            	/* 200A; HAIR SPACE */
-                            	/* 200B; ZERO WIDTH SPACE */
+				/* 2001; EM QUAD */
+				/* 2002; EN SPACE */
+				/* 2003; EM SPACE */
+				/* 2004; THREE-PER-EM SPACE */
+				/* 2005; FOUR-PER-EM SPACE */
+				/* 2006; SIX-PER-EM SPACE */
+				/* 2007; FIGURE SPACE */
+				/* 2008; PUNCTUATION SPACE */
+				/* 2009; THIN SPACE */
+				/* 200A; HAIR SPACE */
+				/* 200B; ZERO WIDTH SPACE */
   {0x202F, 0x202F, {0x0020}},	/* 202F; NARROW NO-BREAK SPACE */
   {0x205F, 0x205F, {0x0020}},	/* 205F; MEDIUM MATHEMATICAL SPACE */
   {0x3000, 0x3000, {0x0020}},	/* 3000; IDEOGRAPHIC SPACE */
