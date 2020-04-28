@@ -1,4 +1,4 @@
-# Copyright (C) 2011-2016 Simon Josefsson
+# Copyright (C) 2011-2020 Simon Josefsson
 #
 # This file is part of GNU Libidn.
 #

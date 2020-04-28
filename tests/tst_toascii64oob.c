@@ -1,5 +1,5 @@
 /* tst_toascii64oob.c --- Regression tests for stack OOB in idna_to_ascii().
- * Copyright (C) 2002-2016 Simon Josefsson
+ * Copyright (C) 2002-2020 Simon Josefsson
  *
  * This file is part of GNU Libidn.
  *

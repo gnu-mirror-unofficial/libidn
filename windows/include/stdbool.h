@@ -1,4 +1,4 @@
-/* Copyright (C) 2008-2016 Free Software Foundation, Inc.
+/* Copyright (C) 2008-2020 Free Software Foundation, Inc.
    Written by Adam Strzelecki <ono@java.pl>
 
    This file is part of GNU Libidn.
