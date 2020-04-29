@@ -1,25 +1,11 @@
 Build:
   before_script:
-    - make bootstrap
-  script:
-    - make && make check
-  artifacts:
-    expire_in: 2 weeks
-    when: on_failure
-    paths:
-      - ./*.log
-      - tests/*.log
-
-GLR1 build:
-  tags:
-    - glr1
-  before_script:
-    - apt-get update
+    - apt-get update -qq
     - apt-get install -y make git autoconf automake libtool gettext cvs
     - apt-get install -y texinfo texlive texlive-generic-recommended texlive-extra-utils
     - apt-get install -y help2man gtk-doc-tools valgrind gengetopt
     - apt-get install -y transfig mono-mcs gperf default-jdk-headless
-    - make
+    - make bootstrap
   script:
     - make && make check
   artifacts:
