@@ -1,0 +1,27 @@
+Build:
+  before_script:
+    - make bootstrap
+  script:
+    - make && make check
+  artifacts:
+    expire_in: 2 weeks
+    when: on_failure
+    paths:
+      - ./*.log
+      - tests/*.log
+
+GLR1 build:
+  tags:
+    - glr1
+  before_script:
+    - apt-get update
+    - apt-get install -y git autoconf automake libtool make valgrind
+    - make
+  script:
+    - make && make check
+  artifacts:
+    expire_in: 2 weeks
+    when: on_failure
+    paths:
+      - ./*.log
+      - tests/*.log
