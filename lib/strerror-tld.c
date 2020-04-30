@@ -49,7 +49,7 @@
  * TLD_INVALID: Invalid character found.
  * TLD_NODATA: No input data was provided.
  * TLD_MALLOC_ERROR: Error during memory allocation.
- * TLD_ICONV_ERROR: Error during iconv string conversion.
+ * TLD_ICONV_ERROR: Character encoding conversion error.
  * TLD_NO_TLD: No top-level domain found in domain string.
  *
  * Return value: Returns a pointer to a statically allocated string
@@ -81,7 +81,7 @@ tld_strerror (Tld_rc rc)
       break;
 
     case TLD_ICONV_ERROR:
-      p = _("System iconv failed");
+      p = _("Character encoding conversion error");
       break;
 
     case TLD_NO_TLD:

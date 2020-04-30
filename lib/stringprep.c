@@ -641,7 +641,7 @@ stringprep_profile (const char *in,
  *   This usually indicate a problem in the calling application.
  * @STRINGPREP_UNKNOWN_PROFILE: The supplied profile name was not
  *   known to the library.
- * @STRINGPREP_ICONV_ERROR: Could not convert string in locale encoding.
+ * @STRINGPREP_ICONV_ERROR: Character encoding conversion error.
  * @STRINGPREP_NFKC_FAILED: The Unicode NFKC operation failed.  This
  *   usually indicate an internal error in the library.
  * @STRINGPREP_MALLOC_ERROR: The malloc() was out of memory.  This is

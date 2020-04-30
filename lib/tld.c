@@ -517,7 +517,7 @@ tld_check_lz (const char *in, size_t *errpos, const Tld_table ** overrides)
  * @TLD_INVALID: Invalid character found.
  * @TLD_NODATA: No input data was provided.
  * @TLD_MALLOC_ERROR: Error during memory allocation.
- * @TLD_ICONV_ERROR: Error during iconv string conversion.
+ * @TLD_ICONV_ERROR: Character encoding conversion error.
  * @TLD_NO_TLD: No top-level domain found in domain string.
  * @TLD_NOTLD: Same as @TLD_NO_TLD, for compatibility
  *   with typo in earlier versions.

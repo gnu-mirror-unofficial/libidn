@@ -60,7 +60,7 @@
  *   string does not equal the input.
  * IDNA_CONTAINS_ACE_PREFIX: The input contains the ACE prefix (for
  *   ToASCII).
- * IDNA_ICONV_ERROR: Could not convert string in locale encoding.
+ * IDNA_ICONV_ERROR: Character encoding conversion error.
  * IDNA_MALLOC_ERROR: Could not allocate buffer (this is typically a
  *   fatal error).
  * IDNA_DLOPEN_ERROR: Could not dlopen the libcidn DSO (only used
@@ -115,7 +115,7 @@ idna_strerror (Idna_rc rc)
       break;
 
     case IDNA_ICONV_ERROR:
-      p = _("Could not convert string in locale encoding");
+      p = _("Character encoding conversion error");
       break;
 
     case IDNA_MALLOC_ERROR:
