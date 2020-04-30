@@ -28,24 +28,24 @@
    not, see <http://www.gnu.org/licenses/>. */
 
 #ifndef IDN_FREE_H
-#define IDN_FREE_H
+# define IDN_FREE_H
 
-#ifndef IDNAPI
-#if defined LIBIDN_BUILDING && defined HAVE_VISIBILITY && HAVE_VISIBILITY
-#define IDNAPI __attribute__((__visibility__("default")))
-#elif defined LIBIDN_BUILDING && defined _MSC_VER && ! defined LIBIDN_STATIC
-#define IDNAPI __declspec(dllexport)
-#elif defined _MSC_VER && ! defined LIBIDN_STATIC
-#define IDNAPI __declspec(dllimport)
-#else
-#define IDNAPI
-#endif
-#endif
+# ifndef IDNAPI
+#  if defined LIBIDN_BUILDING && defined HAVE_VISIBILITY && HAVE_VISIBILITY
+#   define IDNAPI __attribute__((__visibility__("default")))
+#  elif defined LIBIDN_BUILDING && defined _MSC_VER && ! defined LIBIDN_STATIC
+#   define IDNAPI __declspec(dllexport)
+#  elif defined _MSC_VER && ! defined LIBIDN_STATIC
+#   define IDNAPI __declspec(dllimport)
+#  else
+#   define IDNAPI
+#  endif
+# endif
 
-#ifdef __cplusplus
+# ifdef __cplusplus
 extern "C"
 {
-#endif
+# endif
 
 /* I don't recommend using this interface in general.  Use `free'.
  *
@@ -67,8 +67,8 @@ extern "C"
 
   extern void IDNAPI idn_free (void *ptr);
 
-#ifdef __cplusplus
+# ifdef __cplusplus
 }
-#endif
+# endif
 
 #endif				/* IDN_FREE_H */

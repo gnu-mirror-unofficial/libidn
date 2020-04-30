@@ -31,30 +31,30 @@
    not, see <http://www.gnu.org/licenses/>. */
 
 #ifndef TLD_H
-#define TLD_H
+# define TLD_H
 
-#ifndef IDNAPI
-#if defined LIBIDN_BUILDING && defined HAVE_VISIBILITY && HAVE_VISIBILITY
-#define IDNAPI __attribute__((__visibility__("default")))
-#elif defined LIBIDN_BUILDING && defined _MSC_VER && ! defined LIBIDN_STATIC
-#define IDNAPI __declspec(dllexport)
-#elif defined _MSC_VER && ! defined LIBIDN_STATIC
-#define IDNAPI __declspec(dllimport)
-#else
-#define IDNAPI
-#endif
-#endif
+# ifndef IDNAPI
+#  if defined LIBIDN_BUILDING && defined HAVE_VISIBILITY && HAVE_VISIBILITY
+#   define IDNAPI __attribute__((__visibility__("default")))
+#  elif defined LIBIDN_BUILDING && defined _MSC_VER && ! defined LIBIDN_STATIC
+#   define IDNAPI __declspec(dllexport)
+#  elif defined _MSC_VER && ! defined LIBIDN_STATIC
+#   define IDNAPI __declspec(dllimport)
+#  else
+#   define IDNAPI
+#  endif
+# endif
 
-#ifdef __cplusplus
+# ifdef __cplusplus
 extern "C"
 {
-#endif
+# endif
 
   /* Get size_t. */
-#include <stdlib.h>
+# include <stdlib.h>
 
   /* Get uint32_t. */
-#include <idn-int.h>
+# include <idn-int.h>
 
   /* Interval of valid code points in the TLD. */
   struct Tld_table_element
@@ -128,8 +128,8 @@ extern "C"
   extern IDNAPI int tld_check_lz (const char *in, size_t *errpos,
 				  const Tld_table ** overrides);
 
-#ifdef __cplusplus
+# ifdef __cplusplus
 }
-#endif
+# endif
 
 #endif				/* TLD_H */

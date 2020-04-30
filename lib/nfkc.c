@@ -28,7 +28,7 @@
    not, see <http://www.gnu.org/licenses/>. */
 
 #ifdef HAVE_CONFIG_H
-#include "config.h"
+# include "config.h"
 #endif
 
 #include <stdlib.h>
@@ -78,11 +78,11 @@
  */
 
 #ifndef	FALSE
-#define	FALSE	(0)
+# define	FALSE	(0)
 #endif
 
 #ifndef	TRUE
-#define	TRUE	(!FALSE)
+# define	TRUE	(!FALSE)
 #endif
 
 #define G_N_ELEMENTS(arr)		(sizeof (arr) / sizeof ((arr)[0]))

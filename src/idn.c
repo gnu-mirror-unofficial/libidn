@@ -19,7 +19,7 @@
  */
 
 #ifdef HAVE_CONFIG_H
-#include "config.h"
+# include "config.h"
 #endif
 
 #include <stdio.h>
@@ -42,7 +42,7 @@
 #include <punycode.h>
 #include <idna.h>
 #ifdef WITH_TLD
-#include <tld.h>
+# include <tld.h>
 #endif
 
 #include "idn_cmd.h"

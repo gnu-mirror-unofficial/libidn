@@ -64,30 +64,30 @@
  */
 
 #ifndef PUNYCODE_H
-#define PUNYCODE_H
+# define PUNYCODE_H
 
-#ifndef IDNAPI
-#if defined LIBIDN_BUILDING && defined HAVE_VISIBILITY && HAVE_VISIBILITY
-#define IDNAPI __attribute__((__visibility__("default")))
-#elif defined LIBIDN_BUILDING && defined _MSC_VER && ! defined LIBIDN_STATIC
-#define IDNAPI __declspec(dllexport)
-#elif defined _MSC_VER && ! defined LIBIDN_STATIC
-#define IDNAPI __declspec(dllimport)
-#else
-#define IDNAPI
-#endif
-#endif
+# ifndef IDNAPI
+#  if defined LIBIDN_BUILDING && defined HAVE_VISIBILITY && HAVE_VISIBILITY
+#   define IDNAPI __attribute__((__visibility__("default")))
+#  elif defined LIBIDN_BUILDING && defined _MSC_VER && ! defined LIBIDN_STATIC
+#   define IDNAPI __declspec(dllexport)
+#  elif defined _MSC_VER && ! defined LIBIDN_STATIC
+#   define IDNAPI __declspec(dllimport)
+#  else
+#   define IDNAPI
+#  endif
+# endif
 
-#ifdef __cplusplus
+# ifdef __cplusplus
 extern "C"
 {
-#endif
+# endif
 
 /************************************************************/
 /* Public interface (would normally go in its own .h file): */
 
-#include <stddef.h>		/* size_t */
-#include <idn-int.h>		/* uint32_t */
+# include <stddef.h>		/* size_t */
+# include <idn-int.h>		/* uint32_t */
 
   enum punycode_status
   {
@@ -233,7 +233,7 @@ extern "C"
         might contain garbage.
 */
 
-#ifdef __cplusplus
+# ifdef __cplusplus
 }
-#endif
+# endif
 #endif				/* PUNYCODE_H */

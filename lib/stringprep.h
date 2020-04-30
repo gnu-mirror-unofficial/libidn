@@ -28,30 +28,30 @@
    not, see <http://www.gnu.org/licenses/>. */
 
 #ifndef STRINGPREP_H
-#define STRINGPREP_H
+# define STRINGPREP_H
 
-#ifndef IDNAPI
-#if defined LIBIDN_BUILDING && defined HAVE_VISIBILITY && HAVE_VISIBILITY
-#define IDNAPI __attribute__((__visibility__("default")))
-#elif defined LIBIDN_BUILDING && defined _MSC_VER && ! defined LIBIDN_STATIC
-#define IDNAPI __declspec(dllexport)
-#elif defined _MSC_VER && ! defined LIBIDN_STATIC
-#define IDNAPI __declspec(dllimport)
-#else
-#define IDNAPI
-#endif
-#endif
+# ifndef IDNAPI
+#  if defined LIBIDN_BUILDING && defined HAVE_VISIBILITY && HAVE_VISIBILITY
+#   define IDNAPI __attribute__((__visibility__("default")))
+#  elif defined LIBIDN_BUILDING && defined _MSC_VER && ! defined LIBIDN_STATIC
+#   define IDNAPI __declspec(dllexport)
+#  elif defined _MSC_VER && ! defined LIBIDN_STATIC
+#   define IDNAPI __declspec(dllimport)
+#  else
+#   define IDNAPI
+#  endif
+# endif
 
-#include <stddef.h>		/* size_t */
-#include <sys/types.h>		/* ssize_t */
-#include <idn-int.h>		/* uint32_t */
+# include <stddef.h>		/* size_t */
+# include <sys/types.h>		/* ssize_t */
+# include <idn-int.h>		/* uint32_t */
 
-#ifdef __cplusplus
+# ifdef __cplusplus
 extern "C"
 {
-#endif
+# endif
 
-#define STRINGPREP_VERSION "1.36"
+# define STRINGPREP_VERSION "1.36"
 
 /* Error codes. */
   typedef enum
@@ -95,7 +95,7 @@ extern "C"
     STRINGPREP_BIDI_L_TABLE = 8
   } Stringprep_profile_steps;
 
-#define STRINGPREP_MAX_MAP_CHARS 4
+# define STRINGPREP_MAX_MAP_CHARS 4
 
   struct Stringprep_table_element
   {
@@ -146,10 +146,10 @@ extern "C"
 
   extern IDNAPI const Stringprep_profile stringprep_nameprep[];
 
-#define stringprep_nameprep(in, maxlen)			\
+# define stringprep_nameprep(in, maxlen)			\
   stringprep(in, maxlen, 0, stringprep_nameprep)
 
-#define stringprep_nameprep_no_unassigned(in, maxlen)			\
+# define stringprep_nameprep_no_unassigned(in, maxlen)			\
   stringprep(in, maxlen, STRINGPREP_NO_UNASSIGNED, stringprep_nameprep)
 
   /* SASL */
@@ -160,14 +160,14 @@ extern "C"
   extern IDNAPI const Stringprep_profile stringprep_plain[];
   extern IDNAPI const Stringprep_profile stringprep_trace[];
 
-#define stringprep_plain(in, maxlen)		\
+# define stringprep_plain(in, maxlen)		\
   stringprep(in, maxlen, 0, stringprep_plain)
 
   /* Kerberos */
 
   extern IDNAPI const Stringprep_profile stringprep_kerberos5[];
 
-#define stringprep_kerberos5(in, maxlen)		\
+# define stringprep_kerberos5(in, maxlen)		\
   stringprep(in, maxlen, 0, stringprep_kerberos5)
 
   /* XMPP */
@@ -177,9 +177,9 @@ extern "C"
   extern IDNAPI const Stringprep_table_element
     stringprep_xmpp_nodeprep_prohibit[];
 
-#define stringprep_xmpp_nodeprep(in, maxlen)		\
+# define stringprep_xmpp_nodeprep(in, maxlen)		\
   stringprep(in, maxlen, 0, stringprep_xmpp_nodeprep)
-#define stringprep_xmpp_resourceprep(in, maxlen)		\
+# define stringprep_xmpp_resourceprep(in, maxlen)		\
   stringprep(in, maxlen, 0, stringprep_xmpp_resourceprep)
 
   /* iSCSI */
@@ -187,7 +187,7 @@ extern "C"
   extern IDNAPI const Stringprep_profile stringprep_iscsi[];
   extern IDNAPI const Stringprep_table_element stringprep_iscsi_prohibit[];
 
-#define stringprep_iscsi(in, maxlen)		\
+# define stringprep_iscsi(in, maxlen)		\
   stringprep(in, maxlen, 0, stringprep_iscsi)
 
   /* API */
@@ -238,8 +238,8 @@ extern "C"
   extern IDNAPI char *stringprep_locale_to_utf8 (const char *str);
   extern IDNAPI char *stringprep_utf8_to_locale (const char *str);
 
-#ifdef __cplusplus
+# ifdef __cplusplus
 }
-#endif
+# endif
 
 #endif				/* STRINGPREP_H */

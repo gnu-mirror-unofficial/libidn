@@ -28,27 +28,27 @@
    not, see <http://www.gnu.org/licenses/>. */
 
 #ifndef IDNA_H
-#define IDNA_H
+# define IDNA_H
 
-#ifndef IDNAPI
-#if defined LIBIDN_BUILDING && defined HAVE_VISIBILITY && HAVE_VISIBILITY
-#define IDNAPI __attribute__((__visibility__("default")))
-#elif defined LIBIDN_BUILDING && defined _MSC_VER && ! defined LIBIDN_STATIC
-#define IDNAPI __declspec(dllexport)
-#elif defined _MSC_VER && ! defined LIBIDN_STATIC
-#define IDNAPI __declspec(dllimport)
-#else
-#define IDNAPI
-#endif
-#endif
+# ifndef IDNAPI
+#  if defined LIBIDN_BUILDING && defined HAVE_VISIBILITY && HAVE_VISIBILITY
+#   define IDNAPI __attribute__((__visibility__("default")))
+#  elif defined LIBIDN_BUILDING && defined _MSC_VER && ! defined LIBIDN_STATIC
+#   define IDNAPI __declspec(dllexport)
+#  elif defined _MSC_VER && ! defined LIBIDN_STATIC
+#   define IDNAPI __declspec(dllimport)
+#  else
+#   define IDNAPI
+#  endif
+# endif
 
-#include <stddef.h>		/* size_t */
-#include <idn-int.h>		/* uint32_t */
+# include <stddef.h>		/* size_t */
+# include <idn-int.h>		/* uint32_t */
 
-#ifdef __cplusplus
+# ifdef __cplusplus
 extern "C"
 {
-#endif
+# endif
 
   /* Error codes. */
   typedef enum
@@ -77,9 +77,9 @@ extern "C"
     IDNA_USE_STD3_ASCII_RULES = 0x0002
   } Idna_flags;
 
-#ifndef IDNA_ACE_PREFIX
-#define IDNA_ACE_PREFIX "xn--"
-#endif
+# ifndef IDNA_ACE_PREFIX
+#  define IDNA_ACE_PREFIX "xn--"
+# endif
 
   extern IDNAPI const char *idna_strerror (Idna_rc rc);
 
@@ -116,8 +116,8 @@ extern "C"
   extern IDNAPI int idna_to_unicode_lzlz (const char *input,
 					  char **output, int flags);
 
-#ifdef __cplusplus
+# ifdef __cplusplus
 }
-#endif
+# endif
 
 #endif				/* IDNA_H */

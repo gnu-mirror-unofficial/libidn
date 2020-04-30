@@ -28,7 +28,7 @@
    not, see <http://www.gnu.org/licenses/>. */
 
 #ifdef HAVE_CONFIG_H
-#include "config.h"
+# include "config.h"
 #endif
 
 /* Get prototypes. */
@@ -47,19 +47,19 @@
 #include "striconv.h"
 
 #ifdef _LIBC
-#define HAVE_ICONV 1
-#define HAVE_LOCALE_H 1
-#define HAVE_LANGINFO_CODESET 1
+# define HAVE_ICONV 1
+# define HAVE_LOCALE_H 1
+# define HAVE_LANGINFO_CODESET 1
 #endif
 
 #include <locale.h>
 
 #ifdef HAVE_LANGINFO_CODESET
-#include <langinfo.h>
+# include <langinfo.h>
 #endif
 
 #ifdef _LIBC
-#define stringprep_locale_charset() nl_langinfo (CODESET)
+# define stringprep_locale_charset() nl_langinfo (CODESET)
 #else
 /**
  * stringprep_locale_charset:
@@ -89,12 +89,12 @@ stringprep_locale_charset (void)
   if (charset && *charset)
     return charset;
 
-#ifdef HAVE_LANGINFO_CODESET
+# ifdef HAVE_LANGINFO_CODESET
   charset = nl_langinfo (CODESET);
 
   if (charset && *charset)
     return charset;
-#endif
+# endif
 
   return "ASCII";
 }
