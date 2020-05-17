@@ -35,7 +35,7 @@ some hints:
 gNewSense/Debian/Ubuntu:
 apt-get install make git autoconf automake libtool gettext autopoint cvs
 apt-get install texinfo texlive texlive-generic-recommended texlive-extra-utils
-apt-get install help2man gtk-doc-tools valgrind gengetopt
+apt-get install help2man gtk-doc-tools dblatex valgrind gengetopt
 apt-get install transfig mono-mcs gperf default-jdk-headless
 
 To download the version controlled sources:
