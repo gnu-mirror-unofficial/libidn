@@ -10,6 +10,9 @@ Patch from Miroslav Lichvar <mlichvar@redhat.com>.
 ** Check codepoint validity in punycode_decode() and punycode_decode().
 Reported-by: Mike Schiffman (Farsight Security, Inc.).
 
+** tld: Add U+00EF to .nl TLD table.
+Reported by Trond Haugen <trond.haugen@norid.no>.
+
 ** Indent code.
 
 ** Translation fixes.
