@@ -51,6 +51,7 @@ AC_DEFUN([lgl_EARLY],
   # Code from module alloca-opt-tests:
   # Code from module arpa_inet:
   # Code from module arpa_inet-tests:
+  # Code from module attribute:
   # Code from module binary-io:
   # Code from module binary-io-tests:
   # Code from module bind:
@@ -849,6 +850,7 @@ AC_DEFUN([lgltests_LIBSOURCES], [
 AC_DEFUN([lgl_FILE_LIST], [
   build-aux/config.rpath
   lib/arg-nonnull.h
+  lib/attribute.h
   lib/c++defs.h
   lib/c-ctype.c
   lib/c-ctype.h

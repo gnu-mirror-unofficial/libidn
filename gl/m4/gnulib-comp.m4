@@ -50,6 +50,7 @@ AC_DEFUN([gl_EARLY],
   # Code from module alloca-opt-tests:
   # Code from module arpa_inet:
   # Code from module arpa_inet-tests:
+  # Code from module attribute:
   # Code from module autobuild:
   AB_INIT
   # Code from module binary-io:
@@ -1142,6 +1143,7 @@ AC_DEFUN([gl_FILE_LIST], [
   tests=lib/alloca.in.h
   tests=lib/arg-nonnull.h
   tests=lib/arpa_inet.in.h
+  tests=lib/attribute.h
   tests=lib/binary-io.c
   tests=lib/binary-io.h
   tests=lib/bind.c
