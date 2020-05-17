@@ -1,7 +1,7 @@
 Build:
   before_script:
     - apt-get update -qq
-    - apt-get install -y make git autoconf automake libtool gettext cvs
+    - apt-get install -y make git autoconf automake libtool gettext autopoint cvs
     - apt-get install -y texinfo texlive texlive-generic-recommended texlive-extra-utils
     - apt-get install -y help2man gtk-doc-tools valgrind gengetopt
     - apt-get install -y transfig mono-mcs gperf default-jdk-headless
