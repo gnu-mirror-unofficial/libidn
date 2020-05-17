@@ -4,6 +4,14 @@ See the end for copying conditions.
 
 * Version 1.36 (unreleased)
 
+** Fix unlikely memory leak in idna_to_unicode_4z4z().
+Patch from Miroslav Lichvar <mlichvar@redhat.com>.
+
+** libidn: Fix slowness issue in stringprep_profile().
+Patch from Tim Rühsen <tim.ruehsen@gmx.de>.
+
+** Indent code.
+
 ** Translation fixes.
 
 ** Update gnulib files.
