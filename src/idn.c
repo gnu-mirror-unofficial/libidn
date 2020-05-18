@@ -138,7 +138,7 @@ main (int argc, char *argv[])
   textdomain (PACKAGE);
 
   if (cmdline_parser (argc, argv, &args_info) != 0)
-    return EXIT_FAILURE;
+    usage (EXIT_FAILURE);
 
   if (args_info.version_given)
     {
