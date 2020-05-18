@@ -20,7 +20,7 @@ SUBDIRS = gl lib/gl lib po src
 if ENABLE_DOC
 SUBDIRS += doc
 endif
-SUBDIRS += gltests lib/gltests fuzz tests examples
+SUBDIRS += fuzz tests gltests lib/gltests examples
 if JAVA
 SUBDIRS += java
 endif
