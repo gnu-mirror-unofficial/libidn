@@ -26,6 +26,6 @@ option "tld" t "Check string for TLD specific rules\nOnly for --idna-to-ascii an
 option "no-tld" - "Don't check string for TLD specific rules\nOnly for --idna-to-ascii and --idna-to-unicode" flag off
 option "nfkc" n "Normalize string according to Unicode v3.2 NFKC" no
 option "hidden-nfkc" k "Hidden parameter for backwards compatibility" no hidden
-option "profile" p "Use specified stringprep profile instead\nValid stringprep profiles are `Nameprep', `iSCSI', `Nodeprep', `Resourceprep', `trace', and `SASLprep'." string no
+option "profile" p "Use specified stringprep profile instead\nValid stringprep profiles are: Nameprep iSCSI Nodeprep Resourceprep trace SASLprep" string no
 option "debug" - "Print debugging information" flag off
 option "quiet" - "Silent operation" flag off

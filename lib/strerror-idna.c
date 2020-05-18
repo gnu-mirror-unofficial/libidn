@@ -95,7 +95,7 @@ idna_strerror (Idna_rc rc)
       break;
 
     case IDNA_CONTAINS_MINUS:
-      p = _("Forbidden leading or trailing minus sign (`-')");
+      p = _("Forbidden leading or trailing minus sign ('-')");
       break;
 
     case IDNA_INVALID_LENGTH:
@@ -103,7 +103,7 @@ idna_strerror (Idna_rc rc)
       break;
 
     case IDNA_NO_ACE_PREFIX:
-      p = _("Input does not start with ACE prefix (`xn--')");
+      p = _("Input does not start with ACE prefix ('xn--')");
       break;
 
     case IDNA_ROUNDTRIP_VERIFY_ERROR:
@@ -111,7 +111,7 @@ idna_strerror (Idna_rc rc)
       break;
 
     case IDNA_CONTAINS_ACE_PREFIX:
-      p = _("Input already contain ACE prefix (`xn--')");
+      p = _("Input already contain ACE prefix ('xn--')");
       break;
 
     case IDNA_ICONV_ERROR:

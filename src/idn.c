@@ -62,7 +62,7 @@ static void
 usage (int status)
 {
   if (status != EXIT_SUCCESS)
-    fprintf (stderr, _("Try `%s --help' for more information.\n"),
+    fprintf (stderr, _("Try '%s --help' for more information.\n"),
 	     program_name);
   else
     {
@@ -77,11 +77,11 @@ Internationalized Domain Name (IDN) convert STRINGS, or standard input.\n\
 Command line interface to the internationalized domain name library.\n\
 \n\
 All strings are expected to be encoded in the preferred charset used\n\
-by your locale.  Use `--debug' to find out what this charset is.  You\n\
+by your locale.  Use --debug to find out what this charset is.  You\n\
 can override the charset used by setting environment variable CHARSET.\n\
 \n\
-To process a string that starts with `-', for example `-foo', use `--'\n\
-to signal the end of parameters, as in `idn --quiet -a -- -foo'.\n\
+To process a string that starts with '-', for example '-foo', use '--'\n\
+to signal the end of parameters, as in: idn --quiet -a -- -foo\n\
 \n\
 Mandatory arguments to long options are mandatory for short options too.\n\
 "), stdout);
@@ -109,9 +109,8 @@ Mandatory arguments to long options are mandatory for short options too.\n\
 "), stdout);
       fputs (_("\
   -p, --profile=STRING     Use specified stringprep profile instead\n\
-                             Valid stringprep profiles: `Nameprep',\n\
-                             `iSCSI', `Nodeprep', `Resourceprep', \n\
-                             `trace', `SASLprep'\n\
+                             Valid stringprep profiles: Nameprep\n\
+                             iSCSI Nodeprep Resourceprep trace SASLprep\n\
 "), stdout);
       fputs (_("\
       --debug              Print debugging information\n\
@@ -180,7 +179,7 @@ main (int argc, char *argv[])
     fprintf (stderr, "%s %s\n" GREETING, PACKAGE, VERSION);
 
   if (args_info.debug_given)
-    fprintf (stderr, _("Charset `%s'.\n"), stringprep_locale_charset ());
+    fprintf (stderr, _("Charset: %s\n"), stringprep_locale_charset ());
 
   if (!args_info.quiet_given
       && args_info.inputs_num == 0 && isatty (fileno (stdin)))
