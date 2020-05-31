@@ -1,30 +1,31 @@
 # Esperanto translations for GNU libidn.
-# Copyright (C) 2012 Free Software Foundation, Inc.
+# Copyright (C) 2012 - 2020 Free Software Foundation, Inc.
 # This file is distributed under the same license as the libidn package.
 #
 # Tradukoj kiuj komencas per "##" estas mesaĝoj por erarspurado;
-# ili devus malesti en ĉi tiu dosiero.
+# iliaj "msgid" devus malesti en ĉi tiu dosiero.
 #
 # Edmund GRIMLEY EVANS <edmundo@rano.org>, 2004, 2005, 2007, 2008.
 # Benno Schulenberg <benno@vertaalt.nl>, 2012.
+# Felipe Castro <fefcas@gmail.com>, 2020.
 msgid ""
 msgstr ""
-"Project-Id-Version: libidn 1.25\n"
+"Project-Id-Version: libidn 1.36\n"
 "Report-Msgid-Bugs-To: bug-libidn@gnu.org\n"
-"POT-Creation-Date: 2012-05-23 10:37+0200\n"
-"PO-Revision-Date: 2012-12-17 16:42+0100\n"
-"Last-Translator: Benno Schulenberg <benno@vertaalt.nl>\n"
+"POT-Creation-Date: 2020-04-30 17:09+0200\n"
+"PO-Revision-Date: 2020-05-30 16:07-0300\n"
+"Last-Translator: Felipe Castro <fefcas@gmail.com>\n"
 "Language-Team: Esperanto <translation-team-eo@lists.sourceforge.net>\n"
 "Language: eo\n"
-"X-Bugs: Report translation errors to the Language-Team address.\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Bugs: Report translation errors to the Language-Team address.\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: Poedit 2.3.1\n"
 
 #: lib/strerror-idna.c:82 lib/strerror-pr29.c:66 lib/strerror-punycode.c:66
-#: lib/strerror-stringprep.c:86 lib/strerror-tld.c:68
+#: lib/strerror-stringprep.c:87 lib/strerror-tld.c:68
 msgid "Success"
 msgstr "Sukceso"
 
@@ -60,11 +61,11 @@ msgstr "Ĉeno ŝanĝiĝas ĉe dua apliko de 'ToASCII'"
 msgid "Input already contain ACE prefix (`xn--')"
 msgstr "Enigo jam havas ACE-prefikson ('xn--')"
 
-#: lib/strerror-idna.c:118 lib/strerror-tld.c:84
-msgid "System iconv failed"
-msgstr "Malsukcesis sistemfunkcio 'iconv()'"
+#: lib/strerror-idna.c:118 lib/strerror-stringprep.c:127 lib/strerror-tld.c:84
+msgid "Character encoding conversion error"
+msgstr "Eraro pri signa enkodiga konverto"
 
-#: lib/strerror-idna.c:122 lib/strerror-stringprep.c:130 lib/strerror-tld.c:80
+#: lib/strerror-idna.c:122 lib/strerror-stringprep.c:135 lib/strerror-tld.c:80
 msgid "Cannot allocate memory"
 msgstr "Mankas sufiĉa memoro"
 
@@ -73,7 +74,7 @@ msgid "System dlopen failed"
 msgstr "Malsukcesis sistemfunkcio 'dlopen()'"
 
 #: lib/strerror-idna.c:130 lib/strerror-pr29.c:78 lib/strerror-punycode.c:82
-#: lib/strerror-stringprep.c:134 lib/strerror-tld.c:92
+#: lib/strerror-stringprep.c:139 lib/strerror-tld.c:92
 msgid "Unknown error"
 msgstr "Nekonata eraro"
 
@@ -85,7 +86,7 @@ msgstr "Ĉeno ŝanĝiĝas ĉe dua apliko de Unikoda NFKC-normigo"
 msgid "Invalid input"
 msgstr "Nevalida enigo"
 
-#: lib/strerror-punycode.c:74 lib/strerror-stringprep.c:110
+#: lib/strerror-punycode.c:74 lib/strerror-stringprep.c:111
 msgid "Output would exceed the buffer space provided"
 msgstr "Eligo estus tro granda por donita bufro"
 
@@ -93,39 +94,39 @@ msgstr "Eligo estus tro granda por donita bufro"
 msgid "String size limit exceeded"
 msgstr "Limo de signoĉena grando transpasiĝis"
 
-#: lib/strerror-stringprep.c:90
+#: lib/strerror-stringprep.c:91
 msgid "Forbidden unassigned code points in input"
 msgstr "Malpermesita neatribuita kodero en enigo"
 
-#: lib/strerror-stringprep.c:94
+#: lib/strerror-stringprep.c:95
 msgid "Prohibited code points in input"
 msgstr "Malpermesita kodero en enigo"
 
-#: lib/strerror-stringprep.c:98
+#: lib/strerror-stringprep.c:99
 msgid "Conflicting bidirectional properties in input"
 msgstr "Malkongruaj dudirektaj trajtoj en enigo"
 
-#: lib/strerror-stringprep.c:102
+#: lib/strerror-stringprep.c:103
 msgid "Malformed bidirectional string"
 msgstr "Misformita dudirekta ĉeno"
 
-#: lib/strerror-stringprep.c:106
+#: lib/strerror-stringprep.c:107
 msgid "Prohibited bidirectional code points in input"
 msgstr "Malpermesita dudirekta kodero en enigo"
 
-#: lib/strerror-stringprep.c:114
+#: lib/strerror-stringprep.c:115
 msgid "Error in stringprep profile definition"
 msgstr "Eraro en difino de ĉenopretig-profilo"
 
-#: lib/strerror-stringprep.c:118
+#: lib/strerror-stringprep.c:119
 msgid "Flag conflict with profile"
 msgstr "Flaga malkongruo kun profilo"
 
-#: lib/strerror-stringprep.c:122
+#: lib/strerror-stringprep.c:123
 msgid "Unknown profile"
 msgstr "Nekonata profilo"
 
-#: lib/strerror-stringprep.c:126
+#: lib/strerror-stringprep.c:131
 msgid "Unicode normalization failed (internal error)"
 msgstr "Malsukcesis Unikoda normigo (**interna programeraro**)"
 
@@ -245,12 +246,12 @@ msgstr ""
 "      --debug              montri informojn por helpi al erarspurado\n"
 "      --quiet              funkcii silente\n"
 
-#: src/idn.c:172
+#: src/idn.c:174
 #, c-format
 msgid "only one of -s, -e, -d, -a, -u or -n can be specified"
 msgstr "nur unu el la opcioj '-s', '-e', '-d', '-a', '-u' aŭ '-n' povas esti indikata"
 
-#: src/idn.c:182
+#: src/idn.c:183
 #, c-format
 msgid "Charset `%s'.\n"
 msgstr "Signaro '%s'.\n"
@@ -260,80 +261,84 @@ msgstr "Signaro '%s'.\n"
 msgid "Type each input string on a line by itself, terminated by a newline character.\n"
 msgstr "Tajpu ĉiun enigan ĉenon en propra linio, kun linifina signo ĉe la fino.\n"
 
-#: src/idn.c:202
+#: src/idn.c:199
 #, c-format
 msgid "input error"
 msgstr "enig-eraro"
 
-#: src/idn.c:212 src/idn.c:274 src/idn.c:357 src/idn.c:434 src/idn.c:515
+#: src/idn.c:210 src/idn.c:273 src/idn.c:356 src/idn.c:433 src/idn.c:514
 #, c-format
 msgid "could not convert from %s to UTF-8"
 msgstr "malsukcesis konverti de %s al UTF-8"
 
-#: src/idn.c:220 src/idn.c:245 src/idn.c:281 src/idn.c:498 src/idn.c:527
-#: src/idn.c:551
+#: src/idn.c:218 src/idn.c:243 src/idn.c:280 src/idn.c:497 src/idn.c:526
+#: src/idn.c:550
 #, c-format
 msgid "could not convert from UTF-8 to UCS-4"
 msgstr "malsukcesis konverti de UTF-8 al UCS-4"
 
-#: src/idn.c:237
+#: src/idn.c:235
 #, c-format
 msgid "stringprep_profile: %s"
 msgstr "## stringprep_profile(): %s"
 
-#: src/idn.c:260 src/idn.c:302 src/idn.c:345 src/idn.c:503 src/idn.c:564
+#: src/idn.c:258 src/idn.c:301 src/idn.c:344 src/idn.c:502 src/idn.c:563
 #, c-format
 msgid "could not convert from UTF-8 to %s"
 msgstr "malsukcesis konverti de UTF-8 al %s"
 
-#: src/idn.c:295
+#: src/idn.c:294
 #, c-format
 msgid "punycode_encode: %s"
 msgstr "## punycode_encode(): %s"
 
-#: src/idn.c:317
+#: src/idn.c:316
+#, c-format
 msgid "malloc"
 msgstr "mankas sufiĉa memoro"
 
-#: src/idn.c:323
+#: src/idn.c:322
 #, c-format
 msgid "punycode_decode: %s"
 msgstr "## punycode_decode(): %s"
 
-#: src/idn.c:340 src/idn.c:364 src/idn.c:442
+#: src/idn.c:339 src/idn.c:363 src/idn.c:441
 #, c-format
 msgid "could not convert from UCS-4 to UTF-8"
 msgstr "malsukcesis konverti de UCS-4 al UTF-8"
 
-#: src/idn.c:381
+#: src/idn.c:380
 #, c-format
 msgid "idna_to_ascii_4z: %s"
 msgstr "## idna_to_ascii_4z(): %s"
 
-#: src/idn.c:395
+#: src/idn.c:394
 #, c-format
 msgid "idna_to_unicode_8z4z (TLD): %s"
 msgstr "## idna_to_unicode_8z4z (TLD): %s"
 
-#: src/idn.c:409 src/idn.c:482
+#: src/idn.c:408 src/idn.c:481
 #, c-format
 msgid "tld_check_4z (position %lu): %s"
 msgstr "## tld_check_4z (pozicio %lu): %s"
 
-#: src/idn.c:412 src/idn.c:488
+#: src/idn.c:411 src/idn.c:487
 #, c-format
 msgid "tld_check_4z: %s"
 msgstr "## tld_check_4z(): %s"
 
-#: src/idn.c:461
+#: src/idn.c:460
 #, c-format
 msgid "idna_to_unicode_8z4z: %s"
 msgstr "## idna_to_unicode_8z4z(): %s"
 
-#: src/idn.c:540
+#: src/idn.c:539
 #, c-format
 msgid "could not do NFKC normalization"
 msgstr "malsukcesis fari NFKC-normigon"
+
+#~ msgid "System iconv failed"
+#~ msgstr "Malsukcesis sistemfunkcio 'iconv()'"
 
 #~ msgid ""
 #~ "\n"
