@@ -53,7 +53,7 @@ autoreconf: doc/Makefile.gdoc
 	rm -f gtk-doc.make
 	gtkdocize 2>/dev/null || printf "EXTRA_DIST =\nCLEANFILES =\n" >gtk-doc.make
 	autopoint
-	autoreconf --install --force
+	autoreconf --install
 
 update-po: refresh-po
 	for f in `ls po/*.po | grep -v quot.po`; do \
