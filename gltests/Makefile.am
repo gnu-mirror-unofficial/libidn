@@ -1711,21 +1711,6 @@ EXTRA_DIST += test-verify.c test-verify-try.c test-verify.sh
 
 ## end   gnulib module verify-tests
 
-## begin gnulib module version-etc-fsf
-
-libtests_a_SOURCES += version-etc-fsf.c
-
-## end   gnulib module version-etc-fsf
-
-## begin gnulib module version-etc-tests
-
-TESTS += test-version-etc.sh
-check_PROGRAMS += test-version-etc
-test_version_etc_LDADD = $(LDADD) @LIBINTL@
-EXTRA_DIST += test-version-etc.c test-version-etc.sh
-
-## end   gnulib module version-etc-tests
-
 ## begin gnulib module wchar
 
 BUILT_SOURCES += wchar.h

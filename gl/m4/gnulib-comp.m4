@@ -264,8 +264,6 @@ AC_DEFUN([gl_EARLY],
   # Code from module verify:
   # Code from module verify-tests:
   # Code from module version-etc:
-  # Code from module version-etc-fsf:
-  # Code from module version-etc-tests:
   # Code from module warnings:
   # Code from module wchar:
   # Code from module windows-mutex:
@@ -1161,8 +1159,6 @@ AC_DEFUN([gl_FILE_LIST], [
   tests/test-verify-try.c
   tests/test-verify.c
   tests/test-verify.sh
-  tests/test-version-etc.c
-  tests/test-version-etc.sh
   tests=lib/_Noreturn.h
   tests=lib/accept.c
   tests=lib/alloca.c
@@ -1230,7 +1226,6 @@ AC_DEFUN([gl_FILE_LIST], [
   tests=lib/sys_uio.in.h
   tests=lib/unsetenv.c
   tests=lib/usleep.c
-  tests=lib/version-etc-fsf.c
   tests=lib/w32sock.h
   tests=lib/warn-on-use.h
   tests=lib/wchar.in.h

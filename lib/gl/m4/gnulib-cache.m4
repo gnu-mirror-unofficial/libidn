@@ -42,6 +42,7 @@
 #  --no-vc-files \
 #  --avoid=iconv-h-tests \
 #  --avoid=string-tests \
+#  --avoid=version-etc-tests \
 #  --avoid=wchar-tests \
 #  gettext-h \
 #  lib-msvc-compat \
@@ -64,7 +65,7 @@ gl_MODULES([
   strverscmp
   unistr/u8-check
 ])
-gl_AVOID([iconv-h-tests string-tests wchar-tests])
+gl_AVOID([iconv-h-tests string-tests version-etc-tests wchar-tests])
 gl_SOURCE_BASE([lib/gl])
 gl_M4_BASE([lib/gl/m4])
 gl_PO_BASE([])

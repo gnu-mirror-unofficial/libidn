@@ -46,6 +46,7 @@
 #  --avoid=time-tests \
 #  --avoid=unistd-tests \
 #  --avoid=update-copyright-tests \
+#  --avoid=version-etc-tests \
 #  --avoid=wchar-tests \
 #  autobuild \
 #  csharpcomp-script \
@@ -90,7 +91,7 @@ gl_MODULES([
   version-etc
   warnings
 ])
-gl_AVOID([fcntl-h-tests stdlib-tests string-tests sys_stat-tests time-tests unistd-tests update-copyright-tests wchar-tests])
+gl_AVOID([fcntl-h-tests stdlib-tests string-tests sys_stat-tests time-tests unistd-tests update-copyright-tests version-etc-tests wchar-tests])
 gl_SOURCE_BASE([gl])
 gl_M4_BASE([gl/m4])
 gl_PO_BASE([])

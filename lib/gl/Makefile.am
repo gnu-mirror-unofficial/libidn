@@ -37,6 +37,7 @@
 #  --no-vc-files \
 #  --avoid=iconv-h-tests \
 #  --avoid=string-tests \
+#  --avoid=version-etc-tests \
 #  --avoid=wchar-tests \
 #  gettext-h \
 #  lib-msvc-compat \

@@ -41,6 +41,7 @@
 #  --avoid=time-tests \
 #  --avoid=unistd-tests \
 #  --avoid=update-copyright-tests \
+#  --avoid=version-etc-tests \
 #  --avoid=wchar-tests \
 #  autobuild \
 #  csharpcomp-script \
