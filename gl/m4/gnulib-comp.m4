@@ -59,6 +59,7 @@ AC_DEFUN([gl_EARLY],
   # Code from module bind-tests:
   # Code from module c-ctype:
   # Code from module c-ctype-tests:
+  # Code from module c99:
   # Code from module cloexec:
   # Code from module cloexec-tests:
   # Code from module close:
@@ -205,6 +206,7 @@ AC_DEFUN([gl_EARLY],
   # Code from module stat-tests:
   # Code from module stat-time:
   # Code from module stat-time-tests:
+  # Code from module std-gnu11:
   # Code from module stdalign:
   # Code from module stdalign-tests:
   # Code from module stdarg:
@@ -290,12 +292,25 @@ AC_DEFUN([gl_INIT],
   m4_pushdef([gl_LIBSOURCES_DIR], [])
   gl_COMMON
   gl_source_base='gl'
+  gl_FUNC_ALLOCA
+  gl_MODULE_INDICATOR_FOR_TESTS([cloexec])
+  gl_FUNC_CLOSE
+  if test $REPLACE_CLOSE = 1; then
+    AC_LIBOBJ([close])
+  fi
+  gl_UNISTD_MODULE_INDICATOR([close])
   AC_REQUIRE([gt_CSHARPCOMP])
   AC_CONFIG_FILES([csharpcomp.sh:build-aux/csharpcomp.sh.in])
   # You need to invoke gt_CSHARPEXEC yourself, possibly with arguments.
   AC_CONFIG_FILES([csharpexec.sh:build-aux/csharpexec.sh.in])
   gl_DIRNAME_LGPL
   gl_DOUBLE_SLASH_ROOT
+  gl_FUNC_DUP2
+  if test $HAVE_DUP2 = 0 || test $REPLACE_DUP2 = 1; then
+    AC_LIBOBJ([dup2])
+    gl_PREREQ_DUP2
+  fi
+  gl_UNISTD_MODULE_INDICATOR([dup2])
   gl_HEADER_ERRNO_H
   gl_ERROR
   if test $ac_cv_lib_error_at_line = no; then
@@ -306,12 +321,35 @@ AC_DEFUN([gl_INIT],
     [AM_][XGETTEXT_OPTION([--flag=error:3:c-format])
      AM_][XGETTEXT_OPTION([--flag=error_at_line:5:c-format])])
   AC_REQUIRE([gl_EXTERN_INLINE])
+  gl_FUNC_FCNTL
+  if test $HAVE_FCNTL = 0 || test $REPLACE_FCNTL = 1; then
+    AC_LIBOBJ([fcntl])
+  fi
+  gl_FCNTL_MODULE_INDICATOR([fcntl])
+  gl_FCNTL_H
+  gl_FUNC_FSTAT
+  if test $REPLACE_FSTAT = 1; then
+    AC_LIBOBJ([fstat])
+    case "$host_os" in
+      mingw*)
+        AC_LIBOBJ([stat-w32])
+        ;;
+    esac
+    gl_PREREQ_FSTAT
+  fi
+  gl_SYS_STAT_MODULE_INDICATOR([fstat])
   gl_FUNC_GETDELIM
   if test $HAVE_GETDELIM = 0 || test $REPLACE_GETDELIM = 1; then
     AC_LIBOBJ([getdelim])
     gl_PREREQ_GETDELIM
   fi
   gl_STDIO_MODULE_INDICATOR([getdelim])
+  gl_FUNC_GETDTABLESIZE
+  if test $HAVE_GETDTABLESIZE = 0 || test $REPLACE_GETDTABLESIZE = 1; then
+    AC_LIBOBJ([getdtablesize])
+    gl_PREREQ_GETDTABLESIZE
+  fi
+  gl_UNISTD_MODULE_INDICATOR([getdtablesize])
   gl_FUNC_GETLINE
   if test $REPLACE_GETLINE = 1; then
     AC_LIBOBJ([getline])
@@ -344,6 +382,7 @@ AC_DEFUN([gl_INIT],
           m4_defn([m4_PACKAGE_VERSION])), [1], [],
         [AC_CONFIG_LINKS([$GNUmakefile:$GNUmakefile], [],
           [GNUmakefile=$GNUmakefile])])
+  AC_REQUIRE([gl_LARGEFILE])
   gl_LIMITS_H
   AC_CONFIG_COMMANDS_PRE([m4_ifdef([AH_HEADER],
     [AC_SUBST([CONFIG_INCLUDE], m4_defn([AH_HEADER]))])])
@@ -354,6 +393,7 @@ AC_DEFUN([gl_INIT],
     AC_LIBOBJ([malloc])
   fi
   gl_STDLIB_MODULE_INDICATOR([malloc-posix])
+  gl_MALLOCA
   AC_REQUIRE([gl_MSVC_INVAL])
   if test $HAVE_MSVC_INVALID_PARAMETER_HANDLER = 1; then
     AC_LIBOBJ([msvc-inval])
@@ -364,10 +404,30 @@ AC_DEFUN([gl_INIT],
   fi
   gl_MODULE_INDICATOR([msvc-nothrow])
   gl_MULTIARCH
+  gl_FUNC_OPEN
+  if test $REPLACE_OPEN = 1; then
+    AC_LIBOBJ([open])
+    gl_PREREQ_OPEN
+  fi
+  gl_FCNTL_MODULE_INDICATOR([open])
+  gl_PATHMAX
   AC_PATH_PROG([PMCCABE], [pmccabe], [false])
   AC_CHECK_DECLS([program_invocation_name], [], [], [#include <errno.h>])
   AC_CHECK_DECLS([program_invocation_short_name], [], [], [#include <errno.h>])
   gt_TYPE_SSIZE_T
+  gl_FUNC_STAT
+  if test $REPLACE_STAT = 1; then
+    AC_LIBOBJ([stat])
+    case "$host_os" in
+      mingw*)
+        AC_LIBOBJ([stat-w32])
+        ;;
+    esac
+    gl_PREREQ_STAT
+  fi
+  gl_SYS_STAT_MODULE_INDICATOR([stat])
+  gl_STAT_TIME
+  gl_STAT_BIRTHTIME
   gl_STDARG_H
   AM_STDBOOL_H
   gl_STDDEF_H
@@ -387,8 +447,11 @@ AC_DEFUN([gl_INIT],
     gl_PREREQ_SYS_H_WINSOCK2
   fi
   gl_HEADER_STRING_H
+  gl_HEADER_SYS_STAT_H
+  AC_PROG_MKDIR_P
   gl_SYS_TYPES_H
   AC_PROG_MKDIR_P
+  gl_HEADER_TIME_H
   gl_UNISTD_H
   gl_VALGRIND_TESTS
   gl_VERSION_ETC
@@ -443,7 +506,6 @@ changequote([, ])dnl
     AC_LIBOBJ([accept])
   fi
   gl_SYS_SOCKET_MODULE_INDICATOR([accept])
-  gl_FUNC_ALLOCA
   gl_HEADER_ARPA_INET
   AC_PROG_MKDIR_P
   AC_REQUIRE([gl_HEADER_SYS_SOCKET])
@@ -451,49 +513,20 @@ changequote([, ])dnl
     AC_LIBOBJ([bind])
   fi
   gl_SYS_SOCKET_MODULE_INDICATOR([bind])
-  gl_MODULE_INDICATOR_FOR_TESTS([cloexec])
-  gl_FUNC_CLOSE
-  if test $REPLACE_CLOSE = 1; then
-    AC_LIBOBJ([close])
-  fi
-  gl_UNISTD_MODULE_INDICATOR([close])
   AC_REQUIRE([gl_HEADER_SYS_SOCKET])
   if test "$ac_cv_header_winsock2_h" = yes; then
     AC_LIBOBJ([connect])
   fi
   gl_SYS_SOCKET_MODULE_INDICATOR([connect])
   gl_CTYPE_H
-  gl_FUNC_DUP2
-  if test $HAVE_DUP2 = 0 || test $REPLACE_DUP2 = 1; then
-    AC_LIBOBJ([dup2])
-    gl_PREREQ_DUP2
-  fi
-  gl_UNISTD_MODULE_INDICATOR([dup2])
   gl_ENVIRON
   gl_UNISTD_MODULE_INDICATOR([environ])
-  gl_FUNC_FCNTL
-  if test $HAVE_FCNTL = 0 || test $REPLACE_FCNTL = 1; then
-    AC_LIBOBJ([fcntl])
-  fi
-  gl_FCNTL_MODULE_INDICATOR([fcntl])
-  gl_FCNTL_H
   gl_FUNC_FDOPEN
   if test $REPLACE_FDOPEN = 1; then
     AC_LIBOBJ([fdopen])
     gl_PREREQ_FDOPEN
   fi
   gl_STDIO_MODULE_INDICATOR([fdopen])
-  gl_FUNC_FSTAT
-  if test $REPLACE_FSTAT = 1; then
-    AC_LIBOBJ([fstat])
-    case "$host_os" in
-      mingw*)
-        AC_LIBOBJ([stat-w32])
-        ;;
-    esac
-    gl_PREREQ_FSTAT
-  fi
-  gl_SYS_STAT_MODULE_INDICATOR([fstat])
   gl_FUNC_FTRUNCATE
   if test $HAVE_FTRUNCATE = 0 || test $REPLACE_FTRUNCATE = 1; then
     AC_LIBOBJ([ftruncate])
@@ -505,12 +538,6 @@ changequote([, ])dnl
     AC_LIBOBJ([getcwd-lgpl])
   fi
   gl_UNISTD_MODULE_INDICATOR([getcwd])
-  gl_FUNC_GETDTABLESIZE
-  if test $HAVE_GETDTABLESIZE = 0 || test $REPLACE_GETDTABLESIZE = 1; then
-    AC_LIBOBJ([getdtablesize])
-    gl_PREREQ_GETDTABLESIZE
-  fi
-  gl_UNISTD_MODULE_INDICATOR([getdtablesize])
   gl_FUNC_GETTIMEOFDAY
   if test $HAVE_GETTIMEOFDAY = 0 || test $REPLACE_GETTIMEOFDAY = 1; then
     AC_LIBOBJ([gettimeofday])
@@ -537,7 +564,6 @@ changequote([, ])dnl
   fi
   gl_MODULE_INDICATOR([isblank])
   gl_CTYPE_MODULE_INDICATOR([isblank])
-  AC_REQUIRE([gl_LARGEFILE])
   AC_REQUIRE([gl_HEADER_SYS_SOCKET])
   if test "$ac_cv_header_winsock2_h" = yes; then
     AC_LIBOBJ([listen])
@@ -556,7 +582,6 @@ changequote([, ])dnl
     gl_PREREQ_LSTAT
   fi
   gl_SYS_STAT_MODULE_INDICATOR([lstat])
-  gl_MALLOCA
   gl_FUNC_NANOSLEEP
   if test $HAVE_NANOSLEEP = 0 || test $REPLACE_NANOSLEEP = 1; then
     AC_LIBOBJ([nanosleep])
@@ -566,13 +591,6 @@ changequote([, ])dnl
   AC_CHECK_DECLS_ONCE([alarm])
   gl_HEADER_NETINET_IN
   AC_PROG_MKDIR_P
-  gl_FUNC_OPEN
-  if test $REPLACE_OPEN = 1; then
-    AC_LIBOBJ([open])
-    gl_PREREQ_OPEN
-  fi
-  gl_FCNTL_MODULE_INDICATOR([open])
-  gl_PATHMAX
   gl_FUNC_PERROR
   if test $REPLACE_PERROR = 1; then
     AC_LIBOBJ([perror])
@@ -660,19 +678,6 @@ changequote([, ])dnl
   AC_REQUIRE([gl_SOCKETLIB])
   AC_REQUIRE([gl_SOCKETS])
   gl_TYPE_SOCKLEN_T
-  gl_FUNC_STAT
-  if test $REPLACE_STAT = 1; then
-    AC_LIBOBJ([stat])
-    case "$host_os" in
-      mingw*)
-        AC_LIBOBJ([stat-w32])
-        ;;
-    esac
-    gl_PREREQ_STAT
-  fi
-  gl_SYS_STAT_MODULE_INDICATOR([stat])
-  gl_STAT_TIME
-  gl_STAT_BIRTHTIME
   gl_STDALIGN_H
   AC_REQUIRE([gt_TYPE_WCHAR_T])
   AC_REQUIRE([gt_TYPE_WINT_T])
@@ -696,15 +701,12 @@ changequote([, ])dnl
   AC_REQUIRE([gl_HEADER_SYS_SOCKET])
   AC_PROG_MKDIR_P
   AC_CHECK_FUNCS_ONCE([shutdown])
-  gl_HEADER_SYS_STAT_H
-  AC_PROG_MKDIR_P
   gl_HEADER_SYS_TIME_H
   AC_PROG_MKDIR_P
   gl_HEADER_SYS_UIO
   AC_PROG_MKDIR_P
   gl_THREAD
   AC_REQUIRE([gl_THREADLIB])
-  gl_HEADER_TIME_H
   gl_FUNC_UNSETENV
   if test $HAVE_UNSETENV = 0 || test $REPLACE_UNSETENV = 1; then
     AC_LIBOBJ([unsetenv])
@@ -862,16 +864,27 @@ AC_DEFUN([gl_FILE_LIST], [
   doc/gendocs_template
   doc/gendocs_template_min
   lib/_Noreturn.h
+  lib/alloca.in.h
   lib/arg-nonnull.h
   lib/basename-lgpl.c
   lib/c++defs.h
+  lib/cloexec.c
+  lib/cloexec.h
+  lib/close.c
   lib/dirname-lgpl.c
   lib/dirname.h
+  lib/dup2.c
   lib/errno.in.h
   lib/error.c
   lib/error.h
+  lib/fcntl.c
+  lib/fcntl.in.h
+  lib/fd-hook.c
+  lib/fd-hook.h
   lib/filename.h
+  lib/fstat.c
   lib/getdelim.c
+  lib/getdtablesize.c
   lib/getline.c
   lib/getopt-cdefs.in.h
   lib/getopt-core.h
@@ -888,12 +901,21 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/intprops.h
   lib/limits.in.h
   lib/malloc.c
+  lib/malloca.c
+  lib/malloca.h
   lib/msvc-inval.c
   lib/msvc-inval.h
   lib/msvc-nothrow.c
   lib/msvc-nothrow.h
+  lib/open.c
+  lib/pathmax.h
   lib/progname.c
   lib/progname.h
+  lib/stat-time.c
+  lib/stat-time.h
+  lib/stat-w32.c
+  lib/stat-w32.h
+  lib/stat.c
   lib/stdarg.in.h
   lib/stdbool.in.h
   lib/stddef.in.h
@@ -905,13 +927,16 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/strerror.c
   lib/string.in.h
   lib/stripslash.c
+  lib/sys_stat.in.h
   lib/sys_types.in.h
+  lib/time.in.h
   lib/unistd.c
   lib/unistd.in.h
   lib/verify.h
   lib/version-etc.c
   lib/version-etc.h
   lib/warn-on-use.h
+  lib/xalloc-oversized.h
   m4/00gnulib.m4
   m4/absolute-header.m4
   m4/alloca.m4
@@ -995,6 +1020,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/ssize_t.m4
   m4/stat-time.m4
   m4/stat.m4
+  m4/std-gnu11.m4
   m4/stdalign.m4
   m4/stdarg.m4
   m4/stdbool.m4
@@ -1140,7 +1166,6 @@ AC_DEFUN([gl_FILE_LIST], [
   tests=lib/_Noreturn.h
   tests=lib/accept.c
   tests=lib/alloca.c
-  tests=lib/alloca.in.h
   tests=lib/arg-nonnull.h
   tests=lib/arpa_inet.in.h
   tests=lib/attribute.h
@@ -1150,21 +1175,11 @@ AC_DEFUN([gl_FILE_LIST], [
   tests=lib/c++defs.h
   tests=lib/c-ctype.c
   tests=lib/c-ctype.h
-  tests=lib/cloexec.c
-  tests=lib/cloexec.h
-  tests=lib/close.c
   tests=lib/connect.c
   tests=lib/ctype.in.h
-  tests=lib/dup2.c
-  tests=lib/fcntl.c
-  tests=lib/fcntl.in.h
-  tests=lib/fd-hook.c
-  tests=lib/fd-hook.h
   tests=lib/fdopen.c
-  tests=lib/fstat.c
   tests=lib/ftruncate.c
   tests=lib/getcwd-lgpl.c
-  tests=lib/getdtablesize.c
   tests=lib/gettimeofday.c
   tests=lib/glthread/lock.c
   tests=lib/glthread/lock.h
@@ -1181,12 +1196,8 @@ AC_DEFUN([gl_FILE_LIST], [
   tests=lib/localtime-buffer.c
   tests=lib/localtime-buffer.h
   tests=lib/lstat.c
-  tests=lib/malloca.c
-  tests=lib/malloca.h
   tests=lib/nanosleep.c
   tests=lib/netinet_in.in.h
-  tests=lib/open.c
-  tests=lib/pathmax.h
   tests=lib/perror.c
   tests=lib/pipe.c
   tests=lib/pthread-thread.c
@@ -1208,11 +1219,6 @@ AC_DEFUN([gl_FILE_LIST], [
   tests=lib/socket.c
   tests=lib/sockets.c
   tests=lib/sockets.h
-  tests=lib/stat-time.c
-  tests=lib/stat-time.h
-  tests=lib/stat-w32.c
-  tests=lib/stat-w32.h
-  tests=lib/stat.c
   tests=lib/stdalign.in.h
   tests=lib/strerror_r.c
   tests=lib/symlink.c
@@ -1220,10 +1226,8 @@ AC_DEFUN([gl_FILE_LIST], [
   tests=lib/sys_select.in.h
   tests=lib/sys_socket.c
   tests=lib/sys_socket.in.h
-  tests=lib/sys_stat.in.h
   tests=lib/sys_time.in.h
   tests=lib/sys_uio.in.h
-  tests=lib/time.in.h
   tests=lib/unsetenv.c
   tests=lib/usleep.c
   tests=lib/version-etc-fsf.c
@@ -1243,7 +1247,6 @@ AC_DEFUN([gl_FILE_LIST], [
   tests=lib/windows-thread.h
   tests=lib/windows-tls.c
   tests=lib/windows-tls.h
-  tests=lib/xalloc-oversized.h
   top/GNUmakefile
   top/maint.mk
 ])

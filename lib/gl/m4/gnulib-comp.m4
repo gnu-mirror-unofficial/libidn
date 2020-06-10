@@ -60,6 +60,7 @@ AC_DEFUN([lgl_EARLY],
   # Code from module c-ctype-tests:
   # Code from module c-strcase:
   # Code from module c-strcase-tests:
+  # Code from module c99:
   # Code from module cloexec:
   # Code from module cloexec-tests:
   # Code from module close:
@@ -206,6 +207,7 @@ AC_DEFUN([lgl_EARLY],
   # Code from module stat-tests:
   # Code from module stat-time:
   # Code from module stat-time-tests:
+  # Code from module std-gnu11:
   # Code from module stdalign:
   # Code from module stdalign-tests:
   # Code from module stdbool:
@@ -982,6 +984,7 @@ AC_DEFUN([lgl_FILE_LIST], [
   m4/ssize_t.m4
   m4/stat-time.m4
   m4/stat.m4
+  m4/std-gnu11.m4
   m4/stdalign.m4
   m4/stdbool.m4
   m4/stddef_h.m4

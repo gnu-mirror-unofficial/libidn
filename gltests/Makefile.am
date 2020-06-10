@@ -49,7 +49,7 @@ AM_CPPFLAGS = \
   -I.. -I$(srcdir)/.. \
   -I../gl -I$(srcdir)/../gl
 
-LDADD = libtests.a ../gl/libgnu.la libtests.a $(LIBTESTS_LIBDEPS)
+LDADD = libtests.a ../gl/libgnu.la libtests.a ../gl/libgnu.la $(LIBTESTS_LIBDEPS)
 
 libtests_a_SOURCES =
 libtests_a_LIBADD = $(gltests_LIBOBJS)
@@ -87,29 +87,6 @@ EXTRA_libtests_a_SOURCES += alloca.c
 libtests_a_LIBADD += @ALLOCA@
 libtests_a_DEPENDENCIES += @ALLOCA@
 ## end   gnulib module alloca
-
-## begin gnulib module alloca-opt
-
-BUILT_SOURCES += $(ALLOCA_H)
-
-# We need the following in order to create <alloca.h> when the system
-# doesn't have one that works with the given compiler.
-if GL_GENERATE_ALLOCA_H
-alloca.h: alloca.in.h $(top_builddir)/config.status
-	$(AM_V_GEN)rm -f $@-t $@ && \
-	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */'; \
-	  sed -e 's|@''HAVE_ALLOCA_H''@|$(HAVE_ALLOCA_H)|g' < $(srcdir)/alloca.in.h; \
-	} > $@-t && \
-	mv -f $@-t $@
-else
-alloca.h: $(top_builddir)/config.status
-	rm -f $@
-endif
-MOSTLYCLEANFILES += alloca.h alloca.h-t
-
-EXTRA_DIST += alloca.in.h
-
-## end   gnulib module alloca-opt
 
 ## begin gnulib module alloca-opt-tests
 
@@ -220,14 +197,6 @@ EXTRA_DIST += test-c-ctype.c macros.h
 
 ## end   gnulib module c-ctype-tests
 
-## begin gnulib module cloexec
-
-libtests_a_SOURCES += cloexec.c
-
-EXTRA_DIST += cloexec.h
-
-## end   gnulib module cloexec
-
 ## begin gnulib module cloexec-tests
 
 TESTS += test-cloexec
@@ -235,15 +204,6 @@ check_PROGRAMS += test-cloexec
 EXTRA_DIST += test-cloexec.c macros.h
 
 ## end   gnulib module cloexec-tests
-
-## begin gnulib module close
-
-
-EXTRA_DIST += close.c
-
-EXTRA_libtests_a_SOURCES += close.c
-
-## end   gnulib module close
 
 ## begin gnulib module close-tests
 
@@ -306,15 +266,6 @@ EXTRA_DIST += test-ctype.c
 
 ## end   gnulib module ctype-tests
 
-## begin gnulib module dup2
-
-
-EXTRA_DIST += dup2.c
-
-EXTRA_libtests_a_SOURCES += dup2.c
-
-## end   gnulib module dup2
-
 ## begin gnulib module dup2-tests
 
 TESTS += test-dup2
@@ -341,52 +292,6 @@ EXTRA_DIST += test-errno.c
 
 ## end   gnulib module errno-tests
 
-## begin gnulib module fcntl
-
-
-EXTRA_DIST += fcntl.c
-
-EXTRA_libtests_a_SOURCES += fcntl.c
-
-## end   gnulib module fcntl
-
-## begin gnulib module fcntl-h
-
-BUILT_SOURCES += fcntl.h
-
-# We need the following in order to create <fcntl.h> when the system
-# doesn't have one that works with the given compiler.
-fcntl.h: fcntl.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(ARG_NONNULL_H) $(WARN_ON_USE_H)
-	$(AM_V_GEN)rm -f $@-t $@ && \
-	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */'; \
-	  sed -e 's|@''GUARD_PREFIX''@|GL|g' \
-	      -e 's|@''INCLUDE_NEXT''@|$(INCLUDE_NEXT)|g' \
-	      -e 's|@''PRAGMA_SYSTEM_HEADER''@|@PRAGMA_SYSTEM_HEADER@|g' \
-	      -e 's|@''PRAGMA_COLUMNS''@|@PRAGMA_COLUMNS@|g' \
-	      -e 's|@''NEXT_FCNTL_H''@|$(NEXT_FCNTL_H)|g' \
-	      -e 's/@''GNULIB_CREAT''@/$(GNULIB_CREAT)/g' \
-	      -e 's/@''GNULIB_FCNTL''@/$(GNULIB_FCNTL)/g' \
-	      -e 's/@''GNULIB_NONBLOCKING''@/$(GNULIB_NONBLOCKING)/g' \
-	      -e 's/@''GNULIB_OPEN''@/$(GNULIB_OPEN)/g' \
-	      -e 's/@''GNULIB_OPENAT''@/$(GNULIB_OPENAT)/g' \
-	      -e 's|@''HAVE_FCNTL''@|$(HAVE_FCNTL)|g' \
-	      -e 's|@''HAVE_OPENAT''@|$(HAVE_OPENAT)|g' \
-	      -e 's|@''REPLACE_CREAT''@|$(REPLACE_CREAT)|g' \
-	      -e 's|@''REPLACE_FCNTL''@|$(REPLACE_FCNTL)|g' \
-	      -e 's|@''REPLACE_OPEN''@|$(REPLACE_OPEN)|g' \
-	      -e 's|@''REPLACE_OPENAT''@|$(REPLACE_OPENAT)|g' \
-	      -e '/definitions of _GL_FUNCDECL_RPL/r $(CXXDEFS_H)' \
-	      -e '/definition of _GL_ARG_NONNULL/r $(ARG_NONNULL_H)' \
-	      -e '/definition of _GL_WARN_ON_USE/r $(WARN_ON_USE_H)' \
-	      < $(srcdir)/fcntl.in.h; \
-	} > $@-t && \
-	mv $@-t $@
-MOSTLYCLEANFILES += fcntl.h fcntl.h-t
-
-EXTRA_DIST += fcntl.in.h
-
-## end   gnulib module fcntl-h
-
 ## begin gnulib module fcntl-tests
 
 TESTS += test-fcntl
@@ -394,14 +299,6 @@ check_PROGRAMS += test-fcntl
 EXTRA_DIST += test-fcntl.c signature.h macros.h
 
 ## end   gnulib module fcntl-tests
-
-## begin gnulib module fd-hook
-
-libtests_a_SOURCES += fd-hook.c
-
-EXTRA_DIST += fd-hook.h
-
-## end   gnulib module fd-hook
 
 ## begin gnulib module fdopen
 
@@ -443,15 +340,6 @@ check_PROGRAMS += test-fread
 EXTRA_DIST += test-fread.c signature.h macros.h
 
 ## end   gnulib module fread-tests
-
-## begin gnulib module fstat
-
-
-EXTRA_DIST += fstat.c stat-w32.c stat-w32.h
-
-EXTRA_libtests_a_SOURCES += fstat.c stat-w32.c
-
-## end   gnulib module fstat
 
 ## begin gnulib module fstat-tests
 
@@ -512,15 +400,6 @@ MOSTLYCLEANFILES += test-getdelim.txt
 EXTRA_DIST += test-getdelim.c signature.h macros.h
 
 ## end   gnulib module getdelim-tests
-
-## begin gnulib module getdtablesize
-
-
-EXTRA_DIST += getdtablesize.c
-
-EXTRA_libtests_a_SOURCES += getdtablesize.c
-
-## end   gnulib module getdtablesize
 
 ## begin gnulib module getdtablesize-tests
 
@@ -784,14 +663,6 @@ EXTRA_DIST += test-lstat.h test-lstat.c signature.h macros.h
 
 ## end   gnulib module lstat-tests
 
-## begin gnulib module malloca
-
-libtests_a_SOURCES += malloca.c
-
-EXTRA_DIST += malloca.h
-
-## end   gnulib module malloca
-
 ## begin gnulib module malloca-tests
 
 TESTS += test-malloca
@@ -858,15 +729,6 @@ EXTRA_DIST += test-netinet_in.c
 
 ## end   gnulib module netinet_in-tests
 
-## begin gnulib module open
-
-
-EXTRA_DIST += open.c
-
-EXTRA_libtests_a_SOURCES += open.c
-
-## end   gnulib module open
-
 ## begin gnulib module open-tests
 
 TESTS += test-open
@@ -874,13 +736,6 @@ check_PROGRAMS += test-open
 EXTRA_DIST += test-open.h test-open.c signature.h macros.h
 
 ## end   gnulib module open-tests
-
-## begin gnulib module pathmax
-
-
-EXTRA_DIST += pathmax.h
-
-## end   gnulib module pathmax
 
 ## begin gnulib module pathmax-tests
 
@@ -1417,15 +1272,6 @@ EXTRA_DIST += test-sockets.c
 
 ## end   gnulib module sockets-tests
 
-## begin gnulib module stat
-
-
-EXTRA_DIST += stat-w32.c stat-w32.h stat.c
-
-EXTRA_libtests_a_SOURCES += stat-w32.c stat.c
-
-## end   gnulib module stat
-
 ## begin gnulib module stat-tests
 
 TESTS += test-stat
@@ -1434,14 +1280,6 @@ test_stat_LDADD = $(LDADD) $(LIBINTL)
 EXTRA_DIST += test-stat.h test-stat.c signature.h macros.h
 
 ## end   gnulib module stat-tests
-
-## begin gnulib module stat-time
-
-libtests_a_SOURCES += stat-time.c
-
-EXTRA_DIST += stat-time.h
-
-## end   gnulib module stat-time
 
 ## begin gnulib module stat-time-tests
 
@@ -1699,71 +1537,6 @@ EXTRA_DIST += test-sys_socket.c
 
 ## end   gnulib module sys_socket-tests
 
-## begin gnulib module sys_stat
-
-BUILT_SOURCES += sys/stat.h
-
-# We need the following in order to create <sys/stat.h> when the system
-# has one that is incomplete.
-sys/stat.h: sys_stat.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(ARG_NONNULL_H) $(WARN_ON_USE_H)
-	$(AM_V_at)$(MKDIR_P) sys
-	$(AM_V_GEN)rm -f $@-t $@ && \
-	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */'; \
-	  sed -e 's|@''GUARD_PREFIX''@|GL|g' \
-	      -e 's|@''INCLUDE_NEXT''@|$(INCLUDE_NEXT)|g' \
-	      -e 's|@''PRAGMA_SYSTEM_HEADER''@|@PRAGMA_SYSTEM_HEADER@|g' \
-	      -e 's|@''PRAGMA_COLUMNS''@|@PRAGMA_COLUMNS@|g' \
-	      -e 's|@''NEXT_SYS_STAT_H''@|$(NEXT_SYS_STAT_H)|g' \
-	      -e 's|@''WINDOWS_64_BIT_ST_SIZE''@|$(WINDOWS_64_BIT_ST_SIZE)|g' \
-	      -e 's|@''WINDOWS_STAT_TIMESPEC''@|$(WINDOWS_STAT_TIMESPEC)|g' \
-	      -e 's/@''GNULIB_FCHMODAT''@/$(GNULIB_FCHMODAT)/g' \
-	      -e 's/@''GNULIB_FSTAT''@/$(GNULIB_FSTAT)/g' \
-	      -e 's/@''GNULIB_FSTATAT''@/$(GNULIB_FSTATAT)/g' \
-	      -e 's/@''GNULIB_FUTIMENS''@/$(GNULIB_FUTIMENS)/g' \
-	      -e 's/@''GNULIB_LCHMOD''@/$(GNULIB_LCHMOD)/g' \
-	      -e 's/@''GNULIB_LSTAT''@/$(GNULIB_LSTAT)/g' \
-	      -e 's/@''GNULIB_MKDIRAT''@/$(GNULIB_MKDIRAT)/g' \
-	      -e 's/@''GNULIB_MKFIFO''@/$(GNULIB_MKFIFO)/g' \
-	      -e 's/@''GNULIB_MKFIFOAT''@/$(GNULIB_MKFIFOAT)/g' \
-	      -e 's/@''GNULIB_MKNOD''@/$(GNULIB_MKNOD)/g' \
-	      -e 's/@''GNULIB_MKNODAT''@/$(GNULIB_MKNODAT)/g' \
-	      -e 's/@''GNULIB_STAT''@/$(GNULIB_STAT)/g' \
-	      -e 's/@''GNULIB_UTIMENSAT''@/$(GNULIB_UTIMENSAT)/g' \
-	      -e 's/@''GNULIB_OVERRIDES_STRUCT_STAT''@/$(GNULIB_OVERRIDES_STRUCT_STAT)/g' \
-	      -e 's|@''HAVE_FCHMODAT''@|$(HAVE_FCHMODAT)|g' \
-	      -e 's|@''HAVE_FSTATAT''@|$(HAVE_FSTATAT)|g' \
-	      -e 's|@''HAVE_FUTIMENS''@|$(HAVE_FUTIMENS)|g' \
-	      -e 's|@''HAVE_LCHMOD''@|$(HAVE_LCHMOD)|g' \
-	      -e 's|@''HAVE_LSTAT''@|$(HAVE_LSTAT)|g' \
-	      -e 's|@''HAVE_MKDIRAT''@|$(HAVE_MKDIRAT)|g' \
-	      -e 's|@''HAVE_MKFIFO''@|$(HAVE_MKFIFO)|g' \
-	      -e 's|@''HAVE_MKFIFOAT''@|$(HAVE_MKFIFOAT)|g' \
-	      -e 's|@''HAVE_MKNOD''@|$(HAVE_MKNOD)|g' \
-	      -e 's|@''HAVE_MKNODAT''@|$(HAVE_MKNODAT)|g' \
-	      -e 's|@''HAVE_UTIMENSAT''@|$(HAVE_UTIMENSAT)|g' \
-	      -e 's|@''REPLACE_FCHMODAT''@|$(REPLACE_FCHMODAT)|g' \
-	      -e 's|@''REPLACE_FSTAT''@|$(REPLACE_FSTAT)|g' \
-	      -e 's|@''REPLACE_FSTATAT''@|$(REPLACE_FSTATAT)|g' \
-	      -e 's|@''REPLACE_FUTIMENS''@|$(REPLACE_FUTIMENS)|g' \
-	      -e 's|@''REPLACE_LSTAT''@|$(REPLACE_LSTAT)|g' \
-	      -e 's|@''REPLACE_MKDIR''@|$(REPLACE_MKDIR)|g' \
-	      -e 's|@''REPLACE_MKFIFO''@|$(REPLACE_MKFIFO)|g' \
-	      -e 's|@''REPLACE_MKNOD''@|$(REPLACE_MKNOD)|g' \
-	      -e 's|@''REPLACE_STAT''@|$(REPLACE_STAT)|g' \
-	      -e 's|@''REPLACE_UTIMENSAT''@|$(REPLACE_UTIMENSAT)|g' \
-	      -e '/definitions of _GL_FUNCDECL_RPL/r $(CXXDEFS_H)' \
-	      -e '/definition of _GL_ARG_NONNULL/r $(ARG_NONNULL_H)' \
-	      -e '/definition of _GL_WARN_ON_USE/r $(WARN_ON_USE_H)' \
-	      < $(srcdir)/sys_stat.in.h; \
-	} > $@-t && \
-	mv $@-t $@
-MOSTLYCLEANFILES += sys/stat.h sys/stat.h-t
-MOSTLYCLEANDIRS += sys
-
-EXTRA_DIST += sys_stat.in.h
-
-## end   gnulib module sys_stat
-
 ## begin gnulib module sys_time
 
 BUILT_SOURCES += sys/time.h
@@ -1878,61 +1651,6 @@ libtests_a_SOURCES += glthread/threadlib.c
 
 ## end   gnulib module threadlib
 
-## begin gnulib module time
-
-BUILT_SOURCES += time.h
-
-# We need the following in order to create <time.h> when the system
-# doesn't have one that works with the given compiler.
-time.h: time.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(ARG_NONNULL_H) $(WARN_ON_USE_H)
-	$(AM_V_GEN)rm -f $@-t $@ && \
-	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */' && \
-	  sed -e 's|@''GUARD_PREFIX''@|GL|g' \
-	      -e 's|@''INCLUDE_NEXT''@|$(INCLUDE_NEXT)|g' \
-	      -e 's|@''PRAGMA_SYSTEM_HEADER''@|@PRAGMA_SYSTEM_HEADER@|g' \
-	      -e 's|@''PRAGMA_COLUMNS''@|@PRAGMA_COLUMNS@|g' \
-	      -e 's|@''NEXT_TIME_H''@|$(NEXT_TIME_H)|g' \
-	      -e 's/@''GNULIB_CTIME''@/$(GNULIB_CTIME)/g' \
-	      -e 's/@''GNULIB_LOCALTIME''@/$(GNULIB_LOCALTIME)/g' \
-	      -e 's/@''GNULIB_MKTIME''@/$(GNULIB_MKTIME)/g' \
-	      -e 's/@''GNULIB_NANOSLEEP''@/$(GNULIB_NANOSLEEP)/g' \
-	      -e 's/@''GNULIB_STRFTIME''@/$(GNULIB_STRFTIME)/g' \
-	      -e 's/@''GNULIB_STRPTIME''@/$(GNULIB_STRPTIME)/g' \
-	      -e 's/@''GNULIB_TIMEGM''@/$(GNULIB_TIMEGM)/g' \
-	      -e 's/@''GNULIB_TIME_R''@/$(GNULIB_TIME_R)/g' \
-	      -e 's/@''GNULIB_TIME_RZ''@/$(GNULIB_TIME_RZ)/g' \
-	      -e 's/@''GNULIB_TZSET''@/$(GNULIB_TZSET)/g' \
-	      -e 's|@''HAVE_DECL_LOCALTIME_R''@|$(HAVE_DECL_LOCALTIME_R)|g' \
-	      -e 's|@''HAVE_NANOSLEEP''@|$(HAVE_NANOSLEEP)|g' \
-	      -e 's|@''HAVE_STRPTIME''@|$(HAVE_STRPTIME)|g' \
-	      -e 's|@''HAVE_TIMEGM''@|$(HAVE_TIMEGM)|g' \
-	      -e 's|@''HAVE_TIMEZONE_T''@|$(HAVE_TIMEZONE_T)|g' \
-	      -e 's|@''HAVE_TZSET''@|$(HAVE_TZSET)|g' \
-	      -e 's|@''REPLACE_CTIME''@|$(REPLACE_CTIME)|g' \
-	      -e 's|@''REPLACE_GMTIME''@|$(REPLACE_GMTIME)|g' \
-	      -e 's|@''REPLACE_LOCALTIME''@|$(REPLACE_LOCALTIME)|g' \
-	      -e 's|@''REPLACE_LOCALTIME_R''@|$(REPLACE_LOCALTIME_R)|g' \
-	      -e 's|@''REPLACE_MKTIME''@|$(REPLACE_MKTIME)|g' \
-	      -e 's|@''REPLACE_NANOSLEEP''@|$(REPLACE_NANOSLEEP)|g' \
-	      -e 's|@''REPLACE_STRFTIME''@|$(REPLACE_STRFTIME)|g' \
-	      -e 's|@''REPLACE_TIMEGM''@|$(REPLACE_TIMEGM)|g' \
-	      -e 's|@''REPLACE_TZSET''@|$(REPLACE_TZSET)|g' \
-	      -e 's|@''PTHREAD_H_DEFINES_STRUCT_TIMESPEC''@|$(PTHREAD_H_DEFINES_STRUCT_TIMESPEC)|g' \
-	      -e 's|@''SYS_TIME_H_DEFINES_STRUCT_TIMESPEC''@|$(SYS_TIME_H_DEFINES_STRUCT_TIMESPEC)|g' \
-	      -e 's|@''TIME_H_DEFINES_STRUCT_TIMESPEC''@|$(TIME_H_DEFINES_STRUCT_TIMESPEC)|g' \
-	      -e 's|@''UNISTD_H_DEFINES_STRUCT_TIMESPEC''@|$(UNISTD_H_DEFINES_STRUCT_TIMESPEC)|g' \
-	      -e '/definitions of _GL_FUNCDECL_RPL/r $(CXXDEFS_H)' \
-	      -e '/definition of _GL_ARG_NONNULL/r $(ARG_NONNULL_H)' \
-	      -e '/definition of _GL_WARN_ON_USE/r $(WARN_ON_USE_H)' \
-	      < $(srcdir)/time.in.h; \
-	} > $@-t && \
-	mv $@-t $@
-MOSTLYCLEANFILES += time.h time.h-t
-
-EXTRA_DIST += time.in.h
-
-## end   gnulib module time
-
 ## begin gnulib module unsetenv
 
 
@@ -2041,6 +1759,7 @@ wchar.h: wchar.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(ARG_NONNULL_H) 
 	      -e 's/@''GNULIB_WMEMCMP''@/$(GNULIB_WMEMCMP)/g' \
 	      -e 's/@''GNULIB_WMEMCPY''@/$(GNULIB_WMEMCPY)/g' \
 	      -e 's/@''GNULIB_WMEMMOVE''@/$(GNULIB_WMEMMOVE)/g' \
+	      -e 's/@''GNULIB_WMEMPCPY''@/$(GNULIB_WMEMPCPY)/g' \
 	      -e 's/@''GNULIB_WMEMSET''@/$(GNULIB_WMEMSET)/g' \
 	      -e 's/@''GNULIB_WCSLEN''@/$(GNULIB_WCSLEN)/g' \
 	      -e 's/@''GNULIB_WCSNLEN''@/$(GNULIB_WCSNLEN)/g' \
@@ -2081,6 +1800,7 @@ wchar.h: wchar.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(ARG_NONNULL_H) 
 	      -e 's|@''HAVE_WMEMCMP''@|$(HAVE_WMEMCMP)|g' \
 	      -e 's|@''HAVE_WMEMCPY''@|$(HAVE_WMEMCPY)|g' \
 	      -e 's|@''HAVE_WMEMMOVE''@|$(HAVE_WMEMMOVE)|g' \
+	      -e 's|@''HAVE_WMEMPCPY''@|$(HAVE_WMEMPCPY)|g' \
 	      -e 's|@''HAVE_WMEMSET''@|$(HAVE_WMEMSET)|g' \
 	      -e 's|@''HAVE_WCSLEN''@|$(HAVE_WCSLEN)|g' \
 	      -e 's|@''HAVE_WCSNLEN''@|$(HAVE_WCSNLEN)|g' \
@@ -2188,13 +1908,6 @@ EXTRA_DIST += windows-tls.c windows-tls.h
 EXTRA_libtests_a_SOURCES += windows-tls.c
 
 ## end   gnulib module windows-tls
-
-## begin gnulib module xalloc-oversized
-
-
-EXTRA_DIST += xalloc-oversized.h
-
-## end   gnulib module xalloc-oversized
 
 ## begin gnulib module yield
 

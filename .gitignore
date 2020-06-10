@@ -146,6 +146,7 @@ gl/.libs/
 gl/Makefile
 gl/Makefile.in
 gl/alloca.h
+gl/fcntl.h
 gl/getopt.h
 gl/libgnu.la
 gl/limits.h
@@ -155,6 +156,7 @@ gl/stdio.h
 gl/stdlib.h
 gl/string.h
 gl/sys/
+gl/time.h
 gl/unistd.h
 gl/vfprintf.lo
 gl/wchar.h
