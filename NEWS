@@ -2,7 +2,7 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 Copyright (C) 2002-2020 Simon Josefsson
 See the end for copying conditions.
 
-* Version 1.36 (unreleased)
+* Version 1.36 (released 2020-07-22)
 
 ** Fix unlikely memory leak in idna_to_unicode_4z4z().
 Patch from Miroslav Lichvar <mlichvar@redhat.com>.
