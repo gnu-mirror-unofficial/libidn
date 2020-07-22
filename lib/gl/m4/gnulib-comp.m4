@@ -415,7 +415,7 @@ changequote([, ])dnl
   gl_SYS_SOCKET_MODULE_INDICATOR([connect])
   gl_CTYPE_H
   gl_FUNC_DUP2
-  if test $HAVE_DUP2 = 0 || test $REPLACE_DUP2 = 1; then
+  if test $REPLACE_DUP2 = 1; then
     AC_LIBOBJ([dup2])
     gl_PREREQ_DUP2
   fi
@@ -1015,6 +1015,7 @@ AC_DEFUN([lgl_FILE_LIST], [
   m4/wint_t.m4
   m4/yield.m4
   m4/zzgnulib.m4
+  tests/atomic-int-gnulib.h
   tests/init.sh
   tests/macros.h
   tests/nap.h

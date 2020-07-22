@@ -53,6 +53,7 @@ AC_DEFUN([gl_EARLY],
   # Code from module attribute:
   # Code from module autobuild:
   AB_INIT
+  # Code from module basename-lgpl:
   # Code from module binary-io:
   # Code from module binary-io-tests:
   # Code from module bind:
@@ -70,7 +71,6 @@ AC_DEFUN([gl_EARLY],
   # Code from module csharpexec-script:
   # Code from module ctype:
   # Code from module ctype-tests:
-  # Code from module dirname-lgpl:
   # Code from module double-slash-root:
   # Code from module dup2:
   # Code from module dup2-tests:
@@ -301,10 +301,9 @@ AC_DEFUN([gl_INIT],
   AC_CONFIG_FILES([csharpcomp.sh:build-aux/csharpcomp.sh.in])
   # You need to invoke gt_CSHARPEXEC yourself, possibly with arguments.
   AC_CONFIG_FILES([csharpexec.sh:build-aux/csharpexec.sh.in])
-  gl_DIRNAME_LGPL
   gl_DOUBLE_SLASH_ROOT
   gl_FUNC_DUP2
-  if test $HAVE_DUP2 = 0 || test $REPLACE_DUP2 = 1; then
+  if test $REPLACE_DUP2 = 1; then
     AC_LIBOBJ([dup2])
     gl_PREREQ_DUP2
   fi
@@ -386,11 +385,6 @@ AC_DEFUN([gl_INIT],
     [AC_SUBST([CONFIG_INCLUDE], m4_defn([AH_HEADER]))])])
   AC_REQUIRE([AC_PROG_SED])
   AC_REQUIRE([AC_PROG_GREP])
-  gl_FUNC_MALLOC_POSIX
-  if test $REPLACE_MALLOC = 1; then
-    AC_LIBOBJ([malloc])
-  fi
-  gl_STDLIB_MODULE_INDICATOR([malloc-posix])
   gl_MALLOCA
   AC_REQUIRE([gl_MSVC_INVAL])
   if test $HAVE_MSVC_INVALID_PARAMETER_HANDLER = 1; then
@@ -431,7 +425,6 @@ AC_DEFUN([gl_INIT],
   gl_STDDEF_H
   gl_STDINT_H
   gl_STDIO_H
-  gl_STDLIB_H
   gl_FUNC_STRERROR
   if test $REPLACE_STRERROR = 1; then
     AC_LIBOBJ([strerror])
@@ -580,6 +573,11 @@ changequote([, ])dnl
     gl_PREREQ_LSTAT
   fi
   gl_SYS_STAT_MODULE_INDICATOR([lstat])
+  gl_FUNC_MALLOC_POSIX
+  if test $REPLACE_MALLOC = 1; then
+    AC_LIBOBJ([malloc])
+  fi
+  gl_STDLIB_MODULE_INDICATOR([malloc-posix])
   gl_FUNC_NANOSLEEP
   if test $HAVE_NANOSLEEP = 0 || test $REPLACE_NANOSLEEP = 1; then
     AC_LIBOBJ([nanosleep])
@@ -679,6 +677,7 @@ changequote([, ])dnl
   gl_STDALIGN_H
   AC_REQUIRE([gt_TYPE_WCHAR_T])
   AC_REQUIRE([gt_TYPE_WINT_T])
+  gl_STDLIB_H
   gl_FUNC_STRERROR_R
   if test $HAVE_DECL_STRERROR_R = 0 || test $REPLACE_STRERROR_R = 1; then
     AC_LIBOBJ([strerror_r])
@@ -861,16 +860,14 @@ AC_DEFUN([gl_FILE_LIST], [
   doc/fdl-1.3.texi
   doc/gendocs_template
   doc/gendocs_template_min
-  lib/_Noreturn.h
   lib/alloca.in.h
   lib/arg-nonnull.h
   lib/basename-lgpl.c
+  lib/basename-lgpl.h
   lib/c++defs.h
   lib/cloexec.c
   lib/cloexec.h
   lib/close.c
-  lib/dirname-lgpl.c
-  lib/dirname.h
   lib/dup2.c
   lib/errno.in.h
   lib/error.c
@@ -898,7 +895,6 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/gettext.h
   lib/intprops.h
   lib/limits.in.h
-  lib/malloc.c
   lib/malloca.c
   lib/malloca.h
   lib/msvc-inval.c
@@ -919,12 +915,10 @@ AC_DEFUN([gl_FILE_LIST], [
   lib/stddef.in.h
   lib/stdint.in.h
   lib/stdio.in.h
-  lib/stdlib.in.h
   lib/strerror-override.c
   lib/strerror-override.h
   lib/strerror.c
   lib/string.in.h
-  lib/stripslash.c
   lib/sys_stat.in.h
   lib/sys_types.in.h
   lib/time.in.h
@@ -945,7 +939,6 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/csharpcomp.m4
   m4/csharpexec.m4
   m4/ctype.m4
-  m4/dirname.m4
   m4/double-slash-root.m4
   m4/dup2.m4
   m4/eealloc.m4
@@ -1051,6 +1044,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/wint_t.m4
   m4/yield.m4
   m4/zzgnulib.m4
+  tests/atomic-int-gnulib.h
   tests/init.sh
   tests/macros.h
   tests/nap.h
@@ -1192,6 +1186,7 @@ AC_DEFUN([gl_FILE_LIST], [
   tests=lib/localtime-buffer.c
   tests=lib/localtime-buffer.h
   tests=lib/lstat.c
+  tests=lib/malloc.c
   tests=lib/nanosleep.c
   tests=lib/netinet_in.in.h
   tests=lib/perror.c
@@ -1216,6 +1211,7 @@ AC_DEFUN([gl_FILE_LIST], [
   tests=lib/sockets.c
   tests=lib/sockets.h
   tests=lib/stdalign.in.h
+  tests=lib/stdlib.in.h
   tests=lib/strerror_r.c
   tests=lib/symlink.c
   tests=lib/sys_ioctl.in.h

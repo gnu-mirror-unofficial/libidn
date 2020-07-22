@@ -125,6 +125,14 @@ EXTRA_DIST += alloca.in.h
 
 ## end   gnulib module alloca-opt
 
+## begin gnulib module basename-lgpl
+
+libgnu_la_SOURCES += basename-lgpl.c
+
+EXTRA_DIST += basename-lgpl.h
+
+## end   gnulib module basename-lgpl
+
 ## begin gnulib module cloexec
 
 libgnu_la_SOURCES += cloexec.c
@@ -155,14 +163,6 @@ EXTRA_DIST += $(top_srcdir)/build-aux/csharpcomp.sh.in
 EXTRA_DIST += $(top_srcdir)/build-aux/csharpexec.sh.in
 
 ## end   gnulib module csharpexec-script
-
-## begin gnulib module dirname-lgpl
-
-libgnu_la_SOURCES += dirname-lgpl.c basename-lgpl.c stripslash.c
-
-EXTRA_DIST += dirname.h
-
-## end   gnulib module dirname-lgpl
 
 ## begin gnulib module dup2
 
@@ -425,15 +425,6 @@ EXTRA_DIST += $(top_srcdir)/maint.mk
 
 ## end   gnulib module maintainer-makefile
 
-## begin gnulib module malloc-posix
-
-
-EXTRA_DIST += malloc.c
-
-EXTRA_libgnu_la_SOURCES += malloc.c
-
-## end   gnulib module malloc-posix
-
 ## begin gnulib module malloca
 
 libgnu_la_SOURCES += malloca.c
@@ -488,18 +479,6 @@ EXTRA_DIST += $(top_srcdir)/build-aux/pmccabe2html $(top_srcdir)/build-aux/pmcca
 libgnu_la_SOURCES += progname.h progname.c
 
 ## end   gnulib module progname
-
-## begin gnulib module snippet/_Noreturn
-
-# Because this Makefile snippet defines a variable used by other
-# gnulib Makefile snippets, it must be present in all makefiles that
-# need it. This is ensured by the applicability 'all' defined above.
-
-_NORETURN_H=$(srcdir)/_Noreturn.h
-
-EXTRA_DIST += _Noreturn.h
-
-## end   gnulib module snippet/_Noreturn
 
 ## begin gnulib module snippet/arg-nonnull
 
@@ -814,125 +793,6 @@ EXTRA_DIST += stdio.in.h
 
 ## end   gnulib module stdio
 
-## begin gnulib module stdlib
-
-BUILT_SOURCES += stdlib.h
-
-# We need the following in order to create <stdlib.h> when the system
-# doesn't have one that works with the given compiler.
-stdlib.h: stdlib.in.h $(top_builddir)/config.status $(CXXDEFS_H) \
-  $(_NORETURN_H) $(ARG_NONNULL_H) $(WARN_ON_USE_H)
-	$(AM_V_GEN)rm -f $@-t $@ && \
-	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */' && \
-	  sed -e 's|@''GUARD_PREFIX''@|GL|g' \
-	      -e 's|@''INCLUDE_NEXT''@|$(INCLUDE_NEXT)|g' \
-	      -e 's|@''PRAGMA_SYSTEM_HEADER''@|@PRAGMA_SYSTEM_HEADER@|g' \
-	      -e 's|@''PRAGMA_COLUMNS''@|@PRAGMA_COLUMNS@|g' \
-	      -e 's|@''NEXT_STDLIB_H''@|$(NEXT_STDLIB_H)|g' \
-	      -e 's/@''GNULIB__EXIT''@/$(GNULIB__EXIT)/g' \
-	      -e 's/@''GNULIB_ATOLL''@/$(GNULIB_ATOLL)/g' \
-	      -e 's/@''GNULIB_CALLOC_POSIX''@/$(GNULIB_CALLOC_POSIX)/g' \
-	      -e 's/@''GNULIB_CANONICALIZE_FILE_NAME''@/$(GNULIB_CANONICALIZE_FILE_NAME)/g' \
-	      -e 's/@''GNULIB_GETLOADAVG''@/$(GNULIB_GETLOADAVG)/g' \
-	      -e 's/@''GNULIB_GETSUBOPT''@/$(GNULIB_GETSUBOPT)/g' \
-	      -e 's/@''GNULIB_GRANTPT''@/$(GNULIB_GRANTPT)/g' \
-	      -e 's/@''GNULIB_MALLOC_POSIX''@/$(GNULIB_MALLOC_POSIX)/g' \
-	      -e 's/@''GNULIB_MBTOWC''@/$(GNULIB_MBTOWC)/g' \
-	      -e 's/@''GNULIB_MKDTEMP''@/$(GNULIB_MKDTEMP)/g' \
-	      -e 's/@''GNULIB_MKOSTEMP''@/$(GNULIB_MKOSTEMP)/g' \
-	      -e 's/@''GNULIB_MKOSTEMPS''@/$(GNULIB_MKOSTEMPS)/g' \
-	      -e 's/@''GNULIB_MKSTEMP''@/$(GNULIB_MKSTEMP)/g' \
-	      -e 's/@''GNULIB_MKSTEMPS''@/$(GNULIB_MKSTEMPS)/g' \
-	      -e 's/@''GNULIB_POSIX_OPENPT''@/$(GNULIB_POSIX_OPENPT)/g' \
-	      -e 's/@''GNULIB_PTSNAME''@/$(GNULIB_PTSNAME)/g' \
-	      -e 's/@''GNULIB_PTSNAME_R''@/$(GNULIB_PTSNAME_R)/g' \
-	      -e 's/@''GNULIB_PUTENV''@/$(GNULIB_PUTENV)/g' \
-	      -e 's/@''GNULIB_QSORT_R''@/$(GNULIB_QSORT_R)/g' \
-	      -e 's/@''GNULIB_RANDOM''@/$(GNULIB_RANDOM)/g' \
-	      -e 's/@''GNULIB_RANDOM_R''@/$(GNULIB_RANDOM_R)/g' \
-	      -e 's/@''GNULIB_REALLOC_POSIX''@/$(GNULIB_REALLOC_POSIX)/g' \
-	      -e 's/@''GNULIB_REALLOCARRAY''@/$(GNULIB_REALLOCARRAY)/g' \
-	      -e 's/@''GNULIB_REALPATH''@/$(GNULIB_REALPATH)/g' \
-	      -e 's/@''GNULIB_RPMATCH''@/$(GNULIB_RPMATCH)/g' \
-	      -e 's/@''GNULIB_SECURE_GETENV''@/$(GNULIB_SECURE_GETENV)/g' \
-	      -e 's/@''GNULIB_SETENV''@/$(GNULIB_SETENV)/g' \
-	      -e 's/@''GNULIB_STRTOD''@/$(GNULIB_STRTOD)/g' \
-	      -e 's/@''GNULIB_STRTOLD''@/$(GNULIB_STRTOLD)/g' \
-	      -e 's/@''GNULIB_STRTOLL''@/$(GNULIB_STRTOLL)/g' \
-	      -e 's/@''GNULIB_STRTOULL''@/$(GNULIB_STRTOULL)/g' \
-	      -e 's/@''GNULIB_SYSTEM_POSIX''@/$(GNULIB_SYSTEM_POSIX)/g' \
-	      -e 's/@''GNULIB_UNLOCKPT''@/$(GNULIB_UNLOCKPT)/g' \
-	      -e 's/@''GNULIB_UNSETENV''@/$(GNULIB_UNSETENV)/g' \
-	      -e 's/@''GNULIB_WCTOMB''@/$(GNULIB_WCTOMB)/g' \
-	      < $(srcdir)/stdlib.in.h | \
-	  sed -e 's|@''HAVE__EXIT''@|$(HAVE__EXIT)|g' \
-	      -e 's|@''HAVE_ATOLL''@|$(HAVE_ATOLL)|g' \
-	      -e 's|@''HAVE_CANONICALIZE_FILE_NAME''@|$(HAVE_CANONICALIZE_FILE_NAME)|g' \
-	      -e 's|@''HAVE_DECL_GETLOADAVG''@|$(HAVE_DECL_GETLOADAVG)|g' \
-	      -e 's|@''HAVE_GETSUBOPT''@|$(HAVE_GETSUBOPT)|g' \
-	      -e 's|@''HAVE_GRANTPT''@|$(HAVE_GRANTPT)|g' \
-	      -e 's|@''HAVE_INITSTATE''@|$(HAVE_INITSTATE)|g' \
-	      -e 's|@''HAVE_DECL_INITSTATE''@|$(HAVE_DECL_INITSTATE)|g' \
-	      -e 's|@''HAVE_MBTOWC''@|$(HAVE_MBTOWC)|g' \
-	      -e 's|@''HAVE_MKDTEMP''@|$(HAVE_MKDTEMP)|g' \
-	      -e 's|@''HAVE_MKOSTEMP''@|$(HAVE_MKOSTEMP)|g' \
-	      -e 's|@''HAVE_MKOSTEMPS''@|$(HAVE_MKOSTEMPS)|g' \
-	      -e 's|@''HAVE_MKSTEMP''@|$(HAVE_MKSTEMP)|g' \
-	      -e 's|@''HAVE_MKSTEMPS''@|$(HAVE_MKSTEMPS)|g' \
-	      -e 's|@''HAVE_POSIX_OPENPT''@|$(HAVE_POSIX_OPENPT)|g' \
-	      -e 's|@''HAVE_PTSNAME''@|$(HAVE_PTSNAME)|g' \
-	      -e 's|@''HAVE_PTSNAME_R''@|$(HAVE_PTSNAME_R)|g' \
-	      -e 's|@''HAVE_QSORT_R''@|$(HAVE_QSORT_R)|g' \
-	      -e 's|@''HAVE_RANDOM''@|$(HAVE_RANDOM)|g' \
-	      -e 's|@''HAVE_RANDOM_H''@|$(HAVE_RANDOM_H)|g' \
-	      -e 's|@''HAVE_RANDOM_R''@|$(HAVE_RANDOM_R)|g' \
-	      -e 's|@''HAVE_REALLOCARRAY''@|$(HAVE_REALLOCARRAY)|g' \
-	      -e 's|@''HAVE_REALPATH''@|$(HAVE_REALPATH)|g' \
-	      -e 's|@''HAVE_RPMATCH''@|$(HAVE_RPMATCH)|g' \
-	      -e 's|@''HAVE_SECURE_GETENV''@|$(HAVE_SECURE_GETENV)|g' \
-	      -e 's|@''HAVE_DECL_SETENV''@|$(HAVE_DECL_SETENV)|g' \
-	      -e 's|@''HAVE_SETSTATE''@|$(HAVE_SETSTATE)|g' \
-	      -e 's|@''HAVE_DECL_SETSTATE''@|$(HAVE_DECL_SETSTATE)|g' \
-	      -e 's|@''HAVE_STRTOD''@|$(HAVE_STRTOD)|g' \
-	      -e 's|@''HAVE_STRTOLD''@|$(HAVE_STRTOLD)|g' \
-	      -e 's|@''HAVE_STRTOLL''@|$(HAVE_STRTOLL)|g' \
-	      -e 's|@''HAVE_STRTOULL''@|$(HAVE_STRTOULL)|g' \
-	      -e 's|@''HAVE_STRUCT_RANDOM_DATA''@|$(HAVE_STRUCT_RANDOM_DATA)|g' \
-	      -e 's|@''HAVE_SYS_LOADAVG_H''@|$(HAVE_SYS_LOADAVG_H)|g' \
-	      -e 's|@''HAVE_UNLOCKPT''@|$(HAVE_UNLOCKPT)|g' \
-	      -e 's|@''HAVE_DECL_UNSETENV''@|$(HAVE_DECL_UNSETENV)|g' \
-	      -e 's|@''REPLACE_CALLOC''@|$(REPLACE_CALLOC)|g' \
-	      -e 's|@''REPLACE_CANONICALIZE_FILE_NAME''@|$(REPLACE_CANONICALIZE_FILE_NAME)|g' \
-	      -e 's|@''REPLACE_INITSTATE''@|$(REPLACE_INITSTATE)|g' \
-	      -e 's|@''REPLACE_MALLOC''@|$(REPLACE_MALLOC)|g' \
-	      -e 's|@''REPLACE_MBTOWC''@|$(REPLACE_MBTOWC)|g' \
-	      -e 's|@''REPLACE_MKSTEMP''@|$(REPLACE_MKSTEMP)|g' \
-	      -e 's|@''REPLACE_PTSNAME''@|$(REPLACE_PTSNAME)|g' \
-	      -e 's|@''REPLACE_PTSNAME_R''@|$(REPLACE_PTSNAME_R)|g' \
-	      -e 's|@''REPLACE_PUTENV''@|$(REPLACE_PUTENV)|g' \
-	      -e 's|@''REPLACE_QSORT_R''@|$(REPLACE_QSORT_R)|g' \
-	      -e 's|@''REPLACE_RANDOM''@|$(REPLACE_RANDOM)|g' \
-	      -e 's|@''REPLACE_RANDOM_R''@|$(REPLACE_RANDOM_R)|g' \
-	      -e 's|@''REPLACE_REALLOC''@|$(REPLACE_REALLOC)|g' \
-	      -e 's|@''REPLACE_REALPATH''@|$(REPLACE_REALPATH)|g' \
-	      -e 's|@''REPLACE_SETENV''@|$(REPLACE_SETENV)|g' \
-	      -e 's|@''REPLACE_SETSTATE''@|$(REPLACE_SETSTATE)|g' \
-	      -e 's|@''REPLACE_STRTOD''@|$(REPLACE_STRTOD)|g' \
-	      -e 's|@''REPLACE_STRTOLD''@|$(REPLACE_STRTOLD)|g' \
-	      -e 's|@''REPLACE_UNSETENV''@|$(REPLACE_UNSETENV)|g' \
-	      -e 's|@''REPLACE_WCTOMB''@|$(REPLACE_WCTOMB)|g' \
-	      -e '/definitions of _GL_FUNCDECL_RPL/r $(CXXDEFS_H)' \
-	      -e '/definition of _Noreturn/r $(_NORETURN_H)' \
-	      -e '/definition of _GL_ARG_NONNULL/r $(ARG_NONNULL_H)' \
-	      -e '/definition of _GL_WARN_ON_USE/r $(WARN_ON_USE_H)'; \
-	} > $@-t && \
-	mv $@-t $@
-MOSTLYCLEANFILES += stdlib.h stdlib.h-t
-
-EXTRA_DIST += stdlib.in.h
-
-## end   gnulib module stdlib
-
 ## begin gnulib module strerror
 
 
@@ -1008,7 +868,6 @@ string.h: string.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(ARG_NONNULL_H
 	      -e 's|@''HAVE_FFSL''@|$(HAVE_FFSL)|g' \
 	      -e 's|@''HAVE_FFSLL''@|$(HAVE_FFSLL)|g' \
 	      -e 's|@''HAVE_MBSLEN''@|$(HAVE_MBSLEN)|g' \
-	      -e 's|@''HAVE_MEMCHR''@|$(HAVE_MEMCHR)|g' \
 	      -e 's|@''HAVE_DECL_MEMMEM''@|$(HAVE_DECL_MEMMEM)|g' \
 	      -e 's|@''HAVE_MEMPCPY''@|$(HAVE_MEMPCPY)|g' \
 	      -e 's|@''HAVE_DECL_MEMRCHR''@|$(HAVE_DECL_MEMRCHR)|g' \
@@ -1074,6 +933,7 @@ sys/stat.h: sys_stat.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(ARG_NONNU
 	      -e 's/@''GNULIB_FSTAT''@/$(GNULIB_FSTAT)/g' \
 	      -e 's/@''GNULIB_FSTATAT''@/$(GNULIB_FSTATAT)/g' \
 	      -e 's/@''GNULIB_FUTIMENS''@/$(GNULIB_FUTIMENS)/g' \
+	      -e 's/@''GNULIB_GETUMASK''@/$(GNULIB_GETUMASK)/g' \
 	      -e 's/@''GNULIB_LCHMOD''@/$(GNULIB_LCHMOD)/g' \
 	      -e 's/@''GNULIB_LSTAT''@/$(GNULIB_LSTAT)/g' \
 	      -e 's/@''GNULIB_MKDIRAT''@/$(GNULIB_MKDIRAT)/g' \
@@ -1087,6 +947,7 @@ sys/stat.h: sys_stat.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(ARG_NONNU
 	      -e 's|@''HAVE_FCHMODAT''@|$(HAVE_FCHMODAT)|g' \
 	      -e 's|@''HAVE_FSTATAT''@|$(HAVE_FSTATAT)|g' \
 	      -e 's|@''HAVE_FUTIMENS''@|$(HAVE_FUTIMENS)|g' \
+	      -e 's|@''HAVE_GETUMASK''@|$(HAVE_GETUMASK)|g' \
 	      -e 's|@''HAVE_LCHMOD''@|$(HAVE_LCHMOD)|g' \
 	      -e 's|@''HAVE_LSTAT''@|$(HAVE_LSTAT)|g' \
 	      -e 's|@''HAVE_MKDIRAT''@|$(HAVE_MKDIRAT)|g' \
@@ -1274,7 +1135,6 @@ unistd.h: unistd.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(ARG_NONNULL_H
 	      < $(srcdir)/unistd.in.h | \
 	  sed -e 's|@''HAVE_CHOWN''@|$(HAVE_CHOWN)|g' \
 	      -e 's|@''HAVE_COPY_FILE_RANGE''@|$(HAVE_COPY_FILE_RANGE)|g' \
-	      -e 's|@''HAVE_DUP2''@|$(HAVE_DUP2)|g' \
 	      -e 's|@''HAVE_DUP3''@|$(HAVE_DUP3)|g' \
 	      -e 's|@''HAVE_EUIDACCESS''@|$(HAVE_EUIDACCESS)|g' \
 	      -e 's|@''HAVE_FACCESSAT''@|$(HAVE_FACCESSAT)|g' \
