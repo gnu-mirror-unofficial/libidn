@@ -205,9 +205,9 @@ binaries-upload:
 source:
 	git tag -u 54265e8c -m $(VERSION) $(tag)
 
-release-check: syntax-check i18n tarball binaries gendoc-copy gtkdoc-copy coverage-my coverage-copy clang clang-copy cyclo-copy javadoc-copy doxygen-copy
+release-check: syntax-check i18n tarball binaries gendoc-copy gtkdoc-copy javadoc-copy doxygen-copy coverage-my coverage-copy clang clang-copy cyclo-copy
 
-release-upload-www: gendoc-upload gtkdoc-upload coverage-upload clang-upload cyclo-upload javadoc-upload doxygen-upload
+release-upload-www: gendoc-upload gtkdoc-upload javadoc-upload doxygen-upload coverage-upload clang-upload cyclo-upload
 
 release-upload-ftp:
 	build-aux/gnupload --to ftp.gnu.org:$(PACKAGE) $(distdir).tar.gz

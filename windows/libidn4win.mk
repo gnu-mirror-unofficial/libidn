@@ -28,7 +28,7 @@ all:
 libidn4win: libidn4win32 libidn4win64
 
 libidn4win32:
-	$(MAKE) -f libidn4win.mk doit ARCH=32 HOST=i686-w64-mingw32 CHECK=check
+	$(MAKE) -f libidn4win.mk doit ARCH=32 HOST=i686-w64-mingw32
 
 libidn4win64:
 	$(MAKE) -f libidn4win.mk doit ARCH=64 HOST=x86_64-w64-mingw32
