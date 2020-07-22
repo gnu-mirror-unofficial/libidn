@@ -1,5 +1,5 @@
 To: help-libidn@gnu.org, info-gnu@gnu.org
-Subject: Libidn 1.35 released
+Subject: Libidn 1.36 released
 <#part sign=pgpmime>
 GNU Libidn is a fully documented implementation of the Stringprep,
 Punycode and IDNA specifications.  Libidn's purpose is to encode and
@@ -8,14 +8,24 @@ and Java libraries.
 
 Noteworthy changes since the last release (from NEWS file):
 
-* Version 1.35 (2018-05-09)
+* Version 1.36 (released 2020-07-22)
 
-** Reflect ABI/API breakage in version 1.34
-   Reported-by: Miroslav Lichvar
+** Fix unlikely memory leak in idna_to_unicode_4z4z().
+Patch from Miroslav Lichvar <mlichvar@redhat.com>.
 
-** Added new gnulib files to repository
+** Check codepoint validity in punycode_decode() and punycode_decode().
+Reported-by: Mike Schiffman (Farsight Security, Inc.).
 
-** Fix build issues introduced in 1.34
+** tld: Add U+00EF to .nl TLD table.
+Reported by Trond Haugen <trond.haugen@norid.no>.
+
+** Indent code.
+
+** Translation fixes.
+
+** Update gnulib files.
+
+** API and ABI is backwards compatible with the previous version.
 
 The C library contains a generic Stringprep implementation.  Profiles
 for Nameprep, iSCSI, SASL, XMPP and Kerberos V5 are included.  Punycode
@@ -84,23 +94,46 @@ If you need help to use Libidn, or want to help others, you are
 invited to join our help-libidn mailing list, see:
   https://lists.gnu.org/mailman/listinfo/help-libidn
 
-Here are the compressed sources (3.4MB):
-  https://ftp.gnu.org/gnu/libidn/libidn-1.35.tar.gz
+Here are the compressed sources (4.4MB):
+  https://ftp.gnu.org/gnu/libidn/libidn-1.36.tar.gz
 
 Here are GPG detached signatures:
-  https://ftp.gnu.org/gnu/libidn/libidn-1.35.tar.gz.sig
+  https://ftp.gnu.org/gnu/libidn/libidn-1.36.tar.gz.sig
 
 Here are the SHA-1 and SHA-224 signatures:
 
-8701e3d01df25431802ce483756ecad698156835  libidn-1.35.tar.gz
-92fc0d5e2f790bc1ea2359d7ff72798ce59c901118d5a9ac0bf8ff07  libidn-1.35.tar.gz
+a543823486a1077608f78de187e528a5ea833d5b  libidn-1.36.tar.gz
+4a842693133c89fbb9a8ec953ef777fd8e6b86cea90adb7944ae2e44  libidn-1.36.tar.gz
 
-The software is cryptographically signed by the author using an OpenPGP
-key identified by the following information:
+We provide Windows binaries built using MinGW-w64 with the build script
+windows/libidn4win.mk, for 32-bit and 64-bit x86 architecures:
 
-pub   rsa4096/0x08302DB6A2670428 2014-06-26 [SC] [expires: 2018-06-12]
-      Key fingerprint = 1CB2 7DBC 9861 4B2D 5841  646D 0830 2DB6 A267 0428
-uid                   [ultimate] Tim Rühsen <tim.ruehsen@gmx.de>
+  https://ftp.gnu.org/gnu/libidn/libidn-1.36-win32.zip
+  https://ftp.gnu.org/gnu/libidn/libidn-1.36-win32.zip.sig
+  https://ftp.gnu.org/gnu/libidn/libidn-1.36-win64.zip
+  https://ftp.gnu.org/gnu/libidn/libidn-1.36-win64.zip.sig
+
+Here are the SHA-1 and SHA-224 signatures:
+
+dba943af7da9a837e9394360a46e42bccb206154  libidn-1.36-win32.zip
+f296490aee3d75a99ecbb54f32cf661d0d903398  libidn-1.36-win64.zip
+3fb588c116ad4478eabadb34f465cea6be31f8067a773504084c2865  libidn-1.36-win32.zip
+fff343dc65a127866394e0fa1d39bfaba74dbe0fe321ec5593b33f93  libidn-1.36-win64.zip
+
+The following OpenPGP keys are used to cryptographically sign the
+software releases:
+
+Simon Josefsson <simon@josefsson.org>
+rsa3744 2014-06-22
+9AA9 BDB1 1BB1 B99A 2128  5A33 0664 A769 5426 5E8C
+
+Simon Josefsson <simon@josefsson.org>
+ed25519 2019-03-20
+B1D2 BD13 75BE CB78 4CF4  F8C4 D73C F638 C53C 06BE
+
+Tim Rühsen <tim.ruehsen@gmx.de>
+rsa4096 2014-06-26
+1CB2 7DBC 9861 4B2D 5841  646D 0830 2DB6 A267 0428
 
 Code coverage, clang-analyzer output, and cyclomatic code complexity charts:
   https://www.gnu.org/software/libidn/coverage/
@@ -108,4 +141,4 @@ Code coverage, clang-analyzer output, and cyclomatic code complexity charts:
   https://www.gnu.org/software/libidn/cyclo/
 
 Happy hacking,
-Tim
+Simon
