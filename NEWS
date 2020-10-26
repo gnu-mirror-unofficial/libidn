@@ -4,6 +4,10 @@ See the end for copying conditions.
 
 * Version 1.37 (unreleased)
 
+** doc: Fix codespell typos.
+
+** Translation fixes.
+
 ** API and ABI is backwards compatible with the previous version.
 
 * Version 1.36 (released 2020-07-22)
