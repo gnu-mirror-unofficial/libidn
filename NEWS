@@ -1402,7 +1402,7 @@ entry points with this modification were added.
 
 ** API and ABI is not backwards compatible.
 In punycode.h and stringprep.h the "unsigned long" data type was
-changed into "uint32_t", which cause a API and ABI missmatch.  For
+changed into "uint32_t", which cause a API and ABI mismatch.  For
 idna.h, the old entry points that used "unsigned long" still exist,
 and new entry points that uses "uint32_t" was added.  To update your
 application, you probably only need to change "unsigned long" to
