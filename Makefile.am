@@ -16,11 +16,11 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-SUBDIRS = gl lib/gl lib po src
+SUBDIRS = gl lib/gl lib po
 if ENABLE_DOC
 SUBDIRS += doc
 endif
-SUBDIRS += tests fuzz gltests lib/gltests examples
+SUBDIRS += src tests fuzz gltests lib/gltests examples
 if JAVA
 SUBDIRS += java
 endif
