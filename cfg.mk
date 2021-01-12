@@ -71,6 +71,11 @@ update-po: refresh-po
 bootstrap: autoreconf
 	./configure $(CFGFLAGS)
 
+aximport:
+	for f in m4/ax_*.m4; do \
+		wget -O $$f "https://git.savannah.gnu.org/gitweb/?p=autoconf-archive.git;a=blob_plain;f=$$f"; \
+	done
+
 review-diff:
 	git diff `git describe --abbrev=0`.. \
 	| grep -v -e ^index -e '^diff --git' \
