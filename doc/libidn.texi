@@ -843,7 +843,7 @@ the system), change @samp{libidn=yes} to @samp{libidn=no} on the third
 line.
 
 @example
-AC_ARG_WITH(libidn, AC_HELP_STRING([--with-libidn=[DIR]],
+AC_ARG_WITH(libidn, AS_HELP_STRING([--with-libidn=[DIR]],
                                 [Support IDN (needs GNU Libidn)]),
   libidn=$withval, libidn=yes)
 if test "$libidn" != "no"; then
@@ -870,7 +870,7 @@ I cannot recommend generally), the above can be done more easily as
 follows.
 
 @example
-AC_ARG_WITH(libidn, AC_HELP_STRING([--with-libidn=[DIR]],
+AC_ARG_WITH(libidn, AS_HELP_STRING([--with-libidn=[DIR]],
                                 [Support IDN (needs GNU Libidn)]),
   libidn=$withval, libidn=yes)
 if test "$libidn" != "no" ; then
