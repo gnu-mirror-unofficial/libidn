@@ -41,7 +41,7 @@ Fedora 33:
 dnf install -y make git autoconf automake libtool gettext-devel cvs
 dnf install -y texinfo texinfo-tex texlive
 dnf install -y help2man gtk-doc gengetopt dblatex valgrind
-dnf install -y gperf java-latest-openjdk-headless
+dnf install -y gperf java-latest-openjdk-devel
 
 To download the version controlled sources:
 
