@@ -35,10 +35,8 @@
 #  --libtool \
 #  --macro-prefix=lgl \
 #  --no-vc-files \
-#  --avoid=iconv-h-tests \
-#  --avoid=string-tests \
-#  --avoid=version-etc-tests \
-#  --avoid=wchar-tests \
+#  --avoid=c-strcase-tests \
+#  --avoid=iconv_open-tests \
 #  gettext-h \
 #  lib-msvc-compat \
 #  lib-symbol-versions \
