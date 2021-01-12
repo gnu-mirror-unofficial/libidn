@@ -55,8 +55,13 @@ autoreconf: doc/Makefile.gdoc
 	autopoint
 	for f in m4/*.m4; do \
 		if test -f gl/$$f; then \
+			echo Removing $$f to use gl/$$f; \
 			rm -f $$f; \
 			touch gl/$$f; \
+		elif test -f lib/gl/$$f; then \
+			echo Removing $$f to use lib/gl/$$f; \
+			rm -f $$f; \
+			touch lib/gl/$$f; \
 		fi; \
 	done
 	GTKDOCIZE=true AUTOPOINT=true autoreconf --install
