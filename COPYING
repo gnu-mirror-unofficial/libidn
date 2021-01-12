@@ -1,5 +1,5 @@
 Libidn COPYING -- Explanation of licensing conditions.
-Copyright (C) 2002-2015 Simon Josefsson
+Copyright (C) 2002-2021 Simon Josefsson
 See the end for copying conditions.
 
 The source code for the C library (libidn.a or libidn.so), the C#
@@ -23,6 +23,9 @@ Other files are licensed as indicated in each file.
 
 There may be exceptions to these general rules, see each file for
 precise information.
+
+For any copyright year range specified as YYYY-ZZZZ in this package
+note that the range specifies every single year in that closed interval.
 
 ----------------------------------------------------------------------
 Copying and distribution of this file, with or without modification,
