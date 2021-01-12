@@ -22,8 +22,8 @@ AC_INIT([GNU Libidn], [1.36a], [bug-libidn@gnu.org])
 AC_CONFIG_AUX_DIR([build-aux])
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_HEADERS(config.h)
-AM_INIT_AUTOMAKE([1.10 -Wall -Werror -Wno-override])
-m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
+AM_INIT_AUTOMAKE([1.11.2 -Wall -Wno-override])
+AM_SILENT_RULES([yes])
 
 # Library code modified:                              REVISION++
 # Interfaces changed/added/removed:   CURRENT++       REVISION=0
@@ -41,7 +41,7 @@ lgl_EARLY
 DLL_VERSION=`expr ${LT_CURRENT} - ${LT_AGE}`
 AC_SUBST(DLL_VERSION)
 
-m4_ifdef([AM_PROG_AR], [AM_PROG_AR])
+AM_PROG_AR
 LT_INIT([win32-dll])
 
 # Checks for programs.
@@ -84,9 +84,9 @@ AC_MSG_CHECKING([if TLD API for specific TLD rules should be built])
 AC_MSG_RESULT($enable_tld)
 
 # Check for gtk-doc.
-#
+# https://developer.gnome.org/gtk-doc-manual/stable/settingup_autoconf.html.en
 m4_ifdef([GTK_DOC_CHECK], [
-GTK_DOC_CHECK([1.1], [--flavour no-tmpl])
+GTK_DOC_CHECK([1.14],[--flavour no-tmpl])
 ],[
 AM_CONDITIONAL([ENABLE_GTK_DOC], false)
 ])
