@@ -34,20 +34,10 @@
 #  --doc-base=doc \
 #  --tests-base=gltests \
 #  --aux-dir=build-aux \
-#  --with-tests \
 #  --no-conditional-dependencies \
 #  --libtool \
 #  --macro-prefix=gl \
 #  --no-vc-files \
-#  --avoid=fcntl-h-tests \
-#  --avoid=stdlib-tests \
-#  --avoid=string-tests \
-#  --avoid=sys_stat-tests \
-#  --avoid=time-tests \
-#  --avoid=unistd-tests \
-#  --avoid=update-copyright-tests \
-#  --avoid=version-etc-tests \
-#  --avoid=wchar-tests \
 #  autobuild \
 #  csharpcomp-script \
 #  csharpexec-script \
@@ -91,13 +81,12 @@ gl_MODULES([
   version-etc
   warnings
 ])
-gl_AVOID([fcntl-h-tests stdlib-tests string-tests sys_stat-tests time-tests unistd-tests update-copyright-tests version-etc-tests wchar-tests])
+gl_AVOID([])
 gl_SOURCE_BASE([gl])
 gl_M4_BASE([gl/m4])
 gl_PO_BASE([])
 gl_DOC_BASE([doc])
 gl_TESTS_BASE([gltests])
-gl_WITH_TESTS
 gl_LIB([libgnu])
 gl_MAKEFILE_NAME([])
 gl_LIBTOOL
