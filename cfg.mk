@@ -53,7 +53,13 @@ autoreconf: doc/Makefile.gdoc
 	rm -f gtk-doc.make
 	gtkdocize 2>/dev/null || printf "EXTRA_DIST =\nCLEANFILES =\n" >gtk-doc.make
 	autopoint
-	autoreconf --install
+	for f in m4/*.m4; do \
+		if test -f gl/$$f; then \
+			rm -f $$f; \
+			touch gl/$$f; \
+		fi; \
+	done
+	GTKDOCIZE=true AUTOPOINT=true autoreconf --install
 
 update-po: refresh-po
 	for f in `ls po/*.po | grep -v quot.po`; do \
