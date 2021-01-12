@@ -48,7 +48,7 @@
 #include "idn_cmd.h"
 
 #define GREETING \
-  "Copyright 2002-2015 Simon Josefsson.\n"				 \
+  "Copyright 2002-2021 Simon Josefsson.\n"				 \
   "GNU Libidn is free software with ABSOLUTELY NO WARRANTY.  For more\n" \
   "information about these matters, see <http://www.gnu.org/licenses/>.\n"
 

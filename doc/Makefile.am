@@ -75,6 +75,6 @@ GDOC_MAN_PREFIX = man/
 GDOC_MAN_EXTRA_ARGS = -module $(PACKAGE) -sourceversion $(VERSION) \
 	-bugsto $(PACKAGE_BUGREPORT) -pkg-name "$(PACKAGE_NAME)" \
 	-includefuncprefix -seeinfo $(PACKAGE) \
-	-copyright "2002-2020 Simon Josefsson" \
+	-copyright "2002-2021 Simon Josefsson" \
 	-verbatimcopying
 include $(srcdir)/gdoc.mk
