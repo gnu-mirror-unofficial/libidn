@@ -1524,24 +1524,18 @@ $ CHARSET=ISO-8859-1 idn --punycode-encode
 
 @section Examples
 
-Standard usage, reading input from standard input:
+Standard usage, reading input from standard input.  The parameter
+@code{--quiet} disable printing copyright, license and usage
+instructions.
 
 @example
-jas@@latte:~$ idn
-libidn 0.3.5
-Copyright 2002, 2003 Simon Josefsson.
-GNU Libidn comes with NO WARRANTY, to the extent permitted by law.
-You may redistribute copies of GNU Libidn under the terms of
-the GNU Lesser General Public License.  For more information
-about these matters, see the file named COPYING.LIB.
-Type each input string on a line by itself, terminated by a newline character.
+jas@@latte:~$ idn --quiet
 r@"aksm@"org@aa{}s.se
 xn--rksmrgs-5wao1o.se
 jas@@latte:~$
 @end example
 
-Reading input from command line, and disable printing copyright and
-license information:
+Reading input from command line:
 
 @example
 jas@@latte:~$ idn --quiet r@"aksm@"org@aa{}s.se bl@aa{}b@ae{}rgr@o{}d.no
