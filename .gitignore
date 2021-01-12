@@ -366,6 +366,7 @@
 /lib/gltests/test-getdtablesize
 /lib/gltests/test-gettimeofday
 /lib/gltests/test-iconv
+/lib/gltests/test-iconv-h
 /lib/gltests/test-ignore-value
 /lib/gltests/test-inet_pton
 /lib/gltests/test-intprops
