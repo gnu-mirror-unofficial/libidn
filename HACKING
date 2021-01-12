@@ -1,11 +1,11 @@
 Libidn HACKING -- Information for contributors.                 -*- outline -*-
-Copyright (C) 2009-2020 Simon Josefsson
+Copyright (C) 2009-2021 Simon Josefsson
 See the end for copying conditions.
 
 This file contains instructions for developers and advanced users that
 wants to build from version controlled sources.
 
-We require several tools to build the software, including:
+We rely on several tools to build the software, including:
 
 - Make <http://www.gnu.org/software/make/>
 - Automake <http://www.gnu.org/software/automake/>
@@ -28,29 +28,34 @@ We require several tools to build the software, including:
 - Mono mcs <http://www.mono.org/> (for C# port)
 - fig2dev <http://www-epb.lbl.gov/xfig/>
 
-The required software is typically distributed with your operating
-system, and the instructions for installing them differ.  Here are
-some hints:
+The software is typically distributed with your operating system, and
+the instructions for installing them differ.  Here are some hints:
 
-Debian/Ubuntu:
+Debian 10.x, Ubuntu 20.04:
 apt-get install make git autoconf automake libtool gettext autopoint cvs
 apt-get install texinfo texlive texlive-plain-genric texlive-extra-utils
 apt-get install help2man gtk-doc-tools dblatex valgrind gengetopt
 apt-get install transfig mono-mcs gperf default-jdk-headless
 
+Fedora 33:
+dnf install -y make git autoconf automake libtool gettext-devel cvs
+dnf install -y texinfo texinfo-tex texlive
+dnf install -y help2man gtk-doc gengetopt dblatex valgrind
+dnf install -y gperf java-latest-openjdk-headless
+
 To download the version controlled sources:
 
-$ git clone git://git.savannah.gnu.org/libidn.git
-$ cd libidn
+  git clone https://git.savannah.gnu.org/git/libidn.git
+  cd libidn
 
 The next step is to run autoreconf, ./configure, etc:
 
-$ make bootstrap
+  make bootstrap
 
 Then build the project normally:
 
-$ make
-$ make check
+  make
+  make check
 
 When building from version controlled sources, some developer specific
 flags are automatically enabled.  For example, the self-checks are run
