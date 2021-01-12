@@ -229,9 +229,9 @@ AC_MSG_NOTICE([summary of build options:
   Compiler flags:    ${CFLAGS}
   Warning flags:     ${WARN_CFLAGS}
   Library types:     Shared=${enable_shared}, Static=${enable_static}
-  nl_langinfo:       $am_cv_langinfo_codeset
+  nl_langinfo:       $gl_cv_header_langinfo_codeset
   Libiconv:          $am_cv_func_iconv
-  Valgrind:          ${VALGRIND}
+  Valgrind:          ${VALGRIND:-no}
   Version script:    $have_ld_version_script
   Documentation:     $enable_doc
   TLD code:          $enable_tld
