@@ -1,5 +1,5 @@
 /* Creating and controlling threads.
-   Copyright (C) 2005-2020 Free Software Foundation, Inc.
+   Copyright (C) 2005-2021 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -232,7 +232,7 @@ extern const gl_thread_t gl_null_thread;
 extern const gl_thread_t gl_null_thread;
 # else
 #  define gl_thread_self() \
-     (pthread_in_use () ? pthread_self () : (pthread_t) NULL)
+     (pthread_in_use () ? pthread_self () : (pthread_t) 0)
 #  define gl_thread_self_pointer() \
      (pthread_in_use () ? (void *) pthread_self () : NULL)
 # endif

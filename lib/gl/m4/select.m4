@@ -1,5 +1,5 @@
-# select.m4 serial 11
-dnl Copyright (C) 2009-2020 Free Software Foundation, Inc.
+# select.m4 serial 12
+dnl Copyright (C) 2009-2021 Free Software Foundation, Inc.
 dnl This file is free software; the Free Software Foundation
 dnl gives unlimited permission to copy and/or distribute it,
 dnl with or without modifications, as long as this notice is preserved.
@@ -60,7 +60,8 @@ changequote([,])dnl
 #endif
 #include <unistd.h>
 #include <errno.h>
-]],[[
+]GL_MDA_DEFINES],
+[[
   fd_set set;
   dup2(0, 16);
   FD_ZERO(&set);

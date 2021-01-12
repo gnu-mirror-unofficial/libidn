@@ -1,5 +1,5 @@
 # DO NOT EDIT! GENERATED AUTOMATICALLY!
-# Copyright (C) 2002-2020 Free Software Foundation, Inc.
+# Copyright (C) 2002-2021 Free Software Foundation, Inc.
 #
 # This file is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -138,7 +138,6 @@ AC_DEFUN([lgl_EARLY],
   # Code from module locale-tests:
   # Code from module localename:
   # Code from module localename-tests:
-  # Code from module localtime-buffer:
   # Code from module lock:
   # Code from module lock-tests:
   # Code from module lstat:
@@ -249,6 +248,7 @@ AC_DEFUN([lgl_EARLY],
   # Code from module test-framework-sh:
   # Code from module test-framework-sh-tests:
   # Code from module thread:
+  # Code from module thread-optim:
   # Code from module thread-tests:
   # Code from module threadlib:
   gl_THREADLIB_EARLY
@@ -298,6 +298,7 @@ AC_DEFUN([lgl_INIT],
   AC_REQUIRE([gl_EXTERN_INLINE])
   AC_SUBST([LIBINTL])
   AC_SUBST([LTLIBINTL])
+  AC_DEFUN([gl_HAVE_MODULE_HAVELIB])
   AM_ICONV
   m4_ifdef([gl_ICONV_MODULE_INDICATOR],
     [gl_ICONV_MODULE_INDICATOR([iconv])])
@@ -502,8 +503,6 @@ changequote([, ])dnl
   gl_LOCALENAME
   gl_LOCALE_MODULE_INDICATOR([localename])
   AC_CHECK_FUNCS_ONCE([newlocale])
-  AC_REQUIRE([gl_LOCALTIME_BUFFER_DEFAULTS])
-  AC_LIBOBJ([localtime-buffer])
   gl_LOCK
   gl_MODULE_INDICATOR([lock])
   AC_CHECK_HEADERS_ONCE([semaphore.h])
@@ -706,6 +705,7 @@ changequote([, ])dnl
   gl_HEADER_SYS_UIO
   AC_PROG_MKDIR_P
   gl_THREAD
+  AC_CHECK_HEADERS([sys/single_threaded.h])
   AC_REQUIRE([gl_THREADLIB])
   gl_HEADER_TIME_H
   gl_UNISTD_H
@@ -923,7 +923,6 @@ AC_DEFUN([lgl_FILE_LIST], [
   m4/inline.m4
   m4/intl-thread-locale.m4
   m4/intlmacosx.m4
-  m4/inttypes-pri.m4
   m4/inttypes.m4
   m4/ioctl.m4
   m4/isblank.m4
@@ -943,7 +942,6 @@ AC_DEFUN([lgl_FILE_LIST], [
   m4/locale-zh.m4
   m4/locale_h.m4
   m4/localename.m4
-  m4/localtime-buffer.m4
   m4/lock.m4
   m4/lstat.m4
   m4/malloc.m4
@@ -960,6 +958,7 @@ AC_DEFUN([lgl_FILE_LIST], [
   m4/open.m4
   m4/pathmax.m4
   m4/perror.m4
+  m4/pid_t.m4
   m4/pipe.m4
   m4/pthread-thread.m4
   m4/pthread_h.m4
@@ -1187,8 +1186,6 @@ AC_DEFUN([lgl_FILE_LIST], [
   tests=lib/localename-table.h
   tests=lib/localename.c
   tests=lib/localename.h
-  tests=lib/localtime-buffer.c
-  tests=lib/localtime-buffer.h
   tests=lib/lstat.c
   tests=lib/malloc.c
   tests=lib/malloca.c
@@ -1246,6 +1243,7 @@ AC_DEFUN([lgl_FILE_LIST], [
   tests=lib/sys_stat.in.h
   tests=lib/sys_time.in.h
   tests=lib/sys_uio.in.h
+  tests=lib/thread-optim.h
   tests=lib/time.in.h
   tests=lib/unistd.c
   tests=lib/unistd.in.h

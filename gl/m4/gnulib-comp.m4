@@ -1,5 +1,5 @@
 # DO NOT EDIT! GENERATED AUTOMATICALLY!
-# Copyright (C) 2002-2020 Free Software Foundation, Inc.
+# Copyright (C) 2002-2021 Free Software Foundation, Inc.
 #
 # This file is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -137,7 +137,6 @@ AC_DEFUN([gl_EARLY],
   # Code from module limits-h-tests:
   # Code from module listen:
   # Code from module listen-tests:
-  # Code from module localtime-buffer:
   # Code from module lock:
   # Code from module lock-tests:
   # Code from module lstat:
@@ -560,8 +559,6 @@ changequote([, ])dnl
     AC_LIBOBJ([listen])
   fi
   gl_SYS_SOCKET_MODULE_INDICATOR([listen])
-  AC_REQUIRE([gl_LOCALTIME_BUFFER_DEFAULTS])
-  AC_LIBOBJ([localtime-buffer])
   gl_LOCK
   gl_MODULE_INDICATOR([lock])
   AC_CHECK_HEADERS_ONCE([semaphore.h])
@@ -963,13 +960,11 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/gnulib-common.m4
   m4/include_next.m4
   m4/inet_pton.m4
-  m4/inttypes-pri.m4
   m4/inttypes.m4
   m4/ioctl.m4
   m4/isblank.m4
   m4/largefile.m4
   m4/limits-h.m4
-  m4/localtime-buffer.m4
   m4/lock.m4
   m4/lstat.m4
   m4/malloc.m4
@@ -989,6 +984,7 @@ AC_DEFUN([gl_FILE_LIST], [
   m4/open.m4
   m4/pathmax.m4
   m4/perror.m4
+  m4/pid_t.m4
   m4/pipe.m4
   m4/pthread-thread.m4
   m4/pthread_h.m4
@@ -1183,8 +1179,6 @@ AC_DEFUN([gl_FILE_LIST], [
   tests=lib/ioctl.c
   tests=lib/isblank.c
   tests=lib/listen.c
-  tests=lib/localtime-buffer.c
-  tests=lib/localtime-buffer.h
   tests=lib/lstat.c
   tests=lib/malloc.c
   tests=lib/nanosleep.c
