@@ -65,9 +65,6 @@ Please report this to $PACKAGE_BUGREPORT.
 ***])
 fi
 
-# Checks for header files.
-AC_HEADER_STDC
-
 # For gnulib stuff in gl/.
 gl_INIT
 lgl_INIT
@@ -76,7 +73,7 @@ lgl_INIT
 AM_LANGINFO_CODESET
 
 # Make it possible to disable TLD code.
-AC_ARG_ENABLE(tld, AC_HELP_STRING([--disable-tld], [disable TLD code]),
+AC_ARG_ENABLE(tld, AS_HELP_STRING([--disable-tld], [disable TLD code]),
 		enable_tld=$enableval, enable_tld=yes)
 AM_CONDITIONAL(TLD, test "$enable_tld" != "no")
 if test "$enable_tld" != "no"; then
@@ -95,7 +92,7 @@ AM_CONDITIONAL([ENABLE_GTK_DOC], false)
 
 
 # Check for java
-AC_ARG_ENABLE(java, AC_HELP_STRING([--enable-java], [enable Java API]),,
+AC_ARG_ENABLE(java, AS_HELP_STRING([--enable-java], [enable Java API]),,
 		enable_java=no)
 if test "$enable_java" != "no"; then
   AC_JAVA_OPTIONS
