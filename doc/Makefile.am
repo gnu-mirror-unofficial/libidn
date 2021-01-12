@@ -21,8 +21,7 @@ if ENABLE_GTK_DOC
 SUBDIRS += . reference
 endif
 
-EXTRA_DIST = gdoc libidn.html libidn.ps libidn.pdf texinfo.css	\
-	components.fig
+EXTRA_DIST = gdoc components.fig
 
 info_TEXINFOS = libidn.texi
 libidn_TEXINFOS = fdl-1.3.texi
@@ -44,8 +43,7 @@ libidn-components.pdf: components.fig
 
 AM_MAKEINFOFLAGS = -I $(top_builddir)/doc -I $(top_srcdir)/examples
 TEXI2DVI = texi2dvi $(AM_MAKEINFOFLAGS)
-AM_MAKEINFOHTMLFLAGS = $(AM_MAKEINFOFLAGS) \
-	--no-split --number-sections --css-include=texinfo.css
+AM_MAKEINFOHTMLFLAGS = --no-split $(AM_MAKEINFOFLAGS)
 
 # Man pages.
 
