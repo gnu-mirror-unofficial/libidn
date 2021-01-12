@@ -1,4 +1,4 @@
-# Copyright (C) 2006-2020 Simon Josefsson
+# Copyright (C) 2006-2021 Simon Josefsson
 #
 # This file is part of GNU Libidn.
 #
@@ -30,7 +30,6 @@ local-checks-to-skip = sc_prohibit_strcmp sc_prohibit_have_config_h	\
 	sc_GPL_version sc_immutable_NEWS sc_prohibit_gnu_make_extensions
 VC_LIST_ALWAYS_EXCLUDE_REGEX = \
 	^(GNUmakefile|maint.mk|gtk-doc.make|m4/pkg.m4|m4/libtool.m4|doc/specifications|contrib/doxygen/Doxyfile|doc/fdl-1.3.texi|csharp/libidn.*suo|(lib/)?(gl|gltests|build-aux)/)
-update-copyright-env = UPDATE_COPYRIGHT_HOLDER="Simon Josefsson" UPDATE_COPYRIGHT_USE_INTERVALS=1
 
 # Explicit syntax-check exceptions.
 exclude_file_name_regexp--sc_bindtextdomain = ^examples/|libc/|tests/|fuzz/
@@ -70,6 +69,10 @@ review-diff:
 	| grep -v -e ^index -e '^diff --git' \
 	| filterdiff -p 1 -x 'build-aux/*' -x 'gl/*' -x 'gltests/*' -x 'lib/gl/*' -x 'lib/gltests/*' -x 'po/*' -x 'maint.mk' -x '.gitignore' -x '.x-sc*' -x ChangeLog -x GNUmakefile \
 	| less
+
+my-update-copyright:
+	make update-copyright update-copyright-env='UPDATE_COPYRIGHT_USE_INTERVALS=1'
+	make update-copyright update-copyright-env='UPDATE_COPYRIGHT_HOLDER="Simon Josefsson" UPDATE_COPYRIGHT_USE_INTERVALS=1'
 
 # Fuzz
 
