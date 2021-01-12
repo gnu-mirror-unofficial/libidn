@@ -68,6 +68,7 @@ fi
 # For gnulib stuff in gl/.
 gl_INIT
 lgl_INIT
+AC_DEFINE([GNULIB_NO_VLA], 1, [Disable VLA usage in gettext.h.])
 
 # Check if locale stuff works
 AM_LANGINFO_CODESET
