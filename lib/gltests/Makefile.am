@@ -213,6 +213,14 @@ EXTRA_DIST += test-isblank.c signature.h macros.h
 
 ## end   gnulib module isblank-tests
 
+## begin gnulib module langinfo-tests
+
+TESTS += test-langinfo
+check_PROGRAMS += test-langinfo
+EXTRA_DIST += test-langinfo.c
+
+## end   gnulib module langinfo-tests
+
 ## begin gnulib module limits-h-tests
 
 TESTS += test-limits-h

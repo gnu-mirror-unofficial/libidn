@@ -43,6 +43,7 @@
 #  --avoid=c-strcase-tests \
 #  --avoid=iconv_open-tests \
 #  gettext-h \
+#  langinfo \
 #  lib-msvc-compat \
 #  lib-symbol-versions \
 #  lib-symbol-visibility \
@@ -55,6 +56,7 @@
 gl_LOCAL_DIR([lib/gl/override])
 gl_MODULES([
   gettext-h
+  langinfo
   lib-msvc-compat
   lib-symbol-versions
   lib-symbol-visibility

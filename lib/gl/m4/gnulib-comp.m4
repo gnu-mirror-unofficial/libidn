@@ -70,6 +70,8 @@ AC_DEFUN([lgl_EARLY],
   # Code from module inttypes-tests:
   # Code from module isblank:
   # Code from module isblank-tests:
+  # Code from module langinfo:
+  # Code from module langinfo-tests:
   # Code from module lib-msvc-compat:
   # Code from module lib-symbol-versions:
   # Code from module lib-symbol-visibility:
@@ -146,6 +148,7 @@ AC_DEFUN([lgl_INIT],
     AC_LIBOBJ([iconv_close])
   fi
   gl_INLINE
+  gl_LANGINFO_H
   gl_LD_OUTPUT_DEF
   gl_LD_VERSION_SCRIPT
   gl_VISIBILITY
@@ -348,6 +351,7 @@ AC_DEFUN([lgl_FILE_LIST], [
   lib/iconv_open-solaris.gperf
   lib/iconv_open-zos.gperf
   lib/iconv_open.c
+  lib/langinfo.in.h
   lib/libc-config.h
   lib/limits.in.h
   lib/stdbool.in.h
@@ -381,6 +385,7 @@ AC_DEFUN([lgl_FILE_LIST], [
   m4/inline.m4
   m4/inttypes.m4
   m4/isblank.m4
+  m4/langinfo_h.m4
   m4/ld-output-def.m4
   m4/ld-version-script.m4
   m4/lib-ld.m4
@@ -417,6 +422,7 @@ AC_DEFUN([lgl_FILE_LIST], [
   tests/test-intprops.c
   tests/test-inttypes.c
   tests/test-isblank.c
+  tests/test-langinfo.c
   tests/test-limits-h.c
   tests/test-stdalign.c
   tests/test-stdbool.c

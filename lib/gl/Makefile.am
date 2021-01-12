@@ -38,6 +38,7 @@
 #  --avoid=c-strcase-tests \
 #  --avoid=iconv_open-tests \
 #  gettext-h \
+#  langinfo \
 #  lib-msvc-compat \
 #  lib-symbol-versions \
 #  lib-symbol-visibility \
@@ -193,6 +194,40 @@ EXTRA_DIST += iconv.c iconv_close.c iconv_open-aix.gperf iconv_open-hpux.gperf i
 EXTRA_libgnu_la_SOURCES += iconv.c iconv_close.c iconv_open.c
 
 ## end   gnulib module iconv_open
+
+## begin gnulib module langinfo
+
+BUILT_SOURCES += langinfo.h
+
+# We need the following in order to create an empty placeholder for
+# <langinfo.h> when the system doesn't have one.
+langinfo.h: langinfo.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(WARN_ON_USE_H)
+	$(AM_V_GEN)rm -f $@-t $@ && \
+	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */'; \
+	  sed -e 's|@''GUARD_PREFIX''@|GL_LGL|g' \
+	      -e 's|@''HAVE_LANGINFO_H''@|$(HAVE_LANGINFO_H)|g' \
+	      -e 's|@''INCLUDE_NEXT''@|$(INCLUDE_NEXT)|g' \
+	      -e 's|@''PRAGMA_SYSTEM_HEADER''@|@PRAGMA_SYSTEM_HEADER@|g' \
+	      -e 's|@''PRAGMA_COLUMNS''@|@PRAGMA_COLUMNS@|g' \
+	      -e 's|@''NEXT_LANGINFO_H''@|$(NEXT_LANGINFO_H)|g' \
+	      -e 's/@''GNULIB_NL_LANGINFO''@/$(GNULIB_NL_LANGINFO)/g' \
+	      -e 's|@''HAVE_LANGINFO_CODESET''@|$(HAVE_LANGINFO_CODESET)|g' \
+	      -e 's|@''HAVE_LANGINFO_T_FMT_AMPM''@|$(HAVE_LANGINFO_T_FMT_AMPM)|g' \
+	      -e 's|@''HAVE_LANGINFO_ALTMON''@|$(HAVE_LANGINFO_ALTMON)|g' \
+	      -e 's|@''HAVE_LANGINFO_ERA''@|$(HAVE_LANGINFO_ERA)|g' \
+	      -e 's|@''HAVE_LANGINFO_YESEXPR''@|$(HAVE_LANGINFO_YESEXPR)|g' \
+	      -e 's|@''HAVE_NL_LANGINFO''@|$(HAVE_NL_LANGINFO)|g' \
+	      -e 's|@''REPLACE_NL_LANGINFO''@|$(REPLACE_NL_LANGINFO)|g' \
+	      -e '/definitions of _GL_FUNCDECL_RPL/r $(CXXDEFS_H)' \
+	      -e '/definition of _GL_WARN_ON_USE/r $(WARN_ON_USE_H)' \
+	      < $(srcdir)/langinfo.in.h; \
+	} > $@-t && \
+	mv $@-t $@
+MOSTLYCLEANFILES += langinfo.h langinfo.h-t
+
+EXTRA_DIST += langinfo.in.h
+
+## end   gnulib module langinfo
 
 ## begin gnulib module lib-symbol-visibility
 
