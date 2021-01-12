@@ -6,6 +6,10 @@ See the end for copying conditions.
 
 ** doc: Fix codespell typos.
 
+** Build fixes.
+
+** Update gnulib files.
+
 ** Translation fixes.
 
 ** API and ABI is backwards compatible with the previous version.
