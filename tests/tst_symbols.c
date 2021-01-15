@@ -106,6 +106,8 @@ main (void)
   assert_symbol_exists ((const void *) stringprep_xmpp_nodeprep);
   assert_symbol_exists ((const void *) stringprep_xmpp_nodeprep_prohibit);
   assert_symbol_exists ((const void *) stringprep_xmpp_resourceprep);
+
+#ifdef WITH_TLD
   assert_symbol_exists ((const void *) tld_check_4);
   assert_symbol_exists ((const void *) tld_check_4t);
   assert_symbol_exists ((const void *) tld_check_4tz);
@@ -118,6 +120,7 @@ main (void)
   assert_symbol_exists ((const void *) tld_get_table);
   assert_symbol_exists ((const void *) tld_get_z);
   assert_symbol_exists ((const void *) tld_strerror);
+#endif
 
   return 0;
 }
