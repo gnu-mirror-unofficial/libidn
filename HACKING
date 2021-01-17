@@ -21,9 +21,9 @@ We rely on several tools to build the software, including:
 - Texlive & epsf <http://www.tug.org/texlive/> (for PDF manual)
 - CVS <http://www.gnu.org/software/cvs/> (for gettext autopoint)
 - GTK-DOC <http://www.gtk.org/gtk-doc/> (for API manual)
-- Git <http://git.or.cz/>
+- Git <https://git-scm.com/>
 - Perl <http://www.cpan.org/>
-- Valgrind <http://valgrind.org/> (optional)
+- Valgrind <https://valgrind.org/> (optional)
 - OpenJDK (for java port)
 - Mono mcs <http://www.mono.org/> (for C# port)
 - fig2dev <http://www-epb.lbl.gov/xfig/>
