@@ -7,26 +7,26 @@ wants to build from version controlled sources.
 
 We rely on several tools to build the software, including:
 
-- Make <http://www.gnu.org/software/make/>
-- Automake <http://www.gnu.org/software/automake/>
-- Autoconf <http://www.gnu.org/software/autoconf/>
-- Libtool <http://www.gnu.org/software/libtool/>
-- Gettext <http://www.gnu.org/software/gettext/>
-- Texinfo <http://www.gnu.org/software/texinfo/>
-- Gperf <http://www.gnu.org/software/gperf/>
-- help2man <http://www.gnu.org/software/help2man/>
-- Gengetopt <http://www.gnu.org/software/gengetopt/>
-- Tar <http://www.gnu.org/software/tar/>
-- Gzip <http://www.gnu.org/software/gzip/>
-- Texlive & epsf <http://www.tug.org/texlive/> (for PDF manual)
-- CVS <http://www.gnu.org/software/cvs/> (for gettext autopoint)
-- GTK-DOC <http://www.gtk.org/gtk-doc/> (for API manual)
+- Make <https://www.gnu.org/software/make/>
+- C compiler <https://www.gnu.org/software/gcc/>
+- Automake <https://www.gnu.org/software/automake/>
+- Autoconf <https://www.gnu.org/software/autoconf/>
+- Libtool <https://www.gnu.org/software/libtool/>
+- Gettext <https://www.gnu.org/software/gettext/>
+- Texinfo <https://www.gnu.org/software/texinfo/>
+- Gperf <https://www.gnu.org/software/gperf/>
+- help2man <https://www.gnu.org/software/help2man/>
+- Gengetopt <https://www.gnu.org/software/gengetopt/>
+- Tar <https://www.gnu.org/software/tar/>
+- Gzip <https://www.gnu.org/software/gzip/>
+- Texlive & epsf <https://tug.org/texlive/> (for PDF manual)
+- GTK-DOC <https://gitlab.gnome.org/GNOME/gtk-doc> (for API manual)
 - Git <https://git-scm.com/>
-- Perl <http://www.cpan.org/>
+- Perl <https://www.cpan.org/src/http://www.cpan.org/>
 - Valgrind <https://valgrind.org/> (optional)
 - OpenJDK (for java port)
-- Mono mcs <http://www.mono.org/> (for C# port)
-- fig2dev <http://www-epb.lbl.gov/xfig/>
+- Mono mcs <https://www.mono-project.com/> (for C# port)
+- fig2dev <https://sourceforge.net/projects/mcj/>
 
 The software is typically distributed with your operating system, and
 the instructions for installing them differ.  Here are some hints:
