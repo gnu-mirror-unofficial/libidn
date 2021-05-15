@@ -24,10 +24,14 @@ endif
 EXTRA_DIST = gdoc components.fig
 
 info_TEXINFOS = libidn.texi
-libidn_TEXINFOS = fdl-1.3.texi
+libidn_TEXINFOS = fdl-1.3.texi idn--help.texi
+libidn_TEXINFOS += texinfo.css example.txt example2.txt example3.txt example4.txt example5.txt
 libidn_TEXINFOS += $(gdoc_TEXINFOS)
 libidn_TEXINFOS += libidn-components.eps libidn-components.png	\
 			libidn-components.pdf
+
+AM_MAKEINFOHTMLFLAGS = $(AM_MAKEINFOFLAGS) \
+	--no-split --css-include=texinfo.css
 
 imagesdir = $(infodir)
 images_DATA = libidn-components.png
@@ -41,9 +45,24 @@ libidn-components.png: components.fig
 libidn-components.pdf: components.fig
 	fig2dev -L pdf $< $@
 
-AM_MAKEINFOFLAGS = -I $(top_builddir)/doc -I $(top_srcdir)/examples
-TEXI2DVI = texi2dvi $(AM_MAKEINFOFLAGS)
-AM_MAKEINFOHTMLFLAGS = --no-split $(AM_MAKEINFOFLAGS)
+idn--help.texi: $(top_srcdir)/src/idn.c
+	$(top_builddir)/src/idn$(EXEEXT) --help | $(GREP) '^ \+-' > tmp
+	mv tmp idn--help.texi
+
+example.txt: $(top_srcdir)/examples/example.c
+	sed -e '/* example/,/^$$/d' $< > $@.tmp && mv $@.tmp $@
+
+example2.txt: $(top_srcdir)/examples/example2.c
+	sed -e '/* example/,/^$$/d' $< > $@.tmp && mv $@.tmp $@
+
+example3.txt: $(top_srcdir)/examples/example3.c
+	sed -e '/* example/,/^$$/d' $< > $@.tmp && mv $@.tmp $@
+
+example4.txt: $(top_srcdir)/examples/example4.c
+	sed -e '/* example/,/^$$/d' $< > $@.tmp && mv $@.tmp $@
+
+example5.txt: $(top_srcdir)/examples/example5.c
+	sed -e '/* example/,/^$$/d' $< > $@.tmp && mv $@.tmp $@
 
 # Man pages.
 
@@ -76,3 +95,5 @@ GDOC_MAN_EXTRA_ARGS = -module $(PACKAGE) -sourceversion $(VERSION) \
 	-copyright "2002-2021 Simon Josefsson" \
 	-verbatimcopying
 include $(srcdir)/gdoc.mk
+
+BUILT_SOURCES += example.txt example2.txt example3.txt example4.txt example5.txt

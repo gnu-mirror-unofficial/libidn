@@ -20,7 +20,7 @@ SUBDIRS = gl lib/gl lib po src
 if ENABLE_DOC
 SUBDIRS += doc
 endif
-SUBDIRS += tests fuzz gltests lib/gltests examples
+SUBDIRS += tests fuzz examples
 if JAVA
 SUBDIRS += java
 endif
@@ -28,10 +28,10 @@ if CSHARP
 SUBDIRS += csharp
 endif
 
-EXTRA_DIST = cfg.mk maint.mk .clcopying
+EXTRA_DIST = cfg.mk maint.mk
 EXTRA_DIST += COPYING.LESSERv2 COPYING.LESSERv3 COPYINGv2 COPYINGv3
 
-ACLOCAL_AMFLAGS = -I m4 -I gl/m4 -I lib/gl/m4
+ACLOCAL_AMFLAGS = -I lib/m4 -I gl/m4 -I lib/gl/m4 -I m4
 DISTCHECK_CONFIGURE_FLAGS = --enable-doc --enable-gtk-doc --disable-valgrind-tests
 
 EXTRA_DIST += FAQ libc/README libc/getaddrinfo-idn.txt libc/example.c	\
@@ -52,5 +52,19 @@ EXTRA_DIST += windows/libidn.sln windows/libidn.vcproj			\
 
 EXTRA_DIST += HACKING
 
-pkgconfigdir = $(libdir)/pkgconfig
-pkgconfig_DATA = libidn.pc
+# git-version-gen
+EXTRA_DIST += $(top_srcdir)/.version
+BUILT_SOURCES = $(top_srcdir)/.version
+$(top_srcdir)/.version:
+	echo $(VERSION) > $@-t && mv $@-t $@
+dist-hook: gen-ChangeLog
+	echo $(VERSION) > $(distdir)/.tarball-version
+
+.PHONY: gen-ChangeLog
+gen-ChangeLog:
+	$(AM_V_GEN)if test -d .git; then				\
+		$(top_srcdir)/build-aux/gitlog-to-changelog >		\
+			$(distdir)/cl-t &&				\
+		{ rm -f $(distdir)/ChangeLog &&				\
+		  mv $(distdir)/cl-t $(distdir)/ChangeLog; }		\
+	fi

@@ -1022,7 +1022,7 @@ characters according to profile.
 
 @deftypefun {int} stringprep_nameprep_no_unassigned (char * @var{in}, int @var{maxlen})
 
-@var{in}: input/ouput array with string to prepare.
+@var{in}: input/output array with string to prepare.
 
 @var{maxlen}: maximum length of input/output array.
 
@@ -1033,7 +1033,7 @@ true AllowUnassigned.  Returns 0 iff successful, or an error code.
 
 @deftypefun {int} stringprep_iscsi (char * @var{in}, int @var{maxlen})
 
-@var{in}: input/ouput array with string to prepare.
+@var{in}: input/output array with string to prepare.
 
 @var{maxlen}: maximum length of input/output array.
 
@@ -1043,7 +1043,7 @@ profile.  Returns 0 iff successful, or an error code.
 
 @deftypefun {int} stringprep_plain (char * @var{in}, int @var{maxlen})
 
-@var{in}: input/ouput array with string to prepare.
+@var{in}: input/output array with string to prepare.
 
 @var{maxlen}: maximum length of input/output array.
 
@@ -1053,7 +1053,7 @@ profile.  Returns 0 iff successful, or an error code.
 
 @deftypefun {int} stringprep_xmpp_nodeprep (char * @var{in}, int @var{maxlen})
 
-@var{in}: input/ouput array with string to prepare.
+@var{in}: input/output array with string to prepare.
 
 @var{maxlen}: maximum length of input/output array.
 
@@ -1402,14 +1402,14 @@ be used when writing your own application.
 
 This example demonstrates how the stringprep functions are used.
 
-@verbatiminclude example.c
+@verbatiminclude example.txt
 
 @node Example 2
 @section Example 2
 
 This example demonstrates how the punycode functions are used.
 
-@verbatiminclude example2.c
+@verbatiminclude example2.txt
 
 @node Example 3
 @section Example 3
@@ -1417,7 +1417,7 @@ This example demonstrates how the punycode functions are used.
 This example demonstrates how the library is used to convert
 internationalized domain names into ASCII compatible names.
 
-@verbatiminclude example3.c
+@verbatiminclude example3.txt
 
 @node Example 4
 @section Example 4
@@ -1425,7 +1425,7 @@ internationalized domain names into ASCII compatible names.
 This example demonstrates how the library is used to convert ASCII
 compatible names to internationalized domain names.
 
-@verbatiminclude example4.c
+@verbatiminclude example4.txt
 
 @node Example 5
 @section Example 5
@@ -1433,7 +1433,7 @@ compatible names to internationalized domain names.
 This example demonstrates how the library is used to check a string
 for invalid characters within a specific TLD.
 
-@verbatiminclude example5.c
+@verbatiminclude example5.txt
 
 @c **********************************************************
 @c *********************  Invoking idn  *********************
@@ -1474,39 +1474,7 @@ To process a string that starts with @code{-}, for example
 @section Options
 @code{idn} recognizes these commands:
 
-@verbatim
-  -h, --help               Print help and exit
-
-  -V, --version            Print version and exit
-
-  -s, --stringprep         Prepare string according to nameprep profile
-
-  -d, --punycode-decode    Decode Punycode
-
-  -e, --punycode-encode    Encode Punycode
-
-  -a, --idna-to-ascii      Convert to ACE according to IDNA (default mode)
-
-  -u, --idna-to-unicode    Convert from ACE according to IDNA
-
-      --allow-unassigned   Toggle IDNA AllowUnassigned flag (default off)
-
-      --usestd3asciirules  Toggle IDNA UseSTD3ASCIIRules flag (default off)
-
-      --no-tld             Don't check string for TLD specific rules
-                             Only for --idna-to-ascii and --idna-to-unicode
-
-  -n, --nfkc               Normalize string according to Unicode v3.2 NFKC
-
-  -p, --profile=STRING     Use specified stringprep profile instead
-                             Valid stringprep profiles: `Nameprep',
-                             `iSCSI', `Nodeprep', `Resourceprep',
-                             `trace', `SASLprep'
-
-      --debug              Print debugging information
-
-      --quiet              Silent operation
-@end verbatim
+@verbatiminclude idn--help.texi
 
 @section Environment Variables
 

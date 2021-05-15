@@ -24,6 +24,9 @@ AM_CPPFLAGS += -DLOCALEDIR=\"$(localedir)\"
 AM_CFLAGS = $(WSTACK_CFLAGS) $(WARN_CFLAGS)
 AM_CFLAGS += $(CFLAG_VISIBILITY)
 
+pkgconfigdir = $(libdir)/pkgconfig
+pkgconfig_DATA = libidn.pc
+
 lib_LTLIBRARIES = libidn.la
 
 idn_int = idn-int.h

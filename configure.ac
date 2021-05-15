@@ -17,13 +17,9 @@ dnl
 dnl You should have received a copy of the GNU General Public License
 dnl along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-AC_PREREQ(2.64)
-AC_INIT([GNU Libidn], [1.36a], [bug-libidn@gnu.org])
-AC_CONFIG_AUX_DIR([build-aux])
-AC_CONFIG_MACRO_DIR([m4])
-AC_CONFIG_HEADERS(config.h)
-AM_INIT_AUTOMAKE([1.11.2 -Wall -Wno-override])
-AM_SILENT_RULES([yes])
+AC_INIT([GNU Libidn],
+        m4_esyscmd([build-aux/git-version-gen .tarball-version]),
+        [help-libidn@gnu.org])
 
 # Library code modified:                              REVISION++
 # Interfaces changed/added/removed:   CURRENT++       REVISION=0
@@ -33,25 +29,32 @@ AC_SUBST(LT_CURRENT, 18)
 AC_SUBST(LT_REVISION, 2)
 AC_SUBST(LT_AGE, 6)
 
+DLL_VERSION=`expr ${LT_CURRENT} - ${LT_AGE}`
+AC_SUBST(DLL_VERSION)
+
+AC_MSG_NOTICE([$PACKAGE_NAME $PACKAGE_VERSION $PACKAGE_TARNAME $LT_CURRENT:$LT_REVISION:$LT_AGE $DLL_VERSION])
+
+AC_CONFIG_AUX_DIR([build-aux])
+AC_CONFIG_MACRO_DIR([lib/m4])
+AC_CONFIG_HEADERS([config.h])
+
+AM_INIT_AUTOMAKE([-Wall])
+AM_SILENT_RULES([yes])
+
 AC_PROG_CC
 gl_EARLY
 lgl_EARLY
 
-# For DEF file.
-DLL_VERSION=`expr ${LT_CURRENT} - ${LT_AGE}`
-AC_SUBST(DLL_VERSION)
-
+# Checks for programs.
 AM_PROG_AR
 LT_INIT([win32-dll])
-
-# Checks for programs.
 AM_MISSING_PROG(PERL, perl, $missing_dir)
 AM_MISSING_PROG(HELP2MAN, help2man, $missing_dir)
-AM_GNU_GETTEXT(external)
-AM_GNU_GETTEXT_VERSION([0.19.6])
-AM_GNU_GETTEXT_REQUIRE_VERSION([0.19.6])
 AM_ICONV
 AM_PATH_LISPDIR
+
+AM_GNU_GETTEXT([external])
+AM_GNU_GETTEXT_VERSION([0.19.3])
 
 if test "$am_cv_func_iconv" != "yes"; then
   AC_MSG_NOTICE([
@@ -81,14 +84,14 @@ fi
 AC_MSG_CHECKING([if TLD API for specific TLD rules should be built])
 AC_MSG_RESULT($enable_tld)
 
-# Check for gtk-doc.
-# https://developer.gnome.org/gtk-doc-manual/stable/settingup_autoconf.html.en
+#
+# check for gtk-doc
+#
 m4_ifdef([GTK_DOC_CHECK], [
 GTK_DOC_CHECK([1.14],[--flavour no-tmpl])
 ],[
 AM_CONDITIONAL([ENABLE_GTK_DOC], false)
 ])
-
 
 # Check for java
 AC_ARG_ENABLE(java, AS_HELP_STRING([--enable-java], [enable Java API]),,
@@ -116,8 +119,6 @@ else
 fi
 AC_MSG_RESULT($enable_csharp)
 AM_CONDITIONAL(CSHARP, test "$enable_csharp" = yes)
-
-sj_UPDATE_HEADER_VERSION([$srcdir/lib/stringprep.h])
 
 ubsan=no
 AC_ARG_ENABLE([ubsan],
@@ -147,7 +148,7 @@ AC_ARG_ENABLE([gcc-warnings],
      *)      AC_MSG_ERROR([bad value $enableval for gcc-warnings option]) ;;
    esac
    gl_gcc_warnings=$enableval],
-  [gl_gcc_warnings=no]
+  [gl_gcc_warnings=yes]
 )
 
 if test "$gl_gcc_warnings" = yes; then
@@ -195,8 +196,8 @@ AC_CONFIG_FILES([
   doc/specifications/Makefile
   doc/tld/Makefile
   examples/Makefile
+  fuzz/Makefile
   gl/Makefile
-  gltests/Makefile
   java/Makefile
   java/pom.xml
   java/src/Makefile
@@ -205,35 +206,37 @@ AC_CONFIG_FILES([
   java/src/main/java/gnu/Makefile
   java/src/main/java/gnu/inet/Makefile
   java/src/main/java/gnu/inet/encoding/Makefile
-  java/src/util/Makefile
-  java/src/util/java/Makefile
   java/src/test/Makefile
   java/src/test/java/Makefile
+  java/src/util/Makefile
+  java/src/util/java/Makefile
   lib/Makefile
   lib/gl/Makefile
-  lib/gltests/Makefile
-  libidn.pc
+  lib/libidn.pc
   po/Makefile.in
   src/Makefile
-  fuzz/Makefile
   tests/Makefile
 ])
 AC_OUTPUT
 
-AC_MSG_NOTICE([summary of build options:
+AC_MSG_NOTICE([Summary of build options:
 
-  version:           ${VERSION} shared $LT_CURRENT:$LT_REVISION:$LT_AGE
-  Host type:         ${host}
+  Version:           ${VERSION}
+  Libtool version    $LT_CURRENT:$LT_REVISION:$LT_AGE
+  DLL version:       $DLL_VERSION
+  Header version:    major $MAJOR_VERSION minor $MINOR_VERSION patch $PATCH_VERSION number $NUMBER_VERSION
+  Build/host system: ${build} / ${host}
   Install prefix:    ${prefix}
   Compiler:          ${CC}
-  Compiler flags:    ${CFLAGS}
   Warning flags:     ${WARN_CFLAGS}
+  CFLAGS:            ${CFLAGS} ${CPPFLAGS}
+  LDFlags:           ${LDFLAGS}
+  Documentation:     ${enable_doc}
   Library types:     Shared=${enable_shared}, Static=${enable_static}
-  nl_langinfo:       $gl_cv_header_langinfo_codeset
-  Libiconv:          $am_cv_func_iconv
+  Libiconv:          $am_cv_func_iconv $LTLIBICONV
   Valgrind:          ${VALGRIND:-no}
   Version script:    $have_ld_version_script
-  Documentation:     $enable_doc
+  nl_langinfo:       $gl_cv_header_langinfo_codeset
   TLD code:          $enable_tld
   Build Java port:   $enable_java
   Build C# port:     $enable_csharp
