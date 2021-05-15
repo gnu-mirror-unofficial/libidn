@@ -42,8 +42,8 @@
    make
    make
    make clean
-   make CFLAGS="-fsanitize=address" WERROR_CFLAGS=
-   make CFLAGS="-fsanitize=address" WERROR_CFLAGS= check VALGRIND=
+   make CFLAGS="-fsanitize=address"
+   make CFLAGS="-fsanitize=address" check VALGRIND=
 
    Revert patch in URL above to trigger this self test.
  */
