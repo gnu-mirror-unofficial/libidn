@@ -48,18 +48,23 @@ To download the version controlled sources:
   git clone https://git.savannah.gnu.org/git/libidn.git
   cd libidn
 
-The next step is to run autoreconf, ./configure, etc:
+The next step is to import gnulib files, run autoreconf etc:
 
-  make bootstrap
+  ./bootstrap
 
-Then build the project normally:
+If you have a local checkout of gnulib and wants to avoid download
+another copy, you may want to use:
+
+  ./bootstrap --gnulib-srcdir=../gnulib
+
+Then configure the project as you would normally, for example:
+
+  ./configure --enable-java --enable-gtk-doc-pdf
+
+Then build the project:
 
   make
   make check
-
-When building from version controlled sources, some developer specific
-flags are automatically enabled.  For example, the self-checks are run
-under valgrind if available.
 
 To prepare releases you need some additional tools:
 
@@ -76,18 +81,7 @@ gNewSense/Debian/Ubuntu:
 apt-get install mingw-w64 wine binfmt-support lcov zip
 apt-get install clang doxygen pmccabe ncftp
 
-To check if the archive is ready for release, do:
-
-$ make release-check
-
-And to do the uploading of the release, do:
-
-$ make release
-
-See the file cfg.mk for the rules that implement this.
-
-After release, update NEWS, configure.ac and lib/stringprep.h
-incrementing the version numbers as appropriate.
+See README-release on how to make a release.
 
 Happy hacking!
 
