@@ -286,3 +286,39 @@ Armcross:
   - file src/idn
   - LANG=C.UTF-8 qemu-arm src/idn --debug foo
   - time make check V=1 || (find . -name test-suite.log -exec cat {} +; exit 1)
+
+pages:
+  image: $CI_REGISTRY/libidn/build-images:libidn-Debian-testing
+  stage: build
+  script:
+  - time ./bootstrap --skip-po --no-git
+  - time ./configure --enable-java --enable-gtk-doc --enable-gtk-doc-pdf || (cat config.log; exit 1)
+  - time make V=1
+  - mkdir -p public
+  - rm -rf public/reference
+  - mv doc/reference/html public/reference
+  - make web-manual
+  - rm -rf public/manual
+  - mv doc/manual public/manual
+  artifacts:
+    when: on_success
+    paths:
+      - public
+  only:
+    - master
+
+pages-test:
+  image: $CI_REGISTRY/libidn/build-images:libidn-Debian-testing
+  stage: build
+  script:
+  - time ./bootstrap --skip-po --no-git
+  - time ./configure --enable-java --enable-gtk-doc --enable-gtk-doc-pdf || (cat config.log; exit 1)
+  - time make V=1
+  - mkdir -p public
+  - rm -rf public/reference
+  - mv doc/reference/html public/reference
+  - make web-manual
+  - rm -rf public/manual
+  - mv doc/manual public/manual
+  except:
+    - master
