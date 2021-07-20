@@ -1474,7 +1474,7 @@ To process a string that starts with @code{-}, for example
 @section Options
 @code{idn} recognizes these commands:
 
-@verbatiminclude idn--help.texi
+@verbatiminclude idn-help.texi
 
 @section Environment Variables
 

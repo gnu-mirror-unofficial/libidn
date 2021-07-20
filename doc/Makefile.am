@@ -24,7 +24,7 @@ endif
 EXTRA_DIST = gdoc components.fig
 
 info_TEXINFOS = libidn.texi
-libidn_TEXINFOS = fdl-1.3.texi idn--help.texi
+libidn_TEXINFOS = fdl-1.3.texi idn-help.texi
 libidn_TEXINFOS += texinfo.css example.txt example2.txt example3.txt example4.txt example5.txt
 libidn_TEXINFOS += $(gdoc_TEXINFOS)
 libidn_TEXINFOS += libidn-components.eps libidn-components.png	\
@@ -45,9 +45,9 @@ libidn-components.png: components.fig
 libidn-components.pdf: components.fig
 	fig2dev -L pdf $< $@
 
-idn--help.texi: $(top_srcdir)/src/idn.c
-	$(top_builddir)/src/idn$(EXEEXT) --help | $(GREP) '^ \+-' > tmp
-	mv tmp idn--help.texi
+idn-help.texi: $(top_srcdir)/src/idn.c
+	$(top_builddir)/src/idn$(EXEEXT) --help | $(GREP) '^  *-' > tmp
+	mv tmp idn-help.texi
 
 example.txt: $(top_srcdir)/examples/example.c
 	sed -e '/* example/,/^$$/d' $< > $@.tmp && mv $@.tmp $@

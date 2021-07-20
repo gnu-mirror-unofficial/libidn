@@ -2,6 +2,7 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 
 * Noteworthy changes in release ?.? (????-??-??) [?]
 
+** Fix build errors related to doc/idn--help.texi.
 
 * Noteworthy changes in release 1.37 (2021-05-15) [stable]
 
