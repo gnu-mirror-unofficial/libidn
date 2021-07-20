@@ -195,7 +195,8 @@ Ubuntu-12.04:
   stage: test
   needs: [Debian stable]
   before_script:
-  - apt-get update -qq
+  - perl -pi -e 's/archive.ubuntu.com/old-releases.ubuntu.com/g' /etc/apt/sources.list
+  - apt-get update -q
   - env DEBIAN_FRONTEND=noninteractive apt-get install -y -qq make gcc valgrind
   script:
   - tar xfa libidn-*.tar.gz
