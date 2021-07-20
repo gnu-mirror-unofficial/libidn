@@ -30,6 +30,14 @@
 #ifndef IDN_FREE_H
 # define IDN_FREE_H
 
+/**
+ * SECTION:idn-free
+ * @title: idn-free.h
+ * @short_description: Memory deallocation functions
+ *
+ * Memory deallocation functions.
+ */
+
 # ifndef IDNAPI
 #  if defined LIBIDN_BUILDING && defined HAVE_VISIBILITY && HAVE_VISIBILITY
 #   define IDNAPI __attribute__((__visibility__("default")))

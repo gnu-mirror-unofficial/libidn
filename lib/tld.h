@@ -33,6 +33,14 @@
 #ifndef TLD_H
 # define TLD_H
 
+/**
+ * SECTION:tld
+ * @title: tld.h
+ * @short_description: TLD-related functions
+ *
+ * TLD-related functions.
+ */
+
 # ifndef IDNAPI
 #  if defined LIBIDN_BUILDING && defined HAVE_VISIBILITY && HAVE_VISIBILITY
 #   define IDNAPI __attribute__((__visibility__("default")))

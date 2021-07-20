@@ -30,6 +30,14 @@
 #ifndef PR29_H
 # define PR29_H
 
+/**
+ * SECTION:pr29
+ * @title: pr29.h
+ * @short_description: PR29-related functions
+ *
+ * PR29-related functions.
+ */
+
 # ifndef IDNAPI
 #  if defined LIBIDN_BUILDING && defined HAVE_VISIBILITY && HAVE_VISIBILITY
 #   define IDNAPI __attribute__((__visibility__("default")))

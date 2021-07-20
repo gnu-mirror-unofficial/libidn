@@ -66,6 +66,14 @@
 #ifndef PUNYCODE_H
 # define PUNYCODE_H
 
+/**
+ * SECTION:punycode
+ * @title: punycode.h
+ * @short_description: Punycode-related functions
+ *
+ * Punycode-related functions.
+ */
+
 # ifndef IDNAPI
 #  if defined LIBIDN_BUILDING && defined HAVE_VISIBILITY && HAVE_VISIBILITY
 #   define IDNAPI __attribute__((__visibility__("default")))
