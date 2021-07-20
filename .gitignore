@@ -76,6 +76,7 @@
 /doc/libidn.vrs
 /doc/man/
 /doc/manual/
+/doc/reference/gtkdoc-check.test
 /doc/reference/html-build.stamp
 /doc/reference/html.stamp
 /doc/reference/html/
@@ -88,6 +89,7 @@
 /doc/reference/libidn-undeclared.txt
 /doc/reference/libidn-undocumented.txt
 /doc/reference/libidn-unused.txt
+/doc/reference/libidn.actions
 /doc/reference/libidn.args
 /doc/reference/libidn.hierarchy
 /doc/reference/libidn.interfaces

@@ -723,6 +723,16 @@ stringprep_profile (const char *in,
  **/
 
 /**
+ * stringprep_kerberos5:
+ * @in: input/ouput array with string to prepare.
+ * @maxlen: maximum length of input/output array.
+ *
+ * Prepare the input UTF-8 string according to the draft Kerberos 5
+ * node identifier profile.  Returns 0 iff successful, or an error
+ * code.
+ **/
+
+/**
  * stringprep_xmpp_nodeprep:
  * @in: input/ouput array with string to prepare.
  * @maxlen: maximum length of input/output array.
