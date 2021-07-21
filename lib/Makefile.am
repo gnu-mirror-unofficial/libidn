@@ -55,10 +55,10 @@ libidn_la_SOURCES = libidn.map \
 	pr29.h pr29.c \
 	idn-free.h idn-free.c \
 	strerror-idna.c strerror-pr29.c strerror-punycode.c \
-	strerror-stringprep.c strerror-tld.c
+	strerror-stringprep.c
 
 if TLD
-libidn_la_SOURCES += tld.h tld.c tlds.c
+libidn_la_SOURCES += tld.h tld.c tlds.c strerror-tld.c
 endif
 libidn_la_LIBADD = $(LTLIBICONV) $(LTLIBINTL) gl/libgnu.la
 libidn_la_LDFLAGS = \

@@ -58,11 +58,13 @@ int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size)
 
 	pr29_8z(label); /* internally calls stringprep_utf8_to_ucs4() */
 
+#ifdef WITH_TLD
 	if (tld_get_z(label, &out) == TLD_SUCCESS) /* internally calls tld_get_4() */
 		idn_free(out);
 	const Tld_table *tld = tld_default_table("fr", NULL);
 	tld_check_8z(label, &errpos, NULL);
 	tld_check_lz(label, &errpos, NULL);
+#endif
 
         out = stringprep_utf8_nfkc_normalize((char *)data, size);
         idn_free(out);
@@ -88,11 +90,13 @@ int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size)
 
 		memcpy(u32, data, size);
 		u32[size / 4] = 0;
+#ifdef WITH_TLD
 		if (tld_get_4z(u32, &out) == TLD_SUCCESS) /* internally calls tld_get_4() */
 			idn_free(out);
 
 		tld_check_4tz(u32, &errpos, tld);
 		tld_check_4z(u32, &errpos, NULL);
+#endif
 
 		free(u32);
 	}

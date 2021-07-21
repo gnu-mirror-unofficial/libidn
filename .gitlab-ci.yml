@@ -214,7 +214,7 @@ Ubuntu-14.04:
   script:
   - tar xfa libidn-*.tar.gz
   - cd `ls -d libidn-* | grep -v tar.gz`
-  - time ./configure || (cat config.log; exit 1)
+  - time ./configure --disable-tld || (cat config.log; exit 1)
   - time make check V=1 || (find . -name test-suite.log -exec cat {} +; exit 1)
 
 Ubuntu rolling:
