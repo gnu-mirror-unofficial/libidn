@@ -79,6 +79,9 @@ endif
 
 -include $(top_srcdir)/git.mk
 
+html-build.stamp: $(top_builddir)/.version
+pdf-build.stamp: $(top_builddir)/.version
+
 CLEANFILES ?=
 CLEANFILES += libidn-overrides.txt libidn-decl.txt libidn-decl-list.txt
 CLEANFILES += libidn-sections.txt libidn.pdf
