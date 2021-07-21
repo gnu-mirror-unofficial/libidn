@@ -9,6 +9,9 @@ Now the targets are rebuilt on version number changes properly.
 
 ** build: Fix build errors related to doc/idn--help.texi.
 
+** build: Fix --disable-tld builds.
+Now tld_strerror() is removed when --disable-tld is used.
+
 * Noteworthy changes in release 1.37 (2021-05-15) [stable]
 
 ** doc: Minor fixes and codespell typos.

@@ -31,7 +31,9 @@
 #include <pr29.h>
 #include <punycode.h>
 #include <stringprep.h>
+#ifdef WITH_TLD
 #include <tld.h>
+#endif
 
 #include "utils.h"
 
@@ -69,11 +71,13 @@ doit (void)
   if (debug)
     printf ("stringprep_strerror (0) OK\n");
 
+#ifdef WITH_TLD
   p = tld_strerror (0);
   if (strcmp (p, SUCCESS) != 0)
     fail ("tld_strerror (0) failed: %s\n", p);
   if (debug)
     printf ("tld_strerror (0) OK\n");
+#endif
 
   /* Test unknown error. */
 
@@ -101,11 +105,13 @@ doit (void)
   if (debug)
     printf ("stringprep_strerror (42) OK\n");
 
+#ifdef WITH_TLD
   p = tld_strerror (42);
   if (strcmp (p, UNKNOWN) != 0)
     fail ("tld_strerror (42) failed: %s\n", p);
   if (debug)
     printf ("tld_strerror (42) OK\n");
+#endif
 
   /* Iterate through all error codes. */
 
@@ -188,6 +194,7 @@ doit (void)
       }
   }
 
+#ifdef WITH_TLD
   {
     unsigned i;
     const char *last_p = NULL;
@@ -202,4 +209,5 @@ doit (void)
 	last_p = p;
       }
   }
+#endif
 }
