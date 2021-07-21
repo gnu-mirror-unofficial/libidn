@@ -2,6 +2,9 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 
 * Noteworthy changes in release ?.? (????-??-??) [?]
 
+** doc: Simplify building of gdoc-generated man/texi outputs.
+Now the targets are rebuilt on version number changes properly.
+
 ** doc: Improve GTK-DOC manual.
 
 ** build: Fix build errors related to doc/idn--help.texi.

@@ -1,5 +1,5 @@
-eval '(exit $?0)' && eval 'exec perl -S "$0" ${1+"$@"}'
-    & eval 'exec perl -S "$0" $argv:q'
+eval '(exit $?0)' && eval 'exec perl "$0" ${1+"$@"}' # -*- mode: perl -*- #
+  & eval 'exec perl "$0" $argv:q'
     if 0;
 
 ## Copyright (c) 2002-2021 Simon Josefsson
@@ -830,7 +830,7 @@ sub dump_function {
 #	    print STDERR "param = '$param', type = '$type'\n";
 	}
     } else {
-	print STDERR "warning: $lineno: Cannot understand prototype: '$prototype'\n" if (!($prototype  =~ m,GSASL_VALID_MECHANISM_CHARACTERS,));
+	print STDERR "warning: $lineno: Cannot understand prototype: '$prototype'\n";
 	return;
     }
 
@@ -913,8 +913,6 @@ sub dump_enum {
 # 1 - looking for function name
 # 2 - scanning field start.
 # 3 - scanning prototype.
-$state = 0;
-$section = "";
 
 $doc_special = "\@\%\$\#";
 
@@ -934,15 +932,16 @@ $doc_content = $doc_com."(.*)";
 $contents = "";
 $section_default = "Description";	# default section
 $section = $section_default;
-$enum = 0;
-
-$lineno = 0;
 
 foreach $file (@ARGV) {
     if (!open(IN,"<$file")) {
 	print STDERR "Error: Cannot open file $file\n";
 	next;
     }
+    $state = 0;
+    $section = "";
+    $enum = 0;
+    $lineno = 0;
     while ($line = <IN>) {
 	$lineno++;
 
