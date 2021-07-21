@@ -69,8 +69,7 @@ example5.txt: $(top_srcdir)/examples/example5.c
 dist_man_MANS = idn.1 $(gdoc_MANS)
 MAINTAINERCLEANFILES = $(dist_man_MANS)
 
-idn.1: $(top_srcdir)/src/idn.c $(top_srcdir)/src/idn.ggo \
-		$(top_srcdir)/configure.ac
+idn.1: $(top_srcdir)/src/idn.c $(top_srcdir)/src/idn.ggo $(top_srcdir)/.version
 	$(HELP2MAN) \
 		--name="Internationalized Domain Names command line tool" \
 		--output=$@ $(top_builddir)/src/idn$(EXEEXT)
