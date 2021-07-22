@@ -20,8 +20,8 @@ EXTRA_DIST = cyclo-$(PACKAGE).html
 
 vcurl = "http://git.savannah.gnu.org/gitweb/?p=$(PACKAGE).git;a=blob;f=lib/%FILENAME%;hb=HEAD"
 
-cyclo-$(PACKAGE).html:
-	(cd ${top_srcdir}/lib && \
+cyclo-$(PACKAGE).html: $(top_srcdir)/.version
+	$(AM_V_GEN)(cd ${top_srcdir}/lib && \
 		$(PMCCABE) *.[ch] \
 		| sort -nr \
 		| LANG=C $(AWK) -f ${abs_top_srcdir}/build-aux/pmccabe2html \
@@ -29,5 +29,5 @@ cyclo-$(PACKAGE).html:
 			-v vcurl=$(vcurl) \
 			-v url="http://www.gnu.org/software/$(PACKAGE)/" \
 			-v css=${abs_top_srcdir}/build-aux/pmccabe.css) \
-			> tmp
+		> tmp && \
 	mv tmp $@
