@@ -1,16 +1,19 @@
---- README-release.orig	2021-05-23 21:02:39.213594964 +0200
-+++ README-release	2021-05-23 21:04:17.214081200 +0200
-@@ -10,6 +10,9 @@
+--- README-release.orig	2021-07-22 15:34:50.872098730 +0200
++++ README-release	2021-07-22 15:36:09.741371867 +0200
+@@ -10,6 +10,12 @@
    are in your PATH.  See the buildreq list in bootstrap.conf for
    the complete list of tools.
  
++* Ensure that you have incremented the LT_* variables in configure.ac
++  properly.
++
 +* Ensure that you have updated STRINGPREP_VERSION in lib/stringprep.h
 +  for the new release.
 +
  * Ensure that you have no uncommitted diffs.  This should produce no
    output:
  
-@@ -19,9 +22,9 @@
+@@ -19,18 +25,17 @@
  
      git push origin master
  
@@ -22,7 +25,8 @@
  
  * Run the following command to download any new translations:
  
-@@ -29,8 +32,7 @@
+-    ./bootstrap && ./configure
++    ./bootstrap && ./configure --enable-java --enable-gtk-doc-pdf
  
  * Pre-release testing: ensure that the following commands succeed:
  
@@ -32,7 +36,7 @@
  
  * To (i) set the date, version number, and release TYPE on line 3 of
    NEWS, (ii) commit that, and (iii) tag the release, run
-@@ -49,7 +51,7 @@
+@@ -49,7 +54,7 @@
    it builds and passes all tests.
  
  * While that's happening, write the release announcement that you will
@@ -41,7 +45,7 @@
    that was just created by that "make" command.
  
  Once all the builds and tests have passed,
-@@ -68,28 +70,6 @@
+@@ -68,28 +73,6 @@
      v=$(cat .prev-version)
      git push origin master tag v$v
  
@@ -70,7 +74,7 @@
  * Send the announcement email message.
  
  * After each non-alpha release, run
-@@ -98,4 +78,4 @@
+@@ -98,4 +81,4 @@
  
    to update the on-line manual accessible at
  
