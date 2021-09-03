@@ -38,8 +38,7 @@ exclude_file_name_regexp--sc_prohibit_strncpy = ^src/idn.c$$
 exclude_file_name_regexp--sc_prohibit_empty_lines_at_EOF = ^fuzz/libidn_.*fuzzer.(in|repro)/.*$$
 exclude_file_name_regexp--sc_two_space_separator_in_usage = ^cfg.mk$$
 exclude_file_name_regexp--sc_prohibit_always_true_header_tests = ^lib/toutf8.c$$
-
-INDENT_SOURCES = -ppi 1 `find . -name '*.[ch]'|grep -v -e ^./gl/ -e ^./fuzz/ -e ^./gltests/ -e ^./lib/gl/ -e ^./lib/gltests/ -e '^./lib/\(gunibreak.h\|gunicomp.h\|gunidecomp.h\|rfc3454.c\|rfc3454.h\|tlds.c\)$$'`
+exclude_file_name_regexp--sc_indent = '^lib/\(gunibreak\|gunicomp\|gunidecomp\).h$$'
 
 aximport:
 	for f in m4/ax_*.m4; do \
