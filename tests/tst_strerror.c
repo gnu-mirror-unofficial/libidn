@@ -32,7 +32,7 @@
 #include <punycode.h>
 #include <stringprep.h>
 #ifdef WITH_TLD
-#include <tld.h>
+# include <tld.h>
 #endif
 
 #include "utils.h"

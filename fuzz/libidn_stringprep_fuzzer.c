@@ -17,10 +17,10 @@
 
 #include <config.h>
 
-#include <assert.h> /* assert */
-#include <stdint.h> /* uint8_t, uint32_t */
-#include <stdlib.h> /* malloc, free */
-#include <string.h> /* memcpy */
+#include <assert.h>		/* assert */
+#include <stdint.h>		/* uint8_t, uint32_t */
+#include <stdlib.h>		/* malloc, free */
+#include <string.h>		/* memcpy */
 
 #include "stringprep.h"
 #include "pr29.h"
@@ -28,82 +28,87 @@
 #include "idn-free.h"
 #include "fuzzer.h"
 
-int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size)
+int
+LLVMFuzzerTestOneInput (const uint8_t * data, size_t size)
 {
-	char *wdata;
-	char *label;
-	char *utf8_seq;
-	char *out;
-        uint32_t cp;
-	size_t errpos;
+  char *wdata;
+  char *label;
+  char *utf8_seq;
+  char *out;
+  uint32_t cp;
+  size_t errpos;
 
-	if (size > 2048)
-		return 0;
+  if (size > 2048)
+    return 0;
 
-	wdata = (char *) malloc(size + 1);
-	label = (char *) malloc(size + 1);
-	utf8_seq = (char *) malloc(6);
-	assert(wdata != NULL);
-	assert(label != NULL);
-	assert(utf8_seq != NULL);
+  wdata = (char *) malloc (size + 1);
+  label = (char *) malloc (size + 1);
+  utf8_seq = (char *) malloc (6);
+  assert (wdata != NULL);
+  assert (label != NULL);
+  assert (utf8_seq != NULL);
 
-	/* 0 terminate */
-	memcpy(label, data, size);
-	label[size] = 0;
+  /* 0 terminate */
+  memcpy (label, data, size);
+  label[size] = 0;
 
-	stringprep_check_version(label);
+  stringprep_check_version (label);
 
-	if (stringprep_profile(label, &out, "Nodeprep", (Stringprep_profile_flags) 0) == STRINGPREP_OK)
-		idn_free(out);
+  if (stringprep_profile
+      (label, &out, "Nodeprep",
+       (Stringprep_profile_flags) 0) == STRINGPREP_OK)
+    idn_free (out);
 
-	pr29_8z(label); /* internally calls stringprep_utf8_to_ucs4() */
+  pr29_8z (label);		/* internally calls stringprep_utf8_to_ucs4() */
 
 #ifdef WITH_TLD
-	if (tld_get_z(label, &out) == TLD_SUCCESS) /* internally calls tld_get_4() */
-		idn_free(out);
-	const Tld_table *tld = tld_default_table("fr", NULL);
-	tld_check_8z(label, &errpos, NULL);
-	tld_check_lz(label, &errpos, NULL);
+  if (tld_get_z (label, &out) == TLD_SUCCESS)	/* internally calls tld_get_4() */
+    idn_free (out);
+  const Tld_table *tld = tld_default_table ("fr", NULL);
+  tld_check_8z (label, &errpos, NULL);
+  tld_check_lz (label, &errpos, NULL);
 #endif
 
-        out = stringprep_utf8_nfkc_normalize((char *)data, size);
-        idn_free(out);
+  out = stringprep_utf8_nfkc_normalize ((char *) data, size);
+  idn_free (out);
 
-        cp = stringprep_utf8_to_unichar(label);
-        stringprep_unichar_to_utf8(cp, utf8_seq);
+  cp = stringprep_utf8_to_unichar (label);
+  stringprep_unichar_to_utf8 (cp, utf8_seq);
 
-	memcpy(wdata, data, size);
-	wdata[size] = 0;
-	stringprep(wdata, size, (Stringprep_profile_flags) 0, stringprep_nameprep);
-	memcpy(wdata, data, size);
-	wdata[size] = 0;
-	stringprep(wdata, size, STRINGPREP_NO_UNASSIGNED, stringprep_nameprep);
+  memcpy (wdata, data, size);
+  wdata[size] = 0;
+  stringprep (wdata, size, (Stringprep_profile_flags) 0, stringprep_nameprep);
+  memcpy (wdata, data, size);
+  wdata[size] = 0;
+  stringprep (wdata, size, STRINGPREP_NO_UNASSIGNED, stringprep_nameprep);
 
-	if ((size & 3) == 0) {
-		uint32_t *u32 = (uint32_t *) malloc(size + 4);
+  if ((size & 3) == 0)
+    {
+      uint32_t *u32 = (uint32_t *) malloc (size + 4);
 
-		assert(u32 != NULL);
+      assert (u32 != NULL);
 
-		memcpy(u32, data, size);
-		u32[size / 4] = 0;
-		stringprep_4zi(u32, size / 4, (Stringprep_profile_flags) 0, stringprep_xmpp_nodeprep);
+      memcpy (u32, data, size);
+      u32[size / 4] = 0;
+      stringprep_4zi (u32, size / 4, (Stringprep_profile_flags) 0,
+		      stringprep_xmpp_nodeprep);
 
-		memcpy(u32, data, size);
-		u32[size / 4] = 0;
+      memcpy (u32, data, size);
+      u32[size / 4] = 0;
 #ifdef WITH_TLD
-		if (tld_get_4z(u32, &out) == TLD_SUCCESS) /* internally calls tld_get_4() */
-			idn_free(out);
+      if (tld_get_4z (u32, &out) == TLD_SUCCESS)	/* internally calls tld_get_4() */
+	idn_free (out);
 
-		tld_check_4tz(u32, &errpos, tld);
-		tld_check_4z(u32, &errpos, NULL);
+      tld_check_4tz (u32, &errpos, tld);
+      tld_check_4z (u32, &errpos, NULL);
 #endif
 
-		free(u32);
-	}
+      free (u32);
+    }
 
-	free(utf8_seq);
-	free(label);
-	free(wdata);
+  free (utf8_seq);
+  free (label);
+  free (wdata);
 
-	return 0;
+  return 0;
 }

@@ -35,104 +35,120 @@
 
 #ifdef TEST_RUN
 
-#include <dirent.h>
+# include <dirent.h>
 
-static int test_all_from(const char *dirname)
+static int
+test_all_from (const char *dirname)
 {
-	DIR *dirp;
-	struct dirent *dp;
+  DIR *dirp;
+  struct dirent *dp;
 
-	if ((dirp = opendir(dirname))) {
-		while ((dp = readdir(dirp))) {
-			if (*dp->d_name == '.') continue;
+  if ((dirp = opendir (dirname)))
+    {
+      while ((dp = readdir (dirp)))
+	{
+	  if (*dp->d_name == '.')
+	    continue;
 
-			char fname[strlen(dirname) + strlen(dp->d_name) + 2];
-			snprintf(fname, sizeof(fname), "%s/%s", dirname, dp->d_name);
+	  char fname[strlen (dirname) + strlen (dp->d_name) + 2];
+	  snprintf (fname, sizeof (fname), "%s/%s", dirname, dp->d_name);
 
-			int fd;
-			if ((fd = open(fname, O_RDONLY)) == -1) {
-				fprintf(stderr, "Failed to open %s (%d)\n", fname, errno);
-				continue;
-			}
+	  int fd;
+	  if ((fd = open (fname, O_RDONLY)) == -1)
+	    {
+	      fprintf (stderr, "Failed to open %s (%d)\n", fname, errno);
+	      continue;
+	    }
 
-			struct stat st;
-			if (fstat(fd, &st) != 0) {
-				fprintf(stderr, "Failed to stat %d (%d)\n", fd, errno);
-				close(fd);
-				continue;
-			}
+	  struct stat st;
+	  if (fstat (fd, &st) != 0)
+	    {
+	      fprintf (stderr, "Failed to stat %d (%d)\n", fd, errno);
+	      close (fd);
+	      continue;
+	    }
 
-			uint8_t *data = malloc(st.st_size);
-			ssize_t n;
-			if ((n = read(fd, data, st.st_size)) == st.st_size) {
-				printf("testing %llu bytes from '%s'\n", (unsigned long long) st.st_size, fname);
-				LLVMFuzzerTestOneInput(data, st.st_size);
-			} else
-				fprintf(stderr, "Failed to read %llu bytes from %s (%d), got %zd\n", (unsigned long long) st.st_size, fname, errno, n);
+	  uint8_t *data = malloc (st.st_size);
+	  ssize_t n;
+	  if ((n = read (fd, data, st.st_size)) == st.st_size)
+	    {
+	      printf ("testing %llu bytes from '%s'\n",
+		      (unsigned long long) st.st_size, fname);
+	      LLVMFuzzerTestOneInput (data, st.st_size);
+	    }
+	  else
+	    fprintf (stderr,
+		     "Failed to read %llu bytes from %s (%d), got %zd\n",
+		     (unsigned long long) st.st_size, fname, errno, n);
 
-			free(data);
-			close(fd);
-		}
-		closedir(dirp);
-		return 0;
+	  free (data);
+	  close (fd);
 	}
+      closedir (dirp);
+      return 0;
+    }
 
-	return 1;
+  return 1;
 }
 
-int main(int argc, char **argv)
+int
+main (int argc, char **argv)
 {
-	const char *target = strrchr(argv[0], '/');
-	target = target ? target + 1 : argv[0];
+  const char *target = strrchr (argv[0], '/');
+  target = target ? target + 1 : argv[0];
 
-	{
-		int  rc;
-		char corporadir[sizeof(SRCDIR) + 1 + strlen(target) + 8];
-		snprintf(corporadir, sizeof(corporadir), SRCDIR "/%s.in", target);
+  {
+    int rc;
+    char corporadir[sizeof (SRCDIR) + 1 + strlen (target) + 8];
+    snprintf (corporadir, sizeof (corporadir), SRCDIR "/%s.in", target);
 
-		rc = test_all_from(corporadir);
-		if (rc)
-			fprintf(stderr, "Failed to find %s\n", corporadir);
+    rc = test_all_from (corporadir);
+    if (rc)
+      fprintf (stderr, "Failed to find %s\n", corporadir);
 
-		snprintf(corporadir, sizeof(corporadir), SRCDIR "/%s.repro", target);
-		test_all_from(corporadir);
-		if (test_all_from(corporadir) && rc)
-			return 77; // SKIP
-	}
+    snprintf (corporadir, sizeof (corporadir), SRCDIR "/%s.repro", target);
+    test_all_from (corporadir);
+    if (test_all_from (corporadir) && rc)
+      return 77;		// SKIP
+  }
 
-	return 0;
+  return 0;
 }
 
 #else
 
-#ifndef __AFL_LOOP
-static int __AFL_LOOP(int n)
+# ifndef __AFL_LOOP
+static int
+__AFL_LOOP (int n)
 {
-	static int first = 1;
+  static int first = 1;
 
-	if (first) {
-		first = 0;
-		return 1;
-	}
+  if (first)
+    {
+      first = 0;
+      return 1;
+    }
 
-	return 0;
+  return 0;
 }
-#endif
+# endif
 
-int main(int argc, char **argv)
+int
+main (int argc, char **argv)
 {
-	int ret;
-	unsigned char buf[64 * 1024];
+  int ret;
+  unsigned char buf[64 * 1024];
 
-	while (__AFL_LOOP(10000)) { // only works with afl-clang-fast
-		ret = fread(buf, 1, sizeof(buf), stdin);
-		if (ret < 0)
-			return 0;
-
-		LLVMFuzzerTestOneInput(buf, ret);
-	}
-
+  while (__AFL_LOOP (10000))
+    {				// only works with afl-clang-fast
+      ret = fread (buf, 1, sizeof (buf), stdin);
+      if (ret < 0)
 	return 0;
+
+      LLVMFuzzerTestOneInput (buf, ret);
+    }
+
+  return 0;
 }
 
 #endif /* TEST_RUN */
