@@ -1651,7 +1651,7 @@ compatibility though.
 
 * Noteworthy changes in release 0.0.1 (2002-11-06) [alpha]
 
-** Add utility functions stringprep_locale_charset(), stringprep_convert() 
+** Add utility functions stringprep_locale_charset(), stringprep_convert()
 and stringprep_locale_to_utf8 () that can be used to convert text from
 system's locale into UTF-8, which should be done before invoking
 stringprep().  The functions requires iconv() in the operating system.

@@ -17,19 +17,18 @@
 
 manual_title = Internationalized Domain Names Library
 
-old_NEWS_hash = 203b425e123666fefa9cfeddd26153d5
+old_NEWS_hash = 27e9e4d10e58a5b56d99f2af7a82e438
 
 bootstrap-tools = gnulib,autoconf,automake,libtoolize,make,makeinfo,help2man,gperf,gengetopt,gtkdocize,tar,gzip
 
-local-checks-to-skip = sc_prohibit_strcmp sc_prohibit_have_config_h	\
-	sc_require_config_h sc_require_config_h_first			\
-	sc_prohibit_HAVE_MBRTOWC sc_program_name sc_trailing_blank	\
-	sc_GPL_version sc_immutable_NEWS				\
-	sc_prohibit_gnu_make_extensions sc_codespell
+local-checks-to-skip = sc_GPL_version sc_codespell	\
+	sc_prohibit_have_config_h sc_prohibit_strcmp	\
+	sc_require_config_h sc_require_config_h_first
 VC_LIST_ALWAYS_EXCLUDE_REGEX = \
 	^(GNUmakefile|maint.mk|gtk-doc.make|m4/pkg.m4|m4/libtool.m4|doc/specifications|contrib/doxygen/Doxyfile|doc/fdl-1.3.texi|csharp/libidn.*suo|(lib/)?(gl|gltests|build-aux)/)
 
 # Explicit syntax-check exceptions.
+exclude_file_name_regexp--sc_trailing_blank = '^doc/components.fig\|csharp/\|fuzz/libidn_\(toascii\|stringprep\|tounicode\)_fuzzer.in/.*\|java/src/\|lib/gen-unicode-tables.pl\|lib/\(gunibreak\|gunicomp\|gunidecomp\).h$$'
 exclude_file_name_regexp--sc_bindtextdomain = ^examples/|libc/|tests/|fuzz/
 exclude_file_name_regexp--sc_prohibit_atoi_atof = ^examples/example2.c$$
 exclude_file_name_regexp--sc_copyright_check = ^doc/libidn.texi

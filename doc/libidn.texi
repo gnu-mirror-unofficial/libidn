@@ -268,7 +268,7 @@ GCC 3.0 and GNU Make. @code{ia64-unknown-linux-gnu}.
 GCC 3.2.2 and GNU Make.  @code{x86_64-unknown-linux-gnu} (AMD64
 Opteron ``Melody'').
 
-@item SuSE Enterprise Server 9 on IBM OpenPower 720 
+@item SuSE Enterprise Server 9 on IBM OpenPower 720
 @cindex SuSE Linux
 @cindex OpenPower 720
 
@@ -1268,7 +1268,7 @@ the file @file{tld.h} using:
 @c ends in the same character), then set @var{end} to the same as
 @c @var{start}.  This structure is normally used as an array.
 @c @end deftp
-@c 
+@c
 @c @deftp {Data type} {Tld_table} @var{name} @var{version} @var{nvalid} @var{valid}
 @c @example
 @c /* List valid code points in a TLD. */
@@ -1580,7 +1580,7 @@ the same characters as the same byte sequences.
 @example
 jas@@latte:~$ idn --quiet --debug ""
 system locale uses charset `ISO-8859-1'.
- 
+
 jas@@latte:~$ CHARSET=UTF-8 idn --quiet --debug r@"aksm@"org@aa{}s
 system locale uses charset `UTF-8'.
 input[0] = U+0072
