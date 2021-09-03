@@ -743,7 +743,7 @@ stringprep_profile (const char *in,
 
 /**
  * stringprep_xmpp_resourceprep:
- * @in: input/ouput array with string to prepare.
+ * @in: input/output array with string to prepare.
  * @maxlen: maximum length of input/output array.
  *
  * Prepare the input UTF-8 string according to the draft XMPP resource

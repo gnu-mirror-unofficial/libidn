@@ -1063,7 +1063,7 @@ identifier profile.  Returns 0 iff successful, or an error code.
 
 @deftypefun {int} stringprep_xmpp_resourceprep (char * @var{in}, int @var{maxlen})
 
-@var{in}: input/ouput array with string to prepare.
+@var{in}: input/output array with string to prepare.
 
 @var{maxlen}: maximum length of input/output array.
 
