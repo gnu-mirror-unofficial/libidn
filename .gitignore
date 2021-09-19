@@ -7,6 +7,7 @@
 *.o
 *.trs
 *~
+/.deps/
 /.version
 /ABOUT-NLS
 /ChangeLog
@@ -197,3 +198,4 @@
 /windows/tmp64
 Makefile
 Makefile.in
+doc/stamp-gdoc
