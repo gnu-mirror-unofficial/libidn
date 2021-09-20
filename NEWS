@@ -2,6 +2,7 @@ Libidn NEWS -- History of user-visible changes.                 -*- outline -*-
 
 * Noteworthy changes in release ?.? (????-??-??) [?]
 
+** maint: Java JAR archive no longer included in source tarball.
 
 * Noteworthy changes in release 1.38 (2021-07-22) [stable]
 

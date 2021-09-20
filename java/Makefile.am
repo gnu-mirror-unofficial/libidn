@@ -24,7 +24,7 @@ INSTALL_TARGETS =
 
 if JAVA
 libidn_jardir = $(datadir)/java
-dist_libidn_jar_DATA = libidn-$(VERSION).jar
+libidn_jar_DATA = libidn-$(VERSION).jar
 
 libidn-$(VERSION).jar:
 	$(JAR) cf $@ \
