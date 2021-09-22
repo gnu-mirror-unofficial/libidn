@@ -24,7 +24,7 @@ Quick-Debian-testing:
   image: $CI_REGISTRY/libidn/build-images:libidn-quick-Debian-testing
   stage: quick
   script:
-  - time ./bootstrap --skip-po
+  - time ./bootstrap --skip-po --no-git
   - time ./configure --disable-doc || (cat config.log; exit 1)
   - time make syntax-check
   - time make V=1
@@ -34,17 +34,20 @@ Quick-Alpine:
   image: $CI_REGISTRY/libidn/build-images:libidn-quick-Alpine
   stage: build # it wasn't very quick...
   script:
-  - time ./bootstrap --skip-po
+  - time ./bootstrap --skip-po --no-git
   - time ./configure --disable-doc || (cat config.log; exit 1)
   - time make syntax-check
   - time make V=1
   - time make check || (find . -name test-suite.log -exec cat {} +; exit 1)
 
-Debian stable:
-  image: $CI_REGISTRY/libidn/build-images:libidn-Debian-stable
+Debian11:
+  image: $CI_REGISTRY/libidn/build-images:libidn-Debian11
   stage: build
+  before_script:
+  - apt-get update
+  - env DEBIAN_FRONTEND=noninteractive apt-get install -y -qq wget
   script:
-  - time ./bootstrap --skip-po --no-git
+  - time ./bootstrap --no-git
   - time ./configure --enable-java || (cat config.log; exit 1)
   - time make syntax-check
   - time make check V=1 || (find . -name test-suite.log -exec cat {} +; exit 1)
@@ -54,8 +57,21 @@ Debian stable:
     paths:
     - libidn-*.tar.gz
 
-Debian oldstable:
-  image: $CI_REGISTRY/libidn/build-images:libidn-Debian-oldstable
+Debian10:
+  image: $CI_REGISTRY/libidn/build-images:libidn-Debian10
+  stage: build
+  script:
+  - time ./bootstrap --skip-po --no-git
+  - time ./configure --enable-java || (cat config.log; exit 1)
+  - time make check V=1 || (find . -name test-suite.log -exec cat {} +; exit 1)
+  - time make dist
+  artifacts:
+    expire_in: 2 weeks
+    paths:
+    - libidn-*.tar.gz
+
+Debian9:
+  image: $CI_REGISTRY/libidn/build-images:libidn-Debian9
   stage: build
   script:
   - time ./bootstrap --skip-po --no-git
@@ -115,7 +131,7 @@ Ubuntu latest:
 Debian oldoldstable:
   image: debian:oldoldstable
   stage: test
-  needs: [Debian stable]
+  needs: [Debian11]
   before_script:
   - apt-get update
   - env DEBIAN_FRONTEND=noninteractive apt-get install -y -qq make gcc
@@ -130,7 +146,7 @@ Debian oldoldstable:
 Alpine:
   image: alpine:latest
   stage: test
-  needs: [Debian stable]
+  needs: [Debian11]
   before_script:
   - apk update
   - apk add build-base
@@ -143,7 +159,7 @@ Alpine:
 ArchLinux:
   image: archlinux:latest
   stage: test
-  needs: [Debian stable]
+  needs: [Debian11]
   before_script:
   - pacman -Sy --noconfirm make gcc diffutils
   script:
@@ -157,7 +173,7 @@ ArchLinux:
 Fedora:
   image: fedora:latest
   stage: test
-  needs: [Debian stable]
+  needs: [Debian11]
   before_script:
   - dnf -y install make gcc diffutils valgrind
   script:
@@ -169,7 +185,7 @@ Fedora:
 CentOS7:
   image: centos:7
   stage: test
-  needs: [Debian stable]
+  needs: [Debian11]
   before_script:
   - yum -y install make gcc diffutils valgrind
   script:
@@ -181,7 +197,7 @@ CentOS7:
 CentOS8:
   image: centos:8
   stage: test
-  needs: [Debian stable]
+  needs: [Debian11]
   before_script:
   - dnf -y install make gcc diffutils valgrind
   script:
@@ -193,7 +209,7 @@ CentOS8:
 Ubuntu-12.04:
   image: ubuntu:12.04
   stage: test
-  needs: [Debian stable]
+  needs: [Debian11]
   before_script:
   - perl -pi -e 's/archive.ubuntu.com/old-releases.ubuntu.com/g' /etc/apt/sources.list
   - apt-get update -q
@@ -207,7 +223,7 @@ Ubuntu-12.04:
 Ubuntu-14.04:
   image: ubuntu:14.04
   stage: test
-  needs: [Debian stable]
+  needs: [Debian11]
   before_script:
   - apt-get update -qq
   - env DEBIAN_FRONTEND=noninteractive apt-get install -y -qq make gcc valgrind
@@ -220,7 +236,7 @@ Ubuntu-14.04:
 Ubuntu rolling:
   image: ubuntu:rolling
   stage: test
-  needs: [Debian stable]
+  needs: [Debian11]
   before_script:
   - apt-get update -qq
   - env DEBIAN_FRONTEND=noninteractive apt-get install -y -qq git make gcc valgrind gtk-doc-tools texinfo texlive texlive-plain-generic
@@ -238,7 +254,7 @@ Ubuntu rolling:
 Mingw32:
   image: debian:latest
   stage: test
-  needs: [Debian stable]
+  needs: [Debian11]
   before_script:
   - dpkg --add-architecture i386
   - apt-get update -qq
@@ -255,7 +271,7 @@ Mingw32:
 Mingw64:
   image: debian:latest
   stage: test
-  needs: [Debian stable]
+  needs: [Debian11]
   before_script:
   - apt-get update -qq
   - env DEBIAN_FRONTEND=noninteractive apt-get install -y -qq make mingw-w64 wine wine64 binfmt-support wine-binfmt
@@ -271,7 +287,7 @@ Mingw64:
 Armcross:
   image: debian:latest
   stage: test
-  needs: [Debian stable]
+  needs: [Debian11]
   before_script:
   - apt-get update -qq
   - env DEBIAN_FRONTEND=noninteractive apt-get install -y -qq make gcc-arm-linux-gnueabi qemu-user qemu-user-binfmt file
@@ -291,7 +307,7 @@ pages:
   image: $CI_REGISTRY/libidn/build-images:libidn-Debian-testing
   stage: build
   script:
-  - time ./bootstrap --skip-po --no-git
+  - time ./bootstrap --skip-po
   - time ./configure --enable-java --enable-gtk-doc --enable-gtk-doc-pdf || (cat config.log; exit 1)
   - time make V=1
   - mkdir -p public
@@ -311,7 +327,7 @@ pages-test:
   image: $CI_REGISTRY/libidn/build-images:libidn-Debian-testing
   stage: build
   script:
-  - time ./bootstrap --skip-po --no-git
+  - time ./bootstrap --skip-po
   - time ./configure --enable-java --enable-gtk-doc --enable-gtk-doc-pdf || (cat config.log; exit 1)
   - time make V=1
   - mkdir -p public
