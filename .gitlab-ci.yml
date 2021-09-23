@@ -64,6 +64,7 @@ Debian10:
   - time ./bootstrap --skip-po --no-git
   - time ./configure --enable-java || (cat config.log; exit 1)
   - time make check V=1 || (find . -name test-suite.log -exec cat {} +; exit 1)
+  - time make syntax-check
   - time make dist
   artifacts:
     expire_in: 2 weeks
@@ -78,6 +79,7 @@ Debian9:
   - time ./configure --enable-java || (cat config.log; exit 1)
   - time make check V=1 || (find . -name test-suite.log -exec cat {} +; exit 1)
   - time make dist
+  - time make syntax-check
   artifacts:
     expire_in: 2 weeks
     paths:
@@ -303,11 +305,11 @@ Armcross:
   - LANG=C.UTF-8 qemu-arm src/idn --debug foo
   - time make check V=1 || (find . -name test-suite.log -exec cat {} +; exit 1)
 
-pages:
+.pages:
   image: $CI_REGISTRY/libidn/build-images:libidn-Debian-testing
   stage: build
   script:
-  - time ./bootstrap --skip-po
+  - time ./bootstrap --skip-po --no-git
   - time ./configure --enable-java --enable-gtk-doc --enable-gtk-doc-pdf || (cat config.log; exit 1)
   - time make V=1
   - mkdir -p public
@@ -320,21 +322,13 @@ pages:
     when: on_success
     paths:
       - public
+
+pages:
+  extends: .pages
   only:
     - master
 
 pages-test:
-  image: $CI_REGISTRY/libidn/build-images:libidn-Debian-testing
-  stage: build
-  script:
-  - time ./bootstrap --skip-po
-  - time ./configure --enable-java --enable-gtk-doc --enable-gtk-doc-pdf || (cat config.log; exit 1)
-  - time make V=1
-  - mkdir -p public
-  - rm -rf public/reference
-  - mv doc/reference/html public/reference
-  - make web-manual
-  - rm -rf public/manual
-  - mv doc/manual public/manual
+  extends: .pages
   except:
     - master
