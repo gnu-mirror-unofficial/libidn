@@ -37,13 +37,13 @@ imagesdir = $(infodir)
 images_DATA = libidn-components.png
 
 libidn-components.eps: components.fig
-	fig2dev -L eps $< $@
+	fig2dev -L eps $(srcdir)/components.fig $@
 
 libidn-components.png: components.fig
-	fig2dev -L png $< $@
+	fig2dev -L png $(srcdir)/components.fig $@
 
 libidn-components.pdf: components.fig
-	fig2dev -L pdf $< $@
+	fig2dev -L pdf $(srcdir)/components.fig $@
 
 idn-help.texi: $(top_srcdir)/src/idn.c
 	$(top_builddir)/src/idn$(EXEEXT) --help | $(GREP) '^  *-' > tmp
