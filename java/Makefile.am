@@ -27,7 +27,7 @@ libidn_jardir = $(datadir)/java
 libidn_jar_DATA = libidn-$(VERSION).jar
 
 libidn-$(VERSION).jar:
-	$(JAR) cf $@ \
+	$(AM_V_GEN)$(JAR) cf $@ \
 		-C $(builddir)/src/main/java \
 			gnu/inet/encoding/CombiningClass.class		\
 		-C $(builddir)/src/main/java \

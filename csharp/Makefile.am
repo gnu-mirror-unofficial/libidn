@@ -49,7 +49,7 @@ INSTALL_DATA_LOCAL_TARGETS += install-dll
 UNINSTALL_LOCAL_TARGETS += uninstall-dll
 
 Libidn.dll: $(SOURCES)
-	$(CSHARPCOMP) $(CSHARPCOMPFLAGS) -o $@ \
+	$(AM_V_GEN)$(CSHARPCOMP) $(CSHARPCOMPFLAGS) -o $@ \
 		`for src in $(SOURCES); do echo $(srcdir)/$$src; done`
 
 SPEC = $(top_srcdir)/doc/specifications

@@ -24,6 +24,6 @@ if JAVA
 # Invoked by ../doc/java/Makefile.
 .PHONY: javadoc
 javadoc:
-	cd $(srcdir) && \
+	$(AM_V_GEN)cd $(srcdir) && \
 		$(JAVADOC) -d $(top_builddir)/doc/java/html gnu/inet/encoding/*.java
 endif

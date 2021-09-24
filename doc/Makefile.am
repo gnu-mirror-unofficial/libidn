@@ -37,32 +37,37 @@ imagesdir = $(infodir)
 images_DATA = libidn-components.png
 
 libidn-components.eps: components.fig
-	fig2dev -L eps $(srcdir)/components.fig $@
+	$(AM_V_GEN)fig2dev -L eps $(srcdir)/components.fig $@
 
 libidn-components.png: components.fig
-	fig2dev -L png $(srcdir)/components.fig $@
+	$(AM_V_GEN)fig2dev -L png $(srcdir)/components.fig $@
 
 libidn-components.pdf: components.fig
-	fig2dev -L pdf $(srcdir)/components.fig $@
+	$(AM_V_GEN)fig2dev -L pdf $(srcdir)/components.fig $@
 
 idn-help.texi: $(top_srcdir)/src/idn.c
-	$(top_builddir)/src/idn$(EXEEXT) --help | $(GREP) '^  *-' > tmp
-	mv tmp idn-help.texi
+	$(AM_V_GEN)$(top_builddir)/src/idn$(EXEEXT) --help | $(GREP) '^  *-' > tmp && \
+		mv tmp idn-help.texi
 
 example.txt: $(top_srcdir)/examples/example.c
-	sed -e '/* example/,/^$$/d' $(top_srcdir)/examples/example.c > $@.tmp && mv $@.tmp $@
+	$(AM_V_GEN)sed -e '/* example/,/^$$/d' $(top_srcdir)/examples/example.c > $@.tmp && \
+		mv $@.tmp $@
 
 example2.txt: $(top_srcdir)/examples/example2.c
-	sed -e '/* example/,/^$$/d' $(top_srcdir)/examples/example2.c > $@.tmp && mv $@.tmp $@
+	$(AM_V_GEN)sed -e '/* example/,/^$$/d' $(top_srcdir)/examples/example2.c > $@.tmp && \
+		mv $@.tmp $@
 
 example3.txt: $(top_srcdir)/examples/example3.c
-	sed -e '/* example/,/^$$/d' $(top_srcdir)/examples/example3.c > $@.tmp && mv $@.tmp $@
+	$(AM_V_GEN)sed -e '/* example/,/^$$/d' $(top_srcdir)/examples/example3.c > $@.tmp && \
+		mv $@.tmp $@
 
 example4.txt: $(top_srcdir)/examples/example4.c
-	sed -e '/* example/,/^$$/d' $(top_srcdir)/examples/example4.c > $@.tmp && mv $@.tmp $@
+	$(AM_V_GEN)sed -e '/* example/,/^$$/d' $(top_srcdir)/examples/example4.c > $@.tmp && \
+		mv $@.tmp $@
 
 example5.txt: $(top_srcdir)/examples/example5.c
-	sed -e '/* example/,/^$$/d' $(top_srcdir)/examples/example5.c > $@.tmp && mv $@.tmp $@
+	$(AM_V_GEN)sed -e '/* example/,/^$$/d' $(top_srcdir)/examples/example5.c > $@.tmp && \
+		mv $@.tmp $@
 
 BUILT_SOURCES = example.txt example2.txt example3.txt example4.txt example5.txt
 
