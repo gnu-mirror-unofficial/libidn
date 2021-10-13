@@ -33,7 +33,7 @@ the instructions for installing them differ.  Here are some hints:
 
 Debian 10.x, Ubuntu 20.04:
 apt-get install make git autoconf automake libtool gettext autopoint cvs
-apt-get install texinfo texlive texlive-plain-genric texlive-extra-utils
+apt-get install texinfo texlive texlive-plain-generic texlive-extra-utils
 apt-get install help2man gtk-doc-tools dblatex valgrind gengetopt
 apt-get install transfig mono-mcs gperf default-jdk-headless
 
