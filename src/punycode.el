@@ -25,14 +25,14 @@
 
 ;; Example:
 ;;
-;; (punycode-encode "räksmörgås")
+;; (punycode-encode "rÃ¤ksmÃ¶rgÃ¥s")
 ;; => "rksmrgs-5wao1o"
 ;;
 ;; (punycode-encode "foo")
 ;; => "foo-"
 ;;
 ;; (punycode-decode "rksmrgs-5wao1o")
-;; => "räksmörgås"
+;; => "rÃ¤ksmÃ¶rgÃ¥s"
 ;;
 ;; (punycode-decode "foo-")
 ;; => "foo"

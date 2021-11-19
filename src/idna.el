@@ -26,14 +26,14 @@
 
 ;; Example:
 ;;
-;; (idna-to-ascii "räksmörgås.gnu.org")
+;; (idna-to-ascii "rÃ¤ksmÃ¶rgÃ¥s.gnu.org")
 ;; => "xn--rksmrgs-5wao1o.gnu.org"
 ;;
 ;; (idna-to-ascii "www.gnu.org")
 ;; => "www.gnu.org"
 ;;
 ;; (idna-to-unicode "xn--rksmrgs-5wao1o.gnu.org")
-;; => "räksmörgås.gnu.org"
+;; => "rÃ¤ksmÃ¶rgÃ¥s.gnu.org"
 ;;
 ;; (idna-to-unicode "www.gnu.org")
 ;; => "www.gnu.org"
