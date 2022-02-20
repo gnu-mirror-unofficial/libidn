@@ -1,6 +1,6 @@
 dnl Process this file with autoconf to produce a configure script.
 
-dnl Copyright (C) 2002-2021 Simon Josefsson
+dnl Copyright (C) 2002-2022 Simon Josefsson
 dnl
 dnl This file is part of GNU Libidn.
 dnl
