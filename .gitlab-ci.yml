@@ -1,4 +1,4 @@
-# Copyright (C) 2020-2021 Simon Josefsson
+# Copyright (C) 2020-2022 Simon Josefsson
 #
 # This file is part of GNU Libidn.
 #
@@ -162,7 +162,7 @@ ArchLinux:
   stage: test
   needs: [Debian11]
   before_script:
-  - pacman -Sy --noconfirm make gcc diffutils
+  - pacman -Syu --noconfirm make gcc diffutils
   script:
   - tar xfz libidn-*.tar.gz
   - cd `ls -d libidn-* | grep -v tar.gz`
@@ -195,8 +195,8 @@ CentOS7:
   - time ./configure || (cat config.log; exit 1)
   - time make check V=1 || (find . -name test-suite.log -exec cat {} +; exit 1)
 
-CentOS8:
-  image: centos:8
+AlmaLinux:
+  image: almalinux:8
   stage: test
   needs: [Debian11]
   before_script:
